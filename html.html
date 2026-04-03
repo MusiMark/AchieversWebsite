@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Contact Us | Achievers Mindset Program</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #F2EFE6;
+      color: #1e2a2f;
+      line-height: 1.5;
+    }
+
+    h1, h2, h3, h4, .logo, .nav-links a, .btn, .section-title {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Color palette */
+    :root {
+      --cream: #F2EFE6;
+      --red: #C80C1F;
+      --yellow: #F8E52E;
+      --stone: #918179;
+      --dark-bg: #1C1B17;
+      --navbar-bg: #F5F3F2;
+      --soft-red: #FEC7C1;
+      --gray-light: #EDEFF0;
+      --beige: #CFC8B1;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 48px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background-color: var(--red);
+      color: white;
+      box-shadow: 0 4px 10px rgba(200, 12, 31, 0.3);
+    }
+
+    .btn-primary:hover {
+      background-color: #a00a1a;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--red);
+      color: var(--red);
+    }
+
+    .btn-outline:hover {
+      background: var(--red);
+      color: white;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: var(--navbar-bg);
+      box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 16px 0;
+      border-bottom: 1px solid #CFC8B1;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo h2 {
+      color: var(--red);
+      font-weight: 800;
+      font-size: 1.6rem;
+    }
+
+    .logo span {
+      color: #625E52;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #3E3B33;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--red);
+    }
+
+    .nav-btn {
+      background: var(--red);
+      color: white !important;
+      padding: 8px 20px;
+      border-radius: 40px;
+    }
+
+    /* Page header */
+    .page-header {
+      background: linear-gradient(135deg, var(--red) 0%, #8D0613 100%);
+      color: white;
+      text-align: center;
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      left: -10%;
+      width: 120%;
+      height: 120%;
+      background: repeating-linear-gradient(45deg, rgba(248,229,46,0.08) 0px, rgba(248,229,46,0.08) 2px, transparent 2px, transparent 8px);
+      pointer-events: none;
+    }
+    .page-header h1 {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      font-weight: 800;
+      position: relative;
+    }
+    .page-header p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0.95;
+      position: relative;
+    }
+
+    /* Section styles */
+    section {
+      padding: 80px 0;
+    }
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--red);
+      position: relative;
+      display: inline-block;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background: var(--yellow);
+      border-radius: 4px;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    /* Contact Layout */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    /* Contact Info Cards */
+    .contact-info-card {
+      background: white;
+      border-radius: 32px;
+      padding: 32px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+      margin-bottom: 32px;
+    }
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+    .info-icon {
+      width: 54px;
+      height: 54px;
+      background: var(--soft-red);
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--red);
+    }
+    .info-text h4 {
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+      color: var(--dark-bg);
+    }
+    .info-text a, .info-text p {
+      color: #5a5a5a;
+      text-decoration: none;
+    }
+    .info-text a:hover {
+      color: var(--red);
+    }
+    .social-links {
+      display: flex;
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .social-links a {
+      background: var(--gray-light);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--red);
+      transition: 0.2s;
+    }
+    .social-links a:hover {
+      background: var(--yellow);
+      transform: translateY(-3px);
+    }
+
+    /* Contact Form */
+    .contact-form-card {
+      background: white;
+      border-radius: 32px;
+      padding: 36px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+    }
+    .form-group {
+      margin-bottom: 24px;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1px solid #CFC8B1;
+      border-radius: 28px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1rem;
+      background: #FEFEFE;
+      transition: 0.2s;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(200,12,31,0.1);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* Map */
+    .map-container {
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+      margin-top: 20px;
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+    }
+
+    /* Footer */
+    footer {
+      background: #1C1B17;
+      color: #D4CAC5;
+      padding: 48px 0 24px;
+      margin-top: 40px;
+      border-top: 3px solid var(--yellow);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+      gap: 32px;
+    }
+    .footer-col h4 {
+      color: var(--yellow);
+      margin-bottom: 20px;
+    }
+    .footer-col a {
+      color: #B4A299;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .footer-col a:hover {
+      color: var(--yellow);
+    }
+    .social-icons i {
+      font-size: 1.6rem;
+      margin-right: 16px;
+      color: #B4A299;
+      transition: 0.2s;
+    }
+    .social-icons i:hover {
+      color: var(--yellow);
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #25D366;
+      color: white;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+      z-index: 99;
+      transition: 0.2s;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.08);
+    }
+
+    @media (max-width: 768px) {
+      .page-header h1 { font-size: 2rem; }
+      .section-title { font-size: 1.8rem; }
+      .nav-container { flex-direction: column; gap: 12px; }
+      .nav-links { justify-content: center; }
+      .contact-form-card { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- WhatsApp Float Button -->
+<a href="https://wa.me/256700123456?text=Hello%20AMP!%20I%20have%20a%20question%20about%20your%20programs" class="whatsapp-float" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="container nav-container">
+    <div class="logo">
+      <h2>Achievers<span>Mindset</span></h2>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Programs</a></li>
+      <li><a href="#">Gallery</a></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#" class="nav-btn">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Page Header -->
+<div class="page-header">
+  <div class="container">
+    <h1>Get in Touch</h1>
+    <p>We’d love to hear from you — whether you're a student, parent, school leader, or partner. Reach out and let's empower youth together.</p>
+  </div>
+</div>
+
+<!-- Contact Section -->
+<section style="padding-top: 40px;">
+  <div class="container">
+    <div class="contact-grid">
+      <!-- Left Column: Contact Info -->
+      <div>
+        <div class="contact-info-card">
+          <h3 style="font-size: 1.8rem; color: var(--red); margin-bottom: 24px;">Contact Information</h3>
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+            <div class="info-text">
+              <h4>Call Us</h4>
+              <a href="tel:+256700123456">+256 700 123 456</a><br>
+              <a href="tel:+256782345678">+256 782 345 678</a>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+            <div class="info-text">
+              <h4>Email Us</h4>
+              <a href="mailto:hello@amp.ug">hello@amp.ug</a><br>
+              <a href="mailto:partnerships@amp.ug">partnerships@amp.ug</a>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fab fa-whatsapp"></i></div>
+            <div class="info-text">
+              <h4>WhatsApp</h4>
+              <a href="https://wa.me/256700123456" target="_blank">+256 700 123 456 (Chat only)</a>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="info-text">
+              <h4>Visit Us</h4>
+              <p>Plot 45, Kampala Road,<br>2nd Floor, Achievers Hub, Kampala, Uganda</p>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <!-- Google Map -->
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.746391140888!2d32.582619!3d0.313611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbb5b2f6f2b5f%3A0x9e7b5c5c5c5c5c5c!2sKampala%20Road%2C%20Kampala!5e0!3m2!1sen!2sug!4v1700000000000!5m2!1sen!2sug" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <!-- Right Column: Contact Form -->
+      <div class="contact-form-card">
+        <h3 style="font-size: 1.8rem; color: var(--red); margin-bottom: 24px;">Send Us a Message</h3>
+        <form id="contactForm">
+          <div class="form-group">
+            <input type="text" id="name" placeholder="Your Full Name *" required>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" placeholder="Email Address *" required>
+          </div>
+          <div class="form-group">
+            <input type="tel" id="phone" placeholder="Phone Number (optional)">
+          </div>
+          <div class="form-group">
+            <select id="subject" style="width:100%; padding:14px 18px; border-radius:28px; border:1px solid #CFC8B1; background:#FEFEFE; font-family:inherit;">
+              <option value="General Inquiry">General Inquiry</option>
+              <option value="School Partnership">School Partnership</option>
+              <option value="Invite AMP to School">Invite AMP to School</option>
+              <option value="Mentorship/Volunteer">Mentorship/Volunteer</option>
+              <option value="Sponsorship/Donation">Sponsorship/Donation</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea id="message" placeholder="Your Message *" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;"><i class="fas fa-paper-plane"></i> Send Message</button>
+          <p style="font-size:0.8rem; margin-top:16px; text-align:center; color:var(--stone);">We'll get back to you within 24 hours.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Achievers Mindset</h4>
+        <p>Empowering Uganda’s youth with life skills, mentorship & mindset training.</p>
+        <div class="social-icons">
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-linkedin"></i>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Programs</a>
+        <a href="#">Gallery</a>
+        <a href="#">Events</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+256700123456"><i class="fas fa-phone-alt"></i> +256 700 123456</a>
+        <a href="mailto:hello@amp.ug"><i class="fas fa-envelope"></i> hello@amp.ug</a>
+        <a href="https://wa.me/256700123456" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Chat</a>
+        <a href="#"><i class="fas fa-map-marker-alt"></i> Kampala, Uganda</a>
+      </div>
+    </div>
+    <div class="copyright" style="text-align:center; border-top:1px solid #3E3B33; padding-top:30px; margin-top:30px;">
+      <p>© 2025 Achievers Mindset Program — Building Confident & Purpose-Driven Leaders</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Simple form handling (demo - no actual backend)
+  const contactForm = document.getElementById('contactForm');
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    if (!name || !email || !message) {
+      alert('Please fill in all required fields (*)');
+      return;
+    }
+    if (!email.includes('@') || !email.includes('.')) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    // Simulate success
+    alert(`Thank you ${name}! Your message has been sent. We'll reply via ${email} within 24 hours.`);
+    contactForm.reset();
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Gallery</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Website Icon -->
+  <link rel="icon" href="images/achiever_logo2.svg" type="image/svg+xml">
+
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://kit.fontawesome.com/04925a1789.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="container nav-container">
+    <div>
+      <img src="images/achiever_logo.svg" alt="Achievers Uganda Logo" style="width: 80px;">
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="aboutus.html">About</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="gallery.html" class="active">Gallery</a></li>
+      <li><a href="contactus.html" class="nav-btn">Contact Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Page Header -->
+<div class="page-header">
+  <div class="container">
+    <h1>Moments That Matter</h1>
+    <p>Explore photos and videos from our workshops, mentorship sessions, and youth empowerment events across Uganda.</p>
+  </div>
+</div>
+
+<!-- Photo Gallery Section -->
+<section style="padding-bottom: 40px;">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Photo Gallery</h2>
+      <p>Capturing transformation, one frame at a time</p>
+    </div>
+    <div class="gallery-grid" id="photoGrid">
+      <!-- Images will be populated via JS but we add static for reliability -->
+    </div>
+  </div>
+</section>
+
+<!-- Video Gallery Section -->
+<section style="background: #EDEFF0; border-radius: 60px 60px 0 0;">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Video Highlights</h2>
+      <p>Watch our impact in action</p>
+    </div>
+    <div class="video-grid" id="videoGrid">
+      <!-- Video thumbnails -->
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="lightbox">
+  <span class="close-lightbox">&times;</span>
+  <img id="lightboxImg" src="" alt="Enlarged view">
+</div>
+
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <img src="images/achiever_logo.svg" alt="Achievers Uganda Logo" style="width: 260px; margin-bottom: 16px;">
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="programs.html">Programs</a>
+        <a href="events.html">Events</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contactus.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+256700123456"><i class="fas fa-phone-alt"></i> +256 772 54116</a>
+        <a href="mailto:achievers256@gmail.com"><i class="fas fa-envelope"></i> achievers256@gmail.com</a>
+        <a href="https://maps.app.goo.gl/XExUnmnAgf465hiq6"><i class="fas fa-map-marker-alt"></i> Kampala, Uganda</a>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-linkedin"></i>
+        </div>
+      </div>
+    </div>
+    <div class="copyright" style="text-align:center; border-top:1px solid #444; padding-top:30px; margin-top:30px;">
+      <p>&copy; 2026 Achievers Uganda</p>
+    </div>
+  </div>
+</footer>
+<script>
+  // Photo Gallery Data (high-quality images from Pexels + some local style)
+  const photos = [
+    { src: "https://images.pexels.com/photos/7078627/pexels-photo-7078627.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Youth workshop in Kampala" },
+    { src: "images/acheiver_img3.jpg", caption: "Group mentorship session" },
+    { src: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Leadership training" },
+    { src: "https://images.pexels.com/photos/5428859/pexels-photo-5428859.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Outdoor team building" },
+    { src: "https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Mindset talk session" },
+    { src: "https://images.pexels.com/photos/4578820/pexels-photo-4578820.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Emotional intelligence circle" },
+    { src: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Goal setting workshop" },
+    { src: "https://images.pexels.com/photos/7691301/pexels-photo-7691301.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Graduation ceremony" }
+  ];
+
+  // Video Data (YouTube embed thumbnails + links)
+  const videos = [
+    { thumb: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg", videoId: "dQw4w9WgXcQ", title: "AMP Impact Story 2024" },
+    { thumb: "https://img.youtube.com/vi/3JZ_D3ELwOQ/maxresdefault.jpg", videoId: "3JZ_D3ELwOQ", title: "Youth Testimonials" },
+    { thumb: "https://img.youtube.com/vi/tgbNymZ7vqY/maxresdefault.jpg", videoId: "tgbNymZ7vqY", title: "Mindset Bootcamp Highlights" }
+  ];
+
+  // Render Photo Gallery
+  const photoGrid = document.getElementById('photoGrid');
+  photos.forEach(photo => {
+    const col = document.createElement('div');
+    col.className = 'gallery-item';
+    col.innerHTML = `
+      <img src="${photo.src}" alt="${photo.caption}" loading="lazy">
+      <div class="overlay-caption">${photo.caption}</div>
+    `;
+    col.addEventListener('click', () => {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      lightboxImg.src = photo.src;
+      lightbox.classList.add('active');
+    });
+    photoGrid.appendChild(col);
+  });
+
+  // Render Video Gallery
+  const videoGrid = document.getElementById('videoGrid');
+  videos.forEach(video => {
+    const videoCard = document.createElement('div');
+    videoCard.className = 'video-card';
+    videoCard.innerHTML = `
+      <div class="video-thumb" data-video-id="${video.videoId}">
+        <img src="${video.thumb}" alt="${video.title}">
+        <div class="play-icon"><i class="fas fa-play"></i></div>
+      </div>
+      <div class="video-info">
+        <h3>${video.title}</h3>
+        <p>Click to watch on YouTube</p>
+      </div>
+    `;
+    const thumbDiv = videoCard.querySelector('.video-thumb');
+    thumbDiv.addEventListener('click', () => {
+      window.open(`https://www.youtube.com/watch?v=${video.videoId}`, '_blank');
+    });
+    videoGrid.appendChild(videoCard);
+  });
+
+  // Lightbox close functionality
+  const lightbox = document.getElementById('lightbox');
+  const closeBtn = document.querySelector('.close-lightbox');
+  closeBtn.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+  });
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      lightbox.classList.remove('active');
+    }
+  });
+</script>
+</body>
+</html>

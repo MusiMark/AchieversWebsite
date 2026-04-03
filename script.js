@@ -6,11 +6,10 @@ const dotsContainer = document.getElementById('dotsSlider');
 const slideTitle = document.getElementById('slideTitle');
 const slideDesc = document.getElementById('slideDesc');
 
-// Slide content per index
 const slideData = [
-{ title: "Empowering Young Leaders Across Uganda", desc: "Life skills, mentorship, and real-world confidence for youth aged 10-25. Join a movement that transforms communities." },
-{ title: "Build Skills That Last a Lifetime", desc: "From emotional intelligence to career planning — AMP gives you the tools to thrive in school, work, and life." },
-{ title: "Mentorship That Changes Everything", desc: "Get matched with inspiring mentors who guide you to unlock your full potential and become an achiever." }
+{ title: "Empowering Uganda's Young Generation with Life Skills, Mindset & Purpose", desc: "Building confident, emotionally intelligent leaders who thrive in school, work, and life." },
+{ title: "Unlock Your Potential with AMP", desc: "Learn emotional intelligence, goal setting, and leadership — skills that last a lifetime." },
+{ title: "Join a Movement of Young Achievers", desc: "Mentorship, workshops, and community support for youth aged 10-25 across Uganda." }
 ];
 
 let currentSlide = 0;
@@ -44,51 +43,26 @@ slides.forEach((_, idx) => {
 });
 }
 
-function nextSlide() {
-currentSlide = (currentSlide + 1) % slides.length;
-updateSlider(currentSlide);
-}
+function nextSlide() { currentSlide = (currentSlide + 1) % slides.length; updateSlider(currentSlide); }
+function prevSlide() { currentSlide = (currentSlide - 1 + slides.length) % slides.length; updateSlider(currentSlide); }
+function startAutoSlide() { if (autoInterval) clearInterval(autoInterval); autoInterval = setInterval(() => { nextSlide(); }, 6000); }
 
-function prevSlide() {
-currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-updateSlider(currentSlide);
-}
-
-function startAutoSlide() {
-if (autoInterval) clearInterval(autoInterval);
-autoInterval = setInterval(() => {
-    nextSlide();
-}, 6000);
-}
-
-prevBtn.addEventListener('click', () => {
-clearInterval(autoInterval);
-prevSlide();
-startAutoSlide();
-});
-nextBtn.addEventListener('click', () => {
-clearInterval(autoInterval);
-nextSlide();
-startAutoSlide();
-});
+prevBtn.addEventListener('click', () => { clearInterval(autoInterval); prevSlide(); startAutoSlide(); });
+nextBtn.addEventListener('click', () => { clearInterval(autoInterval); nextSlide(); startAutoSlide(); });
 
 createDots();
 updateSlider(0);
 startAutoSlide();
 
-// Email Subscription
-const subscribeBtn = document.getElementById('subscribeBtn');
-const emailInput = document.getElementById('subEmail');
-subscribeBtn.addEventListener('click', () => {
-const email = emailInput.value.trim();
-if (email && email.includes('@') && email.includes('.')) {
-    alert(`🎉 Thanks for subscribing! You'll receive AMP updates and free guides.`);
-    emailInput.value = '';
-} else {
-    alert('Please enter a valid email address.');
-}
+// Invite School button alert
+document.getElementById('inviteSchoolHeroBtn')?.addEventListener('click', () => {
+alert("📞 Contact us on WhatsApp: +256 700 123456 or email hello@amp.ug to invite AMP to your school. We'll respond within 24 hours.");
 });
 
-// Buttons alerts (demo)
-document.getElementById('registerHeroBtn')?.addEventListener('click', () => alert('Registration portal opens soon! Stay tuned.'));
-document.getElementById('workshopHeroBtn')?.addEventListener('click', () => alert('Contact us at +256 700 123456 to book a school workshop.'));
+// Event contact buttons
+const contactBtns = document.querySelectorAll('.event-contact-btn');
+contactBtns.forEach(btn => {
+btn.addEventListener('click', () => {
+    alert("For more information about this event, please reach out via WhatsApp: +256 700 123456 or email hello@amp.ug");
+});
+});

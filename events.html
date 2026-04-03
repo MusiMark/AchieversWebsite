@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Events</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Website Icon -->
+  <link rel="icon" href="images/achiever_logo2.svg" type="image/svg+xml">
+
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://kit.fontawesome.com/04925a1789.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="container nav-container">
+    <div>
+      <img src="images/achiever_logo.svg" alt="Achievers Uganda Logo" style="width: 80px;">
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="aboutus.html">About</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="events.html" class="active">Events</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contactus.html" class="nav-btn">Contact Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Page Header -->
+<div class="page-header">
+  <div class="container">
+    <h1>Events & Calendar</h1>
+    <p>Stay updated with our workshops, summits, and youth empowerment sessions. Mark your calendar and join us.</p>
+  </div>
+</div>
+
+<!-- Events + Calendar -->
+<section style="padding-top: 40px;">
+  <div class="container">
+    <div class="events-layout">
+      <div class="calendar-container">
+        <div class="calendar-header">
+          <h3 id="monthYear">April 2026</h3>
+          <div class="calendar-nav">
+            <button id="prevMonth" aria-label="Previous month"><i class="fas fa-chevron-left"></i></button>
+            <button id="nextMonth" aria-label="Next month"><i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+        <div class="weekdays">
+          <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+        </div>
+        <div id="calendarDays" class="calendar-days"></div>
+        <p style="margin-top: 20px; font-size: 0.85rem; color: var(--stone);">
+          <i class="fas fa-circle" style="color: var(--soft-red); font-size: 0.7rem;"></i> Days with events
+        </p>
+      </div>
+
+      <div class="events-list-container">
+        <h3><i class="fas fa-calendar-alt"></i> Upcoming Events</h3>
+        <div id="eventsList"></div>
+        <div style="margin-top: 24px; text-align: center;">
+          <a href="https://wa.me/25677254116" class="btn btn-primary" target="_blank"><i class="fab fa-whatsapp"></i> Contact for Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Past Events -->
+<section class="past-highlights">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Past Events Highlights</h2>
+      <p>Relive the energy and impact of our recent gatherings.</p>
+    </div>
+    <div class="past-highlights-grid">
+      <div class="highlight-card">
+        <i class="fas fa-chalkboard-user"></i>
+        <h3>Mindset Bootcamp</h3>
+        <p>Feb 2026 | 120+ participants</p>
+      </div>
+      <div class="highlight-card">
+        <i class="fas fa-handshake"></i>
+        <h3>Youth Leadership Summit</h3>
+        <p>Jan 2026 | 85 schools represented</p>
+      </div>
+      <div class="highlight-card">
+        <i class="fas fa-users"></i>
+        <h3>Parenting Webinar</h3>
+        <p>Dec 2025 | 300+ parents</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <img src="images/achiever_logo.svg" alt="Achievers Uganda Logo" style="width: 260px; margin-bottom: 16px;">
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="programs.html">Programs</a>
+        <a href="events.html">Events</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contactus.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+256700123456"><i class="fas fa-phone-alt"></i> +256 772 54116</a>
+        <a href="mailto:achievers256@gmail.com"><i class="fas fa-envelope"></i> achievers256@gmail.com</a>
+        <a href="https://maps.app.goo.gl/XExUnmnAgf465hiq6"><i class="fas fa-map-marker-alt"></i> Kampala, Uganda</a>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-linkedin"></i>
+        </div>
+      </div>
+    </div>
+    <div class="copyright" style="text-align:center; border-top:1px solid #444; padding-top:30px; margin-top:30px;">
+      <p>&copy; 2026 Achievers Uganda</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const events = [
+    {
+      name: 'Mindset Shift Bootcamp',
+      date: '2026-04-14',
+      description: 'In-person workshop in Kampala focused on growth mindset and emotional intelligence.',
+      location: 'Kampala Youth Centre'
+    },
+    {
+      name: 'School Outreach Workshop',
+      date: '2026-04-25',
+      description: 'Special session for students with practical leadership activities.',
+      location: 'Kampala'
+    },
+    {
+      name: 'Mentorship Circle Meetup',
+      date: '2026-05-10',
+      description: 'Monthly peer mentorship gathering for young achievers.',
+      location: 'AMP Hub'
+    },
+    {
+      name: 'Youth Leadership Summit',
+      date: '2026-05-20',
+      description: 'A hybrid event connecting student leaders across Uganda.',
+      location: 'Online + Kampala'
+    },
+    {
+      name: 'Parenting for Purpose',
+      date: '2026-06-05',
+      description: 'A free webinar for parents and guardians.',
+      location: 'Zoom'
+    }
+  ];
+
+  function getEventsForDate(dateStr) {
+    return events.filter((eventItem) => eventItem.date === dateStr);
+  }
+
+  let currentDate = new Date();
+  currentDate.setHours(0, 0, 0, 0);
+
+  function renderCalendar() {
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+    const firstDayOfMonth = new Date(year, month, 1);
+    const startWeekday = firstDayOfMonth.getDay();
+    const startOffset = startWeekday === 0 ? 6 : startWeekday - 1;
+
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const calendarDaysDiv = document.getElementById('calendarDays');
+    calendarDaysDiv.innerHTML = '';
+
+    const prevMonthDays = new Date(year, month, 0).getDate();
+    for (let i = startOffset - 1; i >= 0; i--) {
+      const dayNum = prevMonthDays - i;
+      const emptyDiv = document.createElement('div');
+      emptyDiv.className = 'calendar-day empty';
+      emptyDiv.textContent = dayNum;
+      calendarDaysDiv.appendChild(emptyDiv);
+    }
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    for (let day = 1; day <= daysInMonth; day++) {
+      const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+      const hasEvent = getEventsForDate(dateStr).length > 0;
+      const dayDiv = document.createElement('div');
+      dayDiv.className = 'calendar-day';
+
+      if (hasEvent) {
+        dayDiv.classList.add('has-event');
+      }
+
+      if (
+        today.getFullYear() === year &&
+        today.getMonth() === month &&
+        today.getDate() === day
+      ) {
+        dayDiv.classList.add('today');
+      }
+
+      dayDiv.textContent = day;
+      dayDiv.addEventListener('click', () => {
+        showEventsForDate(dateStr);
+      });
+      calendarDaysDiv.appendChild(dayDiv);
+    }
+
+    const totalCells = calendarDaysDiv.children.length;
+    const remainingCells = 42 - totalCells;
+    for (let i = 1; i <= remainingCells; i++) {
+      const emptyDiv = document.createElement('div');
+      emptyDiv.className = 'calendar-day empty';
+      emptyDiv.textContent = i;
+      calendarDaysDiv.appendChild(emptyDiv);
+    }
+
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    document.getElementById('monthYear').textContent = `${monthNames[month]} ${year}`;
+  }
+
+  function showEventsForDate(dateStr) {
+    const eventsContainer = document.getElementById('eventsList');
+    const filteredEvents = events.filter((eventItem) => eventItem.date === dateStr);
+
+    if (filteredEvents.length === 0) {
+      eventsContainer.innerHTML = '<div class="event-item"><h4>No events scheduled on this day</h4><p>Check other dates or contact us for updates.</p></div>';
+      return;
+    }
+
+    const html = filteredEvents.map((eventItem) => {
+      const formattedDate = new Date(eventItem.date).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+
+      return `
+        <div class="event-item">
+          <div class="event-date-badge">${formattedDate}</div>
+          <h4>${eventItem.name}</h4>
+          <p><i class="fas fa-map-marker-alt"></i> ${eventItem.location} - ${eventItem.description}</p>
+          <a href="https://wa.me/25677254116" class="event-contact" target="_blank"><i class="fab fa-whatsapp"></i> Ask for details</a>
+        </div>
+      `;
+    }).join('');
+
+    eventsContainer.innerHTML = html;
+  }
+
+  function showUpcomingEvents() {
+    const eventsContainer = document.getElementById('eventsList');
+    const todayStr = new Date().toISOString().slice(0, 10);
+    const upcomingEvents = events
+      .filter((eventItem) => eventItem.date >= todayStr)
+      .sort((a, b) => a.date.localeCompare(b.date));
+
+    if (upcomingEvents.length === 0) {
+      eventsContainer.innerHTML = '<div class="event-item"><h4>No upcoming events yet</h4><p>Please check again soon.</p></div>';
+      return;
+    }
+
+    const html = upcomingEvents.map((eventItem) => {
+      const formattedDate = new Date(eventItem.date).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+
+      return `
+        <div class="event-item">
+          <div class="event-date-badge">${formattedDate}</div>
+          <h4>${eventItem.name}</h4>
+          <p><i class="fas fa-map-marker-alt"></i> ${eventItem.location} - ${eventItem.description}</p>
+          <a href="https://wa.me/25677254116" class="event-contact" target="_blank"><i class="fab fa-whatsapp"></i> Contact for details</a>
+        </div>
+      `;
+    }).join('');
+
+    eventsContainer.innerHTML = html;
+  }
+
+  document.getElementById('prevMonth').addEventListener('click', () => {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    renderCalendar();
+    showUpcomingEvents();
+  });
+
+  document.getElementById('nextMonth').addEventListener('click', () => {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    renderCalendar();
+    showUpcomingEvents();
+  });
+
+  renderCalendar();
+  showUpcomingEvents();
+</script>
+
+</body>
+</html>
