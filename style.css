@@ -1043,6 +1043,7 @@ social-icons {
     margin-top: 12px;
 }
 .social-icons i {
+    color: #D4CAC5;
     font-size: 1.6rem;
     margin-right: 16px;
     transition: 0.2s;
