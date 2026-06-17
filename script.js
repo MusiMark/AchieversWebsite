@@ -56,13 +56,15 @@ startAutoSlide();
 
 // Invite School button alert
 document.getElementById('inviteSchoolHeroBtn')?.addEventListener('click', () => {
-alert("📞 Contact us on WhatsApp: +256 700 123456 or email hello@amp.ug to invite AMP to your school. We'll respond within 24 hours.");
+const contact = window.AchieversSiteData || {};
+alert(`📞 Contact us on WhatsApp: ${contact.whatsappDisplay || 'WhatsApp'} or email ${contact.emailDisplay || 'email'} to invite AMP to your school. We'll respond within 24 hours.`);
 });
 
 // Event contact buttons
 const contactBtns = document.querySelectorAll('.event-contact-btn');
 contactBtns.forEach(btn => {
 btn.addEventListener('click', () => {
-    alert("For more information about this event, please reach out via WhatsApp: +256 700 123456 or email hello@amp.ug");
+    const contact = window.AchieversSiteData || {};
+    alert(`For more information about this event, please reach out via WhatsApp: ${contact.whatsappDisplay || 'WhatsApp'} or email ${contact.emailDisplay || 'email'}`);
 });
 });

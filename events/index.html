@@ -70,7 +70,7 @@
         <h3><i class="fas fa-calendar-alt"></i> Upcoming Events</h3>
         <div id="eventsList"></div>
         <div style="margin-top: 24px; text-align: center;">
-          <a href="https://wa.me/25677254116" class="btn btn-primary" target="_blank"><i class="fab fa-whatsapp"></i> Contact for Details</a>
+          <a href="#" data-contact-link="whatsapp" class="btn btn-primary" target="_blank"><i class="fab fa-whatsapp"></i> Contact for Details</a>
         </div>
       </div>
     </div>
@@ -121,9 +121,9 @@
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
-        <a href="tel:+256700123456"><i class="fas fa-phone-alt"></i> +256 772 54116</a>
-        <a href="mailto:achievers256@gmail.com"><i class="fas fa-envelope"></i> achievers256@gmail.com</a>
-        <a href="https://maps.app.goo.gl/XExUnmnAgf465hiq6"><i class="fas fa-map-marker-alt"></i> Kampala, Uganda</a>
+        <a href="#" data-contact-link="phone"><i class="fas fa-phone-alt"></i> <span data-contact-text="phone"></span></a>
+        <a href="#" data-contact-link="email"><i class="fas fa-envelope"></i> <span data-contact-text="email"></span></a>
+        <a href="#" data-contact-link="maps"><i class="fas fa-map-marker-alt"></i> <span data-contact-text="location"></span></a>
       </div>
       <div class="footer-col">
         <h4>Follow Us</h4>
@@ -140,6 +140,8 @@
     </div>
   </div>
 </footer>
+
+<script src="../shared-data.js"></script>
 
 <script>
   const events = [
@@ -172,6 +174,12 @@
       date: '2026-06-05',
       description: 'A free webinar for parents and guardians.',
       location: 'Zoom'
+    },
+    {
+      name: 'Christmas Youth Gala',
+      date: '2026-12-25',
+      description: 'Celebrating youth achievements and community impact with awards and performances.',
+      location: 'Physical venue in Kampala'
     }
   ];
 
@@ -264,7 +272,7 @@
           <div class="event-date-badge">${formattedDate}</div>
           <h4>${eventItem.name}</h4>
           <p><i class="fas fa-map-marker-alt"></i> ${eventItem.location} - ${eventItem.description}</p>
-          <a href="https://wa.me/25677254116" class="event-contact" target="_blank"><i class="fab fa-whatsapp"></i> Ask for details</a>
+          <a href="#" data-contact-link="whatsapp" class="event-contact" target="_blank"><i class="fab fa-whatsapp"></i> Ask for details</a>
         </div>
       `;
     }).join('');
@@ -296,7 +304,7 @@
           <div class="event-date-badge">${formattedDate}</div>
           <h4>${eventItem.name}</h4>
           <p><i class="fas fa-map-marker-alt"></i> ${eventItem.location} - ${eventItem.description}</p>
-          <a href="https://wa.me/25677254116" class="event-contact" target="_blank"><i class="fab fa-whatsapp"></i> Contact for details</a>
+          <a href="#" data-contact-link="whatsapp" class="event-contact" target="_blank"><i class="fab fa-whatsapp"></i> Contact for details</a>
         </div>
       `;
     }).join('');
