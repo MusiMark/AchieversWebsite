@@ -19,7 +19,7 @@
   <script src="https://kit.fontawesome.com/04925a1789.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    
+
 <!-- Navigation -->
 <nav class="navbar">
   <div class="container nav-container">
@@ -31,6 +31,7 @@
       <li><a href="../aboutus/">About</a></li>
       <li><a href="../programs/">Programs</a></li>
       <li><a href="../events/" class="active">Events</a></li>
+      <li><a href="../blog/">Blog</a></li>
       <li><a href="../gallery/">Gallery</a></li>
       <li><a href="../contactus/" class="nav-btn">Contact Us</a></li>
     </ul>
@@ -70,7 +71,10 @@
         <h3><i class="fas fa-calendar-alt"></i> Upcoming Events</h3>
         <div id="eventsList"></div>
         <div style="margin-top: 24px; text-align: center;">
-          <a href="#" data-contact-link="whatsapp" class="btn btn-primary" target="_blank"><i class="fab fa-whatsapp"></i> Contact for Details</a>
+          <!-- Only one main contact button remains -->
+          <a href="#" data-contact-link="whatsapp" class="btn btn-primary" target="_blank">
+            <i class="fab fa-whatsapp"></i> Contact for Details
+          </a>
         </div>
       </div>
     </div>
@@ -144,53 +148,29 @@
 <script src="../shared-data.js"></script>
 
 <script>
-  const events = [
-    {
-      name: 'Mindset Shift Bootcamp',
-      date: '2026-04-14',
-      description: 'In-person workshop in Kampala focused on growth mindset and emotional intelligence.',
-      location: 'Kampala Youth Centre'
-    },
-    {
-      name: 'School Outreach Workshop',
-      date: '2026-04-25',
-      description: 'Special session for students with practical leadership activities.',
-      location: 'Kampala'
-    },
-    {
-      name: 'Mentorship Circle Meetup',
-      date: '2026-05-10',
-      description: 'Monthly peer mentorship gathering for young achievers.',
-      location: 'AMP Hub'
-    },
-    {
-      name: 'Youth Leadership Summit',
-      date: '2026-05-20',
-      description: 'A hybrid event connecting student leaders across Uganda.',
-      location: 'Online + Kampala'
-    },
-    {
-      name: 'Parenting for Purpose',
-      date: '2026-06-05',
-      description: 'A free webinar for parents and guardians.',
-      location: 'Zoom'
-    },
-    {
-      name: 'Christmas Youth Gala',
-      date: '2026-12-25',
-      description: 'Celebrating youth achievements and community impact with awards and performances.',
-      location: 'Physical venue in Kampala'
-    }
-  ];
+  // Fetch events from external JSON
+  fetch('events.json')
+    .then(response => response.json())
+    .then(events => {
+      window.eventsData = events; // store for later use
+      renderCalendar();
+      showUpcomingEvents();
+    })
+    .catch(error => {
+      console.error('Failed to load events:', error);
+      document.getElementById('eventsList').innerHTML = '<p>Unable to load events. Please try again later.</p>';
+    });
 
   function getEventsForDate(dateStr) {
-    return events.filter((eventItem) => eventItem.date === dateStr);
+    if (!window.eventsData) return [];
+    return window.eventsData.filter(eventItem => eventItem.date === dateStr);
   }
 
   let currentDate = new Date();
   currentDate.setHours(0, 0, 0, 0);
 
   function renderCalendar() {
+    if (!window.eventsData) return;
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
     const firstDayOfMonth = new Date(year, month, 1);
@@ -252,39 +232,70 @@
   }
 
   function showEventsForDate(dateStr) {
+    if (!window.eventsData) return;
     const eventsContainer = document.getElementById('eventsList');
-    const filteredEvents = events.filter((eventItem) => eventItem.date === dateStr);
+    const filteredEvents = window.eventsData.filter(eventItem => eventItem.date === dateStr);
 
     if (filteredEvents.length === 0) {
       eventsContainer.innerHTML = '<div class="event-item"><h4>No events scheduled on this day</h4><p>Check other dates or contact us for updates.</p></div>';
       return;
     }
 
-    const html = filteredEvents.map((eventItem) => {
-      const formattedDate = new Date(eventItem.date).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      });
+    const html = filteredEvents.map(eventItem => {
+      const dateObj = new Date(eventItem.date);
+      const day = dateObj.getDate();
+      const month = dateObj.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
 
-      return `
-        <div class="event-item">
-          <div class="event-date-badge">${formattedDate}</div>
-          <h4>${eventItem.name}</h4>
-          <p><i class="fas fa-map-marker-alt"></i> ${eventItem.location} - ${eventItem.description}</p>
-          <a href="#" data-contact-link="whatsapp" class="event-contact" target="_blank"><i class="fab fa-whatsapp"></i> Ask for details</a>
-        </div>
-      `;
+      // Build optional "Read More" link only if detailsUrl exists
+      const readMore = eventItem.detailsUrl
+        ? `<span class="event-link">View Details<i class="fas fa-arrow-right"></i></span>`
+        : '';
+
+      const cardContent = `
+      <div class="event-item">
+          <div class="event-date">
+              <span class="day">${day}</span>
+              <span class="month">${month}</span>
+          </div>
+
+          <div class="event-content">
+              <h3>${eventItem.name}</h3>
+
+              <p class="event-meta">
+                  <i class="fas fa-map-marker-alt"></i>
+                  ${eventItem.location}
+              </p>
+
+              <!-- <p class="event-meta">
+                  <i class="far fa-calendar-alt"></i>
+                  9:00 AM - 5:00 PM
+              </p> -->
+
+              <p class="event-description">
+                  ${eventItem.description}
+              </p>
+
+              ${readMore}
+          </div>
+      </div>
+      `
+
+      return eventItem.detailsUrl
+      ? `<a href="${eventItem.detailsUrl}" class="event-card-link">
+        ${cardContent}
+        </a>`
+      : cardContent;
     }).join('');
 
     eventsContainer.innerHTML = html;
   }
 
   function showUpcomingEvents() {
+    if (!window.eventsData) return;
     const eventsContainer = document.getElementById('eventsList');
     const todayStr = new Date().toISOString().slice(0, 10);
-    const upcomingEvents = events
-      .filter((eventItem) => eventItem.date >= todayStr)
+    const upcomingEvents = window.eventsData
+      .filter(eventItem => eventItem.date >= todayStr)
       .sort((a, b) => a.date.localeCompare(b.date));
 
     if (upcomingEvents.length === 0) {
@@ -292,21 +303,50 @@
       return;
     }
 
-    const html = upcomingEvents.map((eventItem) => {
-      const formattedDate = new Date(eventItem.date).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      });
+    const html = upcomingEvents.map(eventItem => {
+      const dateObj = new Date(eventItem.date);
+      const day = dateObj.getDate();
+      const month = dateObj.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
 
-      return `
-        <div class="event-item">
-          <div class="event-date-badge">${formattedDate}</div>
-          <h4>${eventItem.name}</h4>
-          <p><i class="fas fa-map-marker-alt"></i> ${eventItem.location} - ${eventItem.description}</p>
-          <a href="#" data-contact-link="whatsapp" class="event-contact" target="_blank"><i class="fab fa-whatsapp"></i> Contact for details</a>
-        </div>
-      `;
+      // Build optional "Read More" link only if detailsUrl exists
+      const readMore = eventItem.detailsUrl
+        ? `<span class="event-link">View Details<i class="fas fa-arrow-right"></i></span>`
+        : '';
+
+      const cardContent = `
+      <div class="event-item">
+          <div class="event-date">
+              <span class="day">${day}</span>
+              <span class="month">${month}</span>
+          </div>
+
+          <div class="event-content">
+              <h3>${eventItem.name}</h3>
+
+              <p class="event-meta">
+                  <i class="fas fa-map-marker-alt"></i>
+                  ${eventItem.location}
+              </p>
+
+              <!-- <p class="event-meta">
+                  <i class="far fa-calendar-alt"></i>
+                  9:00 AM - 5:00 PM
+              </p> -->
+
+              <p class="event-description">
+                  ${eventItem.description}
+              </p>
+
+              ${readMore}
+          </div>
+      </div>
+      `
+
+      return eventItem.detailsUrl
+      ? `<a href="${eventItem.detailsUrl}" class="event-card-link">
+        ${cardContent}
+        </a>`
+      : cardContent;
     }).join('');
 
     eventsContainer.innerHTML = html;
@@ -323,9 +363,6 @@
     renderCalendar();
     showUpcomingEvents();
   });
-
-  renderCalendar();
-  showUpcomingEvents();
 </script>
 
 </body>

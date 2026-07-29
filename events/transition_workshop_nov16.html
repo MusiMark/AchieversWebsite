@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="color-scheme" content="light" />
+    <meta name="supported-color-schemes" content="light" />
+    <title>Transition Workshop – Achievers Uganda</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="icon" href="../images/achiever_logo2.svg" type="image/svg+xml" />
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* ── reuse existing colors ── */
+        :root {
+            /* reuse site-wide palette */
+            --dark-blue: var(--dark-text, #3E3B33);
+            --primary: var(--red);
+            --light-bg: #FFFFFF;
+            --card-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+            --border-radius: 16px;
+            --transition: 0.25s ease;
+        }
+
+        /* Hero styles */
+        .event-hero { position:relative; background-size:cover; background-position:center; min-height:420px; color:#fff; display:flex; align-items:center; }
+        .event-hero .overlay { position:absolute; inset:0; background: linear-gradient(135deg, rgba(0,0,0,0.65), rgba(0,0,0,0.5)); z-index:1; }
+        .hero-inner { position:relative; z-index:2; padding:60px 20px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; width:100%; }
+        .hero-title { font-size:2.6rem; margin:6px 0 6px; font-weight:800; max-width:1000px; color:#fff; text-shadow: 0 6px 18px rgba(0,0,0,0.6); }
+        .hero-sub { font-size:1.05rem; color: rgba(255,255,255,0.92); margin-bottom:12px; }
+
+        @media (max-width:980px) {
+            .hero-inner { padding-left:18px; padding-right:18px; }
+            .hero-title { font-size:2rem; }
+            .date-badge { right:18px; top:18px; }
+        }
+
+        .event-detail-block {
+            background: var(--light-bg);
+            padding: 28px 32px;
+            border-radius: var(--border-radius);
+            margin-bottom: 28px;
+        }
+        .event-detail-block h3 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: var(--dark-blue);
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: -0.3px;
+        }
+
+        /* ── 1) META INFO – improved grid layout ── */
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px 32px;
+        }
+        .meta-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .meta-item:last-child,
+        .meta-item:nth-last-child(2) {
+            border-bottom: none;
+        }
+        .meta-icon {
+            flex: 0 0 38px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(200, 12, 31, 0.10);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 0.95rem;
+            margin-top: 2px;
+        }
+        .meta-content {
+            flex: 1;
+            min-width: 0;
+        }
+        .meta-label {
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            color: #888;
+            margin-bottom: 2px;
+        }
+        .meta-value {
+            display: block;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--dark-blue);
+            line-height: 1.4;
+        }
+        .meta-value .highlight {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* ── 2) CONTACT CARDS – refined with subtle accents ── */
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: 10px;
+        }
+        .contact-card {
+            background: #fff;
+            padding: 20px 20px 18px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            border-top: 3px solid var(--dark-blue);
+            transition: box-shadow var(--transition), transform var(--transition);
+        }
+        .contact-card:hover {
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+        .contact-card .card-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .contact-avatar {
+            flex: 0 0 40px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(200, 12, 31, 0.12);
+            color: var(--dark-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+        }
+        .contact-card .card-name {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--dark-blue);
+            margin: 0;
+            line-height: 1.2;
+        }
+        .contact-card .card-body a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--dark-blue);
+            text-decoration: none;
+            font-size: 0.92rem;
+            padding: 4px 0;
+            transition: color var(--transition);
+            width: 100%;
+        }
+        .contact-card .card-body a i {
+            width: 18px;
+            color: var(--primary);
+            font-size: 0.85rem;
+            text-align: center;
+            transition: color var(--transition);
+        }
+        .contact-card .card-body a:hover {
+            color: var(--primary);
+        }
+        .contact-card .card-body a:hover i {
+            color: var(--dark-blue);
+        }
+        .contact-card .card-body a+a {
+            margin-top: 2px;
+        }
+
+        /* ── 3) ACTION BUTTONS ── */
+        .action-bar {
+            margin-top: 32px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+        .action-bar .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all var(--transition);
+            border: 2px solid transparent;
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--dark-blue);
+            border-color: var(--dark-blue);
+            text-decoration: none;
+        }
+        .btn-secondary:hover {
+            background: var(--dark-blue);
+            color: #fff;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+            text-decoration: none;
+        }
+        .btn-primary:hover {
+            background: var(--dark-blue);
+            border-color: var(--dark-blue);
+        }
+        .btn-primary i {
+            color: #fff;
+        }
+
+        /* ── responsive ── */
+        @media (max-width: 640px) {
+            .meta-grid {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+            .meta-item {
+                padding: 12px 0;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            }
+            .meta-item:last-child {
+                border-bottom: none;
+            }
+            .event-detail-block {
+                padding: 20px 18px;
+            }
+            .contact-cards {
+                grid-template-columns: 1fr;
+            }
+            .action-bar .btn {
+                width: 100%;
+                justify-content: center;
+                padding: 14px 20px;
+            }
+        }
+
+        /* ── keep about-event untouched ── */
+        .about-text {
+            white-space: pre-line;
+            line-height: 1.8;
+            margin: 0;
+        }
+        .about-text strong {
+            color: var(--dark-blue);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== NAVIGATION ========== -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div>
+                <img src="../images/achiever_logo.svg" alt="Achievers Uganda Logo" style="width: 80px;" />
+            </div>
+            <ul class="nav-links">
+                <li><a href="../">Home</a></li>
+                <li><a href="../aboutus/">About</a></li>
+                <li><a href="../programs/">Programs</a></li>
+                <li><a href="../events/" class="active">Events</a></li>
+                <li><a href="../blog/">Blog</a></li>
+                <li><a href="../gallery/">Gallery</a></li>
+                <li><a href="../contactus/" class="nav-btn">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section class="event-hero" style="background-image: url('../images/acheiver_img3.jpg');">
+        <div class="overlay"></div>
+        <div class="container hero-inner" style="max-width:1200px;">
+            <h1 class="hero-title">“New Level, Bigger Dreams: Bridge the Gap to High School Success!”</h1>
+            <p class="hero-sub">Transition Workshop: Primary to Secondary (Primary Seven (P7) to Senior One (S.1))</p>
+        </div>
+    </section>
+
+    <!-- ========== MAIN LAYOUT ========== -->
+    <section class="event-layout-section" style="padding: 40px 0;">
+        <div class="container" style="max-width:1200px; display:grid; grid-template-columns: 1fr 360px; gap:32px; align-items:start;">
+
+            <!-- left column -->
+            <div>
+                <div class="event-detail-block">
+                    <h3>About the Event</h3>
+                    <p class="about-text">Give your child the ultimate head start for high school. Moving to secondary school comes with new peer pressures, complex social dynamics, and tough academic demands. This high-impact 2-day workshop equips P.7 vacists with unwavering self-confidence, emotional intelligence, and bully-proofing skills to transition smoothly, make smart friendships, and excel in academics.
+
+                    <strong>What your child will gain:</strong>
+                    • Bully-proofing skills to handle peer pressure confidently
+                    • Emotional intelligence for better decision-making and relationships
+                    • Strategies to form smart, uplifting friendships
+                    • A growth mindset and goal-setting habits for academic excellence
+                    • Unwavering self-confidence to step into Senior One
+                    • Social navigation skills for the complex secondary school environment
+
+                    Spaces are limited to ensure personalized life coaching. Secure your child's spot today to get lessons of what is not taught in class!</p>
+                </div>
+
+                <div class="event-detail-block">
+                    <h3>Event Agenda</h3>
+                    <p style="margin-bottom:14px; color:#666;">A curated program of sessions, exercises, and mentor check-ins to build skills and confidence.</p>
+                    <div class="agenda-item" style="padding:12px 0; border-top:1px solid rgba(0,0,0,0.04);">9:00 AM — Registration & Networking Breakfast</div>
+                    <div class="agenda-item" style="padding:12px 0; border-top:1px solid rgba(0,0,0,0.04);">10:00 AM — Opening Session & Keynote</div>
+                    <div class="agenda-item" style="padding:12px 0; border-top:1px solid rgba(0,0,0,0.04);">11:30 AM — Workshops (Rotating)</div>
+                </div>
+
+                <div class="event-detail-block">
+                    <h3>Speakers & Facilitators</h3>
+                    <div class="speakers-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:18px;">
+                        <div class="contact-card" style="display:flex; align-items:center; gap:16px;">
+                            <div class="contact-avatar" style="width:56px;height:56px;font-size:1.15rem;">D</div>
+                            <div>
+                                <div style="font-weight:700; color:var(--dark-blue);">Dr. Amina Osei</div>
+                                <div style="color:#777; font-size:0.95rem;">Executive Coach & Keynote Speaker</div>
+                            </div>
+                        </div>
+                        <div class="contact-card" style="display:flex; align-items:center; gap:16px;">
+                            <div class="contact-avatar" style="width:56px;height:56px;font-size:1.15rem;">B</div>
+                            <div>
+                                <div style="font-weight:700; color:var(--dark-blue);">Brian Katende</div>
+                                <div style="color:#777; font-size:0.95rem;">Founder, Achievers Uganda</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- right column (aside) -->
+            <aside style="position:sticky; top:32px; display:grid; gap:18px; align-self:start;">
+                <div class="event-details" style="background:#fff; border-radius:16px; padding:22px; box-shadow:0 8px 28px rgba(0,0,0,0.06);">
+                    <h3 style="margin-top:0;">Event Details</h3>
+                    <div style="border-top:1px solid #eee; padding-top:16px; margin-top:8px;">
+                        <div style="display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid #f3f3f3;"><i class="fas fa-calendar-alt" style="color:var(--primary); width:26px;"></i><div><div style="font-size:0.75rem; color:#888;">DATE</div><div style="font-weight:700;">November 16<sup>th</sup> - 17<sup>th</sup>, 2026</div></div></div>
+                        <div style="display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid #f3f3f3;"><i class="fas fa-clock" style="color:var(--primary); width:26px;"></i><div><div style="font-size:0.75rem; color:#888;">TIME</div><div style="font-weight:700;">9:00 AM - 4:00 PM <span style="font-weight:400;color:#666;">daily</span></div></div></div>
+                        <div style="display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid #f3f3f3;"><i class="fas fa-map-marker-alt" style="color:var(--primary); width:26px;"></i><div><div style="font-size:0.75rem; color:#888;">LOCATION</div><div style="font-weight:700;">Makerere University, Faculty of Food Science & Technology</div></div></div>
+                        <!-- <div style="display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid #f3f3f3;"><i class="fas fa-users" style="color:var(--primary); width:26px;"></i><div><div style="font-size:0.75rem; color:#888;">CAPACITY</div><div style="font-weight:700;">250 Participants</div></div></div> -->
+                        <div style="display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid #f3f3f3;"><i class="fas fa-tag" style="color:var(--primary); width:26px;"></i><div><div style="font-size:0.75rem; color:#888;">FEE</div><div style="font-weight:700;"><span>UGX 100,000</span> <span style="font-weight:400;color:#666;">per learner for all 2 days</span></div></div></div>
+                        <div style="display:flex; align-items:center; gap:12px; padding:12px 0 4px 0;"><i class="fas fa-phone-alt" style="color:var(--primary); width:26px;"></i><div><div style="font-size:0.75rem; color:#888;">CONTACT</div><div style="font-weight:700; color:var(--red);"><span data-contact-text="phone"></span></div></div></div>
+                    </div>
+
+                    <div style="margin-top:18px; display:flex; flex-direction:column; gap:12px;">
+                        <a href="#" class="btn-primary" style="display:inline-flex; justify-content:center; padding:14px 20px; border-radius:40px; text-align:center;">✔ Register Now</a>
+                        <a href="../events/" class="btn-secondary" style="display:inline-flex; justify-content:center; padding:12px 18px; border-radius:40px; text-align:center;">← All Events</a>
+                    </div>
+                </div>
+
+                <div class="event-details" style="background:#fff; border-radius:16px; padding:22px; box-shadow:0 8px 28px rgba(0,0,0,0.06);">
+                    <h3 style="margin-top:0;">Registration &amp; Inquiries</h3>
+                    <p style="margin:0 0 16px; color:#666; line-height:1.7;">Secure your child&#39;s spot today to get lessons of what is not taught in class! Spaces are limited to ensure personalized life coaching.</p>
+
+                    <div style="display:grid; gap:14px;">
+                        <div style="padding:14px 16px; border:1px solid #f0f0f0; border-radius:12px; background:#fafafa;">
+                            <div style="font-weight:700; color:var(--dark-blue); margin-bottom:6px;">Ms. Hellen Mugumya Twinamasiko</div>
+                            <div style="color:#555; line-height:1.6;">Phone: 0702 132 630</div>
+                            <div style="color:#555; line-height:1.6;">Email: hellentwins@gmail.com / achievers256@gmail.com</div>
+                        </div>
+
+                        <div style="padding:14px 16px; border:1px solid #f0f0f0; border-radius:12px; background:#fafafa;">
+                            <div style="font-weight:700; color:var(--dark-blue); margin-bottom:6px;">Ms. Imelda Kyaringabira Engabi</div>
+                            <div style="color:#555; line-height:1.6;">Phone: 0772 671 158</div>
+                            <div style="color:#555; line-height:1.6;">Email: imeldakyari@gmail.com</div>
+                        </div>
+
+                        <div style="padding:14px 16px; border:1px solid #f0f0f0; border-radius:12px; background:#fafafa;">
+                            <div style="font-weight:700; color:var(--dark-blue); margin-bottom:6px;">Ms. Elina Tahungwa Mwebaze</div>
+                            <div style="color:#555; line-height:1.6;">Phone: 0772 683138</div>
+                            <div style="color:#555; line-height:1.6;">Email: elinatahungwa@gmail.com</div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="../images/achiever_logo.svg" alt="Achievers Uganda Logo" style="width: 260px; margin-bottom: 16px;" />
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="../">Home</a>
+                    <a href="../aboutus/">About Us</a>
+                    <a href="../programs/">Programs</a>
+                    <a href="../events/">Events</a>
+                    <a href="../gallery/">Gallery</a>
+                    <a href="../contactus/">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <a href="#" data-contact-link="phone"><i class="fas fa-phone-alt"></i> <span data-contact-text="phone"></span></a>
+                    <a href="#" data-contact-link="email"><i class="fas fa-envelope"></i> <span data-contact-text="email"></span></a>
+                    <a href="#" data-contact-link="maps"><i class="fas fa-map-marker-alt"></i> <span data-contact-text="location"></span></a>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <i class="fab fa-facebook"></i>
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright" style="text-align:center; border-top:1px solid #444; padding-top:30px; margin-top:30px;">
+                <p>&copy; 2026 Achievers Uganda</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../shared-data.js"></script>
+</body>
+</html>

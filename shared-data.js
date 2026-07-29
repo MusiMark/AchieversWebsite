@@ -1,10 +1,10 @@
 window.AchieversSiteData = {
-  phoneDisplay: '+256 772 34567',
-  phoneHref: 'tel:+25677234567',
+  phoneDisplay: '+256 702 132630',
+  phoneHref: 'tel:+256702132630',
   emailDisplay: 'achievers256@gmail.com',
   emailHref: 'mailto:achievers256@gmail.com',
-  whatsappDisplay: '+256 772 34567 (Chat)',
-  whatsappHref: 'https://wa.me/25677234567',
+  whatsappDisplay: '+256 702 132630 (Chat)',
+  whatsappHref: 'https://wa.me/256702132630',
   locationDisplay: 'Kampala, Uganda',
   mapsHref: 'https://maps.app.goo.gl/XExUnmnAgf465hiq6'
 };
@@ -34,5 +34,8 @@ function applySharedContactData() {
   applyContactLink('whatsapp', contact.whatsappHref);
   applyContactLink('maps', contact.mapsHref);
 }
+
+// Expose it to other scripts
+window.applySharedContactData = applySharedContactData;
 
 document.addEventListener('DOMContentLoaded', applySharedContactData);
