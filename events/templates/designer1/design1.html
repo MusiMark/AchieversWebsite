@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>O-Level to A-Level Transition | Achievers Uganda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+  :root {
+    --primary: #1E3A8A; /* Royal Navy */
+    --primary-dark: #0F172A;
+    --accent: #F59E0B; /* Academic Gold */
+    --bg-light: #F8FAFC;
+    --text-main: #1E293B;
+    --text-muted: #475569;
+    --surface: #FFFFFF;
+    --border: #E2E8F0;
+    --radius-lg: 8px; /* Sharper corners for a serious, academic feel */
+    --radius-md: 4px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg-light); color: var(--text-main); line-height: 1.6; }
+  a { text-decoration: none; color: inherit; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: var(--radius-md); font-weight: 700; transition: all 0.3s; border: none; cursor: pointer; }
+  .btn-primary { background: var(--accent); color: #fff; text-transform: uppercase; letter-spacing: 0.05em; }
+  .btn-primary:hover { background: #D97706; transform: translateY(-2px); }
+  
+  .hero { padding: 160px 0 100px; background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%); color: white; text-align: center; }
+  .hero-content { max-width: 800px; margin: 0 auto; }
+  
+  /* Typewriter animation for the tag */
+  .tag-wrapper { display: inline-block; margin-bottom: 24px; }
+  .typewriter-tag {
+    display: inline-block; font-family: monospace; font-size: 0.9rem; font-weight: 600; color: var(--accent);
+    overflow: hidden; border-right: 2px solid var(--accent); white-space: nowrap; margin: 0 auto;
+    animation: typing 2.5s steps(30, end), blink-caret .75s step-end infinite;
+  }
+  @keyframes typing { from { width: 0 } to { width: 100% } }
+  @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--accent); } }
+
+  .hero h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.2; margin-bottom: 24px; }
+  .hero p { font-size: 1.1rem; color: #CBD5E1; margin-bottom: 40px; }
+  
+  .info-bar {
+    margin-top: -40px; position: relative; background: var(--surface); border-radius: var(--radius-lg);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    border-top: 4px solid var(--accent);
+  }
+  .info-item { display: flex; align-items: center; gap: 16px; border-right: 1px solid var(--border); }
+  .info-item:last-child { border-right: none; }
+  .info-icon { color: var(--primary); font-size: 1.5rem; }
+  .info-text h4 { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; }
+  .info-text p { font-weight: 700; color: var(--primary-dark); }
+
+  .content-section { padding: 80px 0; }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 40px; }
+  .feature-card { background: var(--surface); padding: 32px; border-radius: var(--radius-lg); border: 1px solid var(--border); border-left: 4px solid var(--primary); }
+  .feature-card h3 { color: var(--primary-dark); margin-bottom: 12px; }
+  
+  @media (max-width: 768px) { .info-bar { grid-template-columns: 1fr; } .info-item { border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 16px; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="container hero-content">
+    <div class="tag-wrapper">
+      <span class="typewriter-tag">&gt; From Followers to Leaders_</span>
+    </div>
+    <h1>Own Your A-Level Journey</h1>
+    <p>Transform academic pressure into personal mastery. Navigate the jump from O-Level to A-Level with clarity, independent thinking, and the self-drive needed to achieve top-tier results.</p>
+    <a href="#" class="btn btn-primary">Secure a Spot Now</a>
+  </div>
+</header>
+
+<div class="container">
+  <div class="info-bar">
+    <div class="info-item">
+      <div class="info-icon"><i class="far fa-calendar-alt"></i></div>
+      <div class="info-text"><h4>Dates</h4><p>December 7th - 8th, 2026<br><span style="font-size:0.85rem;font-weight:400;">9:00 AM - 4:00 PM</span></p></div>
+    </div>
+    <div class="info-item">
+      <div class="info-icon"><i class="fas fa-university"></i></div>
+      <div class="info-text"><h4>Venue</h4><p>Makerere University<br><span style="font-size:0.85rem;font-weight:400;">Faculty of Food Science</span></p></div>
+    </div>
+    <div class="info-item">
+      <div class="info-icon"><i class="fas fa-tag"></i></div>
+      <div class="info-text"><h4>Tuition</h4><p>UGX 120,000<br><span style="font-size:0.85rem;font-weight:400;">Per learner (2 days)</span></p></div>
+    </div>
+  </div>
+</div>
+
+<section class="content-section container">
+  <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+    <h2 style="font-size: 2rem; color: var(--primary-dark);">The Advanced Level Toolkit</h2>
+    <p style="color: var(--text-muted); margin-top: 10px;">A-Level requires a completely different approach to learning. We equip your teenager to handle it without losing their way.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <h3><i class="fas fa-brain" style="color: var(--accent); margin-right: 8px;"></i> Independent Thinking</h3>
+      <p>Moving away from spoon-feeding. Teaching students how to research, synthesize, and think critically.</p>
+    </div>
+    <div class="feature-card">
+      <h3><i class="fas fa-bullseye" style="color: var(--accent); margin-right: 8px;"></i> Goal-Setting Strategies</h3>
+      <p>Creating actionable, realistic roadmaps to ensure top-tier academic results are achieved step-by-step.</p>
+    </div>
+    <div class="feature-card">
+      <h3><i class="fas fa-shield-alt" style="color: var(--accent); margin-right: 8px;"></i> Deep Resilience</h3>
+      <p>Building the mental toughness required to handle advanced academic pressure and bounce back from setbacks.</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

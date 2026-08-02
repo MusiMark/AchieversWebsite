@@ -5,14 +5,15 @@
     "date": "2026-11-16",
     "description": "“New Level, Bigger Dreams: Bridge the Gap to High School Success!” A 2-day workshop for P.7 vacists.",
     "location": "Makerere University, Faculty of Food Science & Technology",
-    "detailsUrl": "transition_workshop_nov16.html"
+    "detailsUrl": "transition_workshop_nov16v2.html"
   },
   {
     "id": "2",
     "name": "O-Level to A-Level Transition Workshop",
     "date": "2026-12-07",
     "description": "Prepare for A-Level with confidence and purpose. This workshop helps students develop independent thinking, goal-setting, resilience, and self-discipline to successfully navigate the academic and personal demands of Advanced Level",
-    "location": "Makerere University, Faculty of Food Science &amp; Technology"
+    "location": "Makerere University, Faculty of Food Science &amp; Technology",
+    "detailsUrl": "transition_workshop_dec7.html"
   },
   {
     "id": "3",
@@ -26,6 +27,7 @@
     "name": "&quot; Mindset shift&quot; Residential Holiday Bootcamp",
     "date": "2026-12-10",
     "description": "A transformative 4-day leadership and personal development experience. Through interactive coaching, mentorship, and team activities, participants build character, resilience, responsibility, and a growth mindset while developing the confidence to lead with purpose.",
-    "location": "To be communicated shortly"
+    "location": "To be communicated shortly",
+    "detailsUrl": "holidaybootcamp.html"
   }
 ]

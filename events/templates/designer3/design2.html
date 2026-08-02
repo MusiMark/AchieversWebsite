@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Transition Workshop — Achievers Uganda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+<style>
+  :root{
+    --ink:#14213D;
+    --paper:#FAF6EA;
+    --paper-2:#F1E9D3;
+    --gold:#E8A33D;
+    --sage:#5C8A5C;
+    --red:#C80C1F;
+    --line:rgba(20,33,61,.16);
+    --radius:20px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    font-size:.72rem;
+    font-weight:600;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    color:var(--ink);
+    opacity:.7;
+  }
+  .eyebrow::before{
+    content:"";
+    width:7px; height:7px; border-radius:50%;
+    background:var(--red);
+    flex:none;
+  }
+  h1,h2,h3{font-family:'Fraunces',serif; margin:0; letter-spacing:-0.01em;}
+  :focus-visible{outline:3px solid var(--gold); outline-offset:3px;}
+
+  /* ===== NAV ===== */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(250,246,234,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1180px; margin:0 auto; padding:16px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .wordmark{
+    font-family:'IBM Plex Mono',monospace;
+    font-weight:600; letter-spacing:.04em; font-size:.95rem;
+    text-decoration:none;
+  }
+  .wordmark span{color:var(--red);}
+  .nav-links{list-style:none; display:flex; gap:28px; margin:0; padding:0;}
+  .nav-links a{
+    text-decoration:none; font-size:.92rem; font-weight:500; color:var(--ink);
+    opacity:.75; transition:opacity .2s;
+  }
+  .nav-links a:hover, .nav-links a.active{opacity:1;}
+  .nav-links a.active{color:var(--red); font-weight:600;}
+  .nav-cta{
+    background:var(--ink); color:var(--paper) !important;
+    padding:9px 18px; border-radius:100px; font-size:.85rem !important;
+    opacity:1 !important;
+  }
+  .nav-toggle{display:none;}
+  @media (max-width:860px){
+    .nav-links{display:none;}
+  }
+
+  /* ===== HERO — the split journey ===== */
+  .hero{
+    position:relative;
+    display:grid; grid-template-columns:1fr 1fr;
+    min-height:520px;
+    overflow:hidden;
+  }
+  .hero-half{position:relative; display:flex; align-items:flex-end; padding:28px;}
+  .hero-half.p7{background:var(--paper-2);}
+  .hero-half.s1{background:var(--ink);}
+  .stage-tag{
+    position:absolute; top:24px;
+    font-family:'IBM Plex Mono',monospace; font-size:.75rem; font-weight:600;
+    letter-spacing:.12em; padding:6px 12px; border-radius:100px;
+    border:1px solid currentColor;
+  }
+  .p7 .stage-tag{left:24px; color:var(--ink); opacity:.55;}
+  .s1 .stage-tag{right:24px; color:var(--paper); opacity:.65;}
+  .stage-label{
+    font-family:'Fraunces',serif; font-weight:300; font-size:5.5rem; line-height:1;
+  }
+  .p7 .stage-label{color:var(--ink); opacity:.13;}
+  .s1 .stage-label{color:var(--paper); opacity:.16;}
+
+  .hero-center{
+    position:absolute; inset:0; z-index:3;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:32px 20px; pointer-events:none;
+  }
+  .hero-center *{pointer-events:auto;}
+  .route{
+    display:flex; align-items:center; gap:10px; margin-bottom:22px;
+    font-family:'IBM Plex Mono',monospace; font-size:.8rem; font-weight:600;
+    letter-spacing:.1em; color:var(--paper);
+    background:var(--ink); padding:9px 16px; border-radius:100px;
+    box-shadow:0 8px 24px rgba(20,33,61,.25);
+  }
+  .route .dash{
+    width:52px; height:1px; position:relative;
+    background:repeating-linear-gradient(90deg, currentColor 0 6px, transparent 6px 11px);
+    opacity:.6;
+  }
+  .route i{font-size:.85rem; color:var(--gold);}
+  .hero-title{
+    font-size:clamp(2rem, 4.6vw, 3.4rem);
+    font-weight:600;
+    max-width:820px;
+    color:var(--ink);
+    background:var(--paper);
+    padding:6px 18px;
+    box-decoration-break:clone;
+    -webkit-box-decoration-break:clone;
+    line-height:1.28;
+    box-shadow:0 0 0 1px var(--line);
+  }
+  .hero-sub{
+    margin-top:18px; font-size:1.02rem; color:var(--ink);
+    background:var(--paper); padding:5px 16px; border-radius:100px;
+    box-shadow:0 0 0 1px var(--line);
+  }
+  @media (max-width:760px){
+    .hero{grid-template-columns:1fr; min-height:auto;}
+    .hero-half{min-height:180px;}
+    .stage-label{font-size:3.4rem;}
+    .hero-center{position:relative; padding:36px 18px;}
+  }
+
+  /* ===== LAYOUT ===== */
+  .layout{
+    display:grid; grid-template-columns:1fr 360px; gap:32px;
+    max-width:1180px; margin:0 auto; padding:56px 24px 80px;
+    align-items:start;
+  }
+  @media (max-width:960px){
+    .layout{grid-template-columns:1fr; padding-bottom:110px;}
+  }
+
+  .block{margin-bottom:40px;}
+  .block h2{font-size:1.6rem; font-weight:600; margin:10px 0 18px;}
+  .lede{
+    font-family:'Fraunces',serif; font-style:italic; font-weight:500;
+    font-size:1.28rem; line-height:1.5; color:var(--ink); margin:0 0 16px;
+  }
+  .about-text{font-size:1rem; line-height:1.75; color:#3a3f4e;}
+
+  .gain-list{list-style:none; margin:22px 0 0; padding:0; border-top:1px dashed var(--line);}
+  .gain-list li{
+    display:flex; gap:14px; align-items:flex-start;
+    padding:15px 0; border-bottom:1px dashed var(--line);
+    font-size:.98rem;
+  }
+  .gain-list .tick{
+    flex:none; width:26px; height:26px; border-radius:50%;
+    background:var(--sage); color:#fff; display:flex; align-items:center; justify-content:center;
+    font-size:.7rem; margin-top:2px;
+  }
+
+  /* Agenda — genuine sequence, numbers earn their keep */
+  .agenda-row{
+    display:grid; grid-template-columns:64px 1fr; gap:18px;
+    position:relative; padding:20px 0;
+  }
+  .agenda-row:not(:last-child)::after{
+    content:""; position:absolute; left:31px; top:56px; bottom:-4px; width:1px;
+    background:var(--line);
+  }
+  .agenda-num{
+    font-family:'Fraunces',serif; font-weight:300; font-size:1.9rem; color:var(--red);
+    opacity:.5; line-height:1;
+  }
+  .agenda-time{font-family:'IBM Plex Mono',monospace; font-size:.78rem; opacity:.6; margin-bottom:4px;}
+  .agenda-title{font-weight:600; font-size:1.02rem;}
+
+  .speaker-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:20px;}
+  @media (max-width:560px){.speaker-grid{grid-template-columns:1fr;}}
+  .speaker-card{
+    background:#fff; border:1px solid var(--line); border-radius:16px; padding:20px;
+  }
+  .speaker-avatar{
+    width:46px; height:46px; border-radius:50%; background:var(--paper-2);
+    color:var(--ink); display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-family:'Fraunces',serif; margin-bottom:14px;
+  }
+  .speaker-role{font-family:'IBM Plex Mono',monospace; font-size:.72rem; text-transform:uppercase;
+    letter-spacing:.08em; color:var(--red); margin-bottom:4px;}
+  .speaker-name{font-weight:700; font-size:1rem;}
+
+  /* ===== SIDEBAR — BOARDING PASS ===== */
+  aside{position:sticky; top:88px;}
+  .ticket{
+    background:var(--ink); color:var(--paper); border-radius:var(--radius);
+    overflow:hidden; box-shadow:0 20px 40px rgba(20,33,61,.22);
+  }
+  .ticket-head{
+    padding:22px 24px 18px; display:flex; align-items:center; justify-content:space-between;
+  }
+  .ticket-head .eyebrow{color:var(--paper); opacity:.65;}
+  .ticket-head .eyebrow::before{background:var(--gold);}
+  .ticket-head i{color:var(--gold);}
+  .ticket-route{
+    padding:0 24px 20px; display:flex; align-items:center; justify-content:space-between;
+    font-family:'Fraunces',serif; font-weight:600; font-size:1.5rem;
+  }
+  .ticket-route .code{opacity:.95;}
+  .ticket-route .code small{
+    display:block; font-family:'IBM Plex Mono',monospace; font-size:.6rem;
+    font-weight:500; letter-spacing:.1em; opacity:.55; text-transform:uppercase; margin-top:3px;
+  }
+  .ticket-route .flight{
+    flex:1; margin:0 14px; height:1px;
+    background:repeating-linear-gradient(90deg, rgba(250,246,234,.5) 0 5px, transparent 5px 10px);
+    position:relative;
+  }
+  .ticket-route .flight i{
+    position:absolute; left:50%; top:50%; transform:translate(-50%,-55%);
+    background:var(--ink); padding:0 4px; color:var(--gold); font-size:.85rem;
+  }
+  .perf{
+    position:relative; height:0; border-top:1px dashed rgba(250,246,234,.28);
+    margin:0 0;
+  }
+  .perf::before, .perf::after{
+    content:""; position:absolute; top:-9px; width:18px; height:18px; border-radius:50%;
+    background:var(--paper);
+  }
+  .perf::before{left:-9px;}
+  .perf::after{right:-9px;}
+  .ticket-fields{padding:20px 24px; display:grid; gap:14px;}
+  .tf{display:flex; align-items:flex-start; gap:12px;}
+  .tf i{color:var(--gold); width:16px; margin-top:3px; font-size:.85rem;}
+  .tf-label{font-family:'IBM Plex Mono',monospace; font-size:.62rem; text-transform:uppercase;
+    letter-spacing:.1em; opacity:.55; margin-bottom:2px;}
+  .tf-value{font-weight:600; font-size:.95rem; line-height:1.4;}
+  .tf-value .accent{color:var(--gold);}
+
+  .ticket-actions{padding:6px 24px 24px; display:grid; gap:10px;}
+  .btn{
+    display:flex; align-items:center; justify-content:center; gap:9px;
+    padding:14px 18px; border-radius:100px; font-weight:600; font-size:.92rem;
+    text-decoration:none; border:1.5px solid transparent; cursor:pointer;
+  }
+  .btn-primary{background:var(--red); color:#fff;}
+  .btn-primary:hover{background:#a80a19;}
+  .btn-ghost{background:transparent; color:var(--paper); border-color:rgba(250,246,234,.4);}
+  .btn-ghost:hover{border-color:var(--paper);}
+
+  .barcode{
+    height:34px; margin:0 24px 24px;
+    background-image:repeating-linear-gradient(90deg, rgba(250,246,234,.85) 0 2px, transparent 2px 5px, rgba(250,246,234,.5) 5px 6px, transparent 6px 9px);
+    opacity:.8;
+  }
+
+  .inquiry-card{
+    background:#fff; border:1px solid var(--line); border-radius:16px; padding:20px; margin-top:18px;
+  }
+  .inquiry-card h3{font-size:1.05rem; font-weight:600; margin-bottom:6px;}
+  .inquiry-card p{font-size:.9rem; color:#5a5f6e; line-height:1.6; margin:0 0 14px;}
+  .contact-stub{
+    padding:12px 14px; border:1px dashed var(--line); border-radius:12px; margin-bottom:10px;
+  }
+  .contact-stub:last-child{margin-bottom:0;}
+  .contact-stub .who{font-weight:700; font-size:.88rem; margin-bottom:4px;}
+  .contact-stub a{
+    display:flex; align-items:center; gap:8px; text-decoration:none; color:#4a4f5e;
+    font-size:.85rem; padding:2px 0;
+  }
+  .contact-stub i{color:var(--red); width:14px; font-size:.78rem;}
+
+  /* mobile sticky action bar — thumb zone */
+  .mobile-cta{display:none;}
+  @media (max-width:960px){
+    .mobile-cta{
+      display:flex; position:fixed; bottom:0; left:0; right:0; z-index:60;
+      background:var(--ink); padding:12px 16px; gap:10px;
+      box-shadow:0 -8px 24px rgba(0,0,0,.18);
+    }
+    .mobile-cta .btn{flex:1; padding:13px;}
+  }
+
+  footer{background:var(--ink); color:var(--paper); margin-top:0; padding:56px 0 28px;}
+  .footer-grid{
+    display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px;
+  }
+  @media (max-width:760px){.footer-grid{grid-template-columns:1fr 1fr;}}
+  .footer-col h4{font-family:'IBM Plex Mono',monospace; font-size:.72rem; text-transform:uppercase;
+    letter-spacing:.1em; opacity:.6; margin:0 0 14px; font-weight:600;}
+  .footer-col a{display:block; text-decoration:none; color:var(--paper); opacity:.85; font-size:.92rem;
+    margin-bottom:10px;}
+  .footer-col a i{margin-right:8px; color:var(--gold);}
+  .social-icons{display:flex; gap:12px;}
+  .social-icons i{
+    width:36px; height:36px; border-radius:50%; border:1px solid rgba(250,246,234,.3);
+    display:flex; align-items:center; justify-content:center; font-size:.85rem;
+  }
+  .copyright{text-align:center; border-top:1px solid rgba(250,246,234,.15); padding-top:24px;
+    margin-top:40px; font-size:.82rem; opacity:.6;}
+
+  @media (prefers-reduced-motion: no-preference){
+    .hero-title, .hero-sub, .route{animation:rise .6s ease both;}
+    .hero-sub{animation-delay:.08s;}
+    .route{animation-delay:.16s;}
+  }
+  @keyframes rise{from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../" class="wordmark">ACHIEVERS<span>·</span>UGANDA</a>
+    <ul class="nav-links">
+      <li><a href="../">Home</a></li>
+      <li><a href="../aboutus/">About</a></li>
+      <li><a href="../programs/">Programs</a></li>
+      <li><a href="../events/" class="active">Events</a></li>
+      <li><a href="../blog/">Blog</a></li>
+      <li><a href="../gallery/">Gallery</a></li>
+      <li><a href="../contactus/" class="nav-cta">Contact Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-half p7">
+    <span class="stage-tag">Where they start</span>
+    <span class="stage-label">P.7</span>
+  </div>
+  <div class="hero-half s1">
+    <span class="stage-tag">Where they're headed</span>
+    <span class="stage-label">S.1</span>
+  </div>
+  <div class="hero-center">
+    <span class="route">P7 <span class="dash"></span> <i class="fas fa-graduation-cap"></i> <span class="dash"></span> S.1</span>
+    <h1 class="hero-title">New Level, Bigger Dreams: Bridge the Gap to High School Success</h1>
+    <p class="hero-sub">Transition Workshop · Primary Seven to Senior One</p>
+  </div>
+</section>
+
+<div class="layout">
+  <div>
+    <div class="block">
+      <span class="eyebrow">About the event</span>
+      <h2>Two days to walk in ready, not just show up</h2>
+      <p class="lede">Moving to secondary school comes with new peer pressures, complex social dynamics, and tough academic demands.</p>
+      <p class="about-text">This high-impact 2-day workshop equips P.7 leavers with unwavering self-confidence, emotional intelligence, and bully-proofing skills to transition smoothly, make smart friendships, and excel academically. Spaces are limited to ensure personalised life coaching — secure your child's spot to get the lessons that aren't taught in class.</p>
+      <ul class="gain-list">
+        <li><span class="tick"><i class="fas fa-check"></i></span>Bully-proofing skills to handle peer pressure confidently</li>
+        <li><span class="tick"><i class="fas fa-check"></i></span>Emotional intelligence for better decisions and relationships</li>
+        <li><span class="tick"><i class="fas fa-check"></i></span>Strategies to form smart, uplifting friendships</li>
+        <li><span class="tick"><i class="fas fa-check"></i></span>A growth mindset and goal-setting habits for academic excellence</li>
+        <li><span class="tick"><i class="fas fa-check"></i></span>Unwavering self-confidence to step into Senior One</li>
+        <li><span class="tick"><i class="fas fa-check"></i></span>Social navigation skills for the secondary school environment</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <span class="eyebrow">Running order</span>
+      <h2>Event agenda</h2>
+      <div class="agenda-row">
+        <span class="agenda-num">01</span>
+        <div><div class="agenda-time">9:00 AM</div><div class="agenda-title">Registration & Networking Breakfast</div></div>
+      </div>
+      <div class="agenda-row">
+        <span class="agenda-num">02</span>
+        <div><div class="agenda-time">10:00 AM</div><div class="agenda-title">Opening Session & Keynote</div></div>
+      </div>
+      <div class="agenda-row">
+        <span class="agenda-num">03</span>
+        <div><div class="agenda-time">11:30 AM</div><div class="agenda-title">Workshops (Rotating)</div></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <span class="eyebrow">Who's guiding the room</span>
+      <h2>Speakers & facilitators</h2>
+      <div class="speaker-grid">
+        <div class="speaker-card">
+          <div class="speaker-avatar">HM</div>
+          <div class="speaker-role">Keynote Speaker</div>
+          <div class="speaker-name">Ms. Hellen Mugumya Twinamasiko</div>
+        </div>
+        <div class="speaker-card">
+          <div class="speaker-avatar">IK</div>
+          <div class="speaker-role">Programme Manager, Trainer</div>
+          <div class="speaker-name">Ms. Imelda Kyaringabira Engabi</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <aside>
+    <div class="ticket">
+      <div class="ticket-head">
+        <span class="eyebrow">Boarding pass</span>
+        <i class="fas fa-plane-departure"></i>
+      </div>
+      <div class="ticket-route">
+        <span class="code">P7<small>Primary</small></span>
+        <span class="flight"><i class="fas fa-graduation-cap"></i></span>
+        <span class="code">S.1<small>Secondary</small></span>
+      </div>
+      <div class="perf"></div>
+      <div class="ticket-fields">
+        <div class="tf">
+          <i class="fas fa-calendar-alt"></i>
+          <div><div class="tf-label">Date</div><div class="tf-value">Nov 16<span class="accent">th</span> - 17<span class="accent">th</span>, 2026</div></div>
+        </div>
+        <div class="tf">
+          <i class="fas fa-clock"></i>
+          <div><div class="tf-label">Time</div><div class="tf-value">9:00 AM - 4:00 PM daily</div></div>
+        </div>
+        <div class="tf">
+          <i class="fas fa-map-marker-alt"></i>
+          <div><div class="tf-label">Gate / Location</div><div class="tf-value">Makerere University, Faculty of Food Science & Technology</div></div>
+        </div>
+        <div class="tf">
+          <i class="fas fa-tag"></i>
+          <div><div class="tf-label">Fare</div><div class="tf-value">UGX 100,000 <span class="accent">/ learner</span> · both days</div></div>
+        </div>
+        <div class="tf">
+          <i class="fas fa-phone-alt"></i>
+          <div><div class="tf-label">Contact</div><div class="tf-value" data-contact-text="phone">0772 345 678</div></div>
+        </div>
+      </div>
+      <div class="barcode"></div>
+      <div class="ticket-actions">
+        <a href="#" class="btn btn-primary"><i class="fas fa-check-circle"></i> Register now</a>
+        <a href="../events/" class="btn btn-ghost">← All events</a>
+      </div>
+    </div>
+
+    <div class="inquiry-card">
+      <h3>Registration & inquiries</h3>
+      <p>Spaces are limited to ensure personalised life coaching — reach out to secure your child's spot.</p>
+      <div class="contact-stub">
+        <div class="who">Ms. Person 1</div>
+        <a class="a-nolink" href="tel:+256772345678"><i class="fas fa-phone-alt"></i>0772 345 678</a>
+        <a class="a-nolink" href="mailto:person@gmail.com"><i class="fas fa-envelope"></i>person@gmail.com</a>
+      </div>
+      <div class="contact-stub">
+        <div class="who">Ms. Person 2</div>
+        <a class="a-nolink" href="tel:+256772345678"><i class="fas fa-phone-alt"></i>0772 345 678</a>
+        <a class="a-nolink" href="mailto:person@gmail.com"><i class="fas fa-envelope"></i>person@gmail.com</a>
+      </div>
+      <div class="contact-stub">
+        <div class="who">Mr. Person 3</div>
+        <a class="a-nolink" href="tel:+256772345678"><i class="fas fa-phone-alt"></i>0772 345 678</a>
+        <a class="a-nolink" href="mailto:person@gmail.com"><i class="fas fa-envelope"></i>person@gmail.com</a>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="../" class="wordmark" style="font-size:1.1rem;">ACHIEVERS<span>·</span>UGANDA</a>
+        <p style="opacity:.65; font-size:.85rem; line-height:1.6; margin-top:14px; max-width:26ch;">Life coaching and mentorship for young people, across Uganda.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick links</h4>
+        <a href="../">Home</a>
+        <a href="../aboutus/">About Us</a>
+        <a href="../programs/">Programs</a>
+        <a href="../events/">Events</a>
+        <a href="../gallery/">Gallery</a>
+        <a href="../contactus/">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="#" data-contact-link="phone"><i class="fas fa-phone-alt"></i><span data-contact-text="phone">0772 345 678</span></a>
+        <a href="#" data-contact-link="email"><i class="fas fa-envelope"></i><span data-contact-text="email">info@achieversuganda.org</span></a>
+        <a href="#" data-contact-link="maps"><i class="fas fa-map-marker-alt"></i><span data-contact-text="location">Kampala, Uganda</span></a>
+      </div>
+      <div class="footer-col">
+        <h4>Follow</h4>
+        <div class="social-icons">
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-linkedin"></i>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">&copy; 2026 Achievers Uganda</div>
+  </div>
+</footer>
+
+<div class="mobile-cta">
+  <a href="#" class="btn btn-ghost" style="border-color:rgba(250,246,234,.4); color:#FAF6EA;">Call</a>
+  <a href="#" class="btn btn-primary">Register now</a>
+</div>
+
+</body>
+</html>

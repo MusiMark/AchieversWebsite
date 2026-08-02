@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mindset Shift Bootcamp | Achievers Uganda</title>
+<!-- Stylesheets -->
+<link rel="stylesheet" href="../style.css">
+
+<!-- Google Fonts & Font Awesome -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap"
+  rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+  :root {
+    --primary: #18181B;
+    --accent: #EF4444; 
+    --bg-light: #F4F4F5;
+    --surface: #FFFFFF;
+    --text-main: #27272A;
+    --radius: 0px; 
+    --shadow: 8px 8px 0px var(--primary);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Space Grotesk', sans-serif; background: var(--bg-light); color: var(--text-main); line-height: 1.6; }  
+  .btn { display: inline-block; padding: 16px 32px; font-weight: 700; text-transform: uppercase; text-decoration: none; border: 2px solid var(--primary); transition: all 0.2s; cursor: pointer; }
+  .btn-primary { background: var(--accent); color: white; box-shadow: 4px 4px 0px var(--primary); }
+  .btn-primary:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0px var(--primary); }
+  
+  .hero { background: var(--primary); color: white; padding: 80px 0; border-bottom: 8px solid var(--accent); }
+  .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; }
+  
+  .hero-tag { display: inline-block; background: var(--accent); color: white; padding: 4px 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 24px; transform: rotate(-2deg); }
+  .hero h1 { font-size: clamp(3rem, 5vw, 4.5rem); text-transform: uppercase; line-height: 1.1; margin-bottom: 24px; text-shadow: 4px 4px 0px rgba(239, 68, 68, 0.5); }
+  .hero p { font-size: 1.15rem; border-left: 4px solid var(--accent); padding-left: 16px; margin-bottom: 40px; }
+  
+  .brutalist-img {
+    width: 100%; height: auto; display: block;
+    border: 4px solid var(--surface);
+    box-shadow: 12px 12px 0px var(--accent);
+    transform: rotate(2deg);
+    transition: transform 0.3s;
+  }
+  .brutalist-img:hover { transform: rotate(0deg); }
+  
+  .data-strip { background: var(--accent); color: white; padding: 24px 0; border-bottom: 4px solid var(--primary); font-weight: 600; font-size: 1.1rem; }
+  .data-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
+  .data-grid div { border-right: 2px solid rgba(0,0,0,0.2); }
+  .data-grid div:last-child { border-right: none; }
+  .data-grid i { display: block; font-size: 1.5rem; margin-bottom: 8px; color: var(--primary); }
+
+  /* Main Layout Grid */
+  .main-layout { padding: 80px 0; display: grid; grid-template-columns: 1fr 360px; gap: 40px; align-items: start; }
+  .content-column { display: grid; gap: 40px; }
+  
+  /* Fixed Sidebar Column */
+  .sidebar-column { 
+    display: grid; 
+    gap: 40px; 
+    position: sticky; 
+    top: 30px; 
+  }
+
+  /* Brutalist Cards */
+  .content-card, .sidebar-box { 
+    background: var(--surface); 
+    border: 4px solid var(--primary); 
+    padding: 32px; 
+    box-shadow: var(--shadow); 
+  }
+  
+  .content-card h3, .sidebar-box h3 { 
+    font-size: 1.6rem; 
+    text-transform: uppercase; 
+    margin-bottom: 20px; 
+    line-height: 1.1; 
+    border-bottom: 4px solid var(--primary);
+    padding-bottom: 12px;
+  }
+  
+  .card-ul { list-style: none; margin-top: 24px; }
+  .card-li { display: flex; align-items: center; gap: 16px; font-size: 1.1rem; font-weight: 600; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 2px dashed #E4E4E7; }
+  .card-li i { color: var(--accent); font-size: 1.2rem; }
+
+  /* Agenda Rows */
+  .agenda-row { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 2px dashed #E4E4E7; }
+  .agenda-row:last-child { border-bottom: none; }
+  .agenda-time { background: var(--primary); color: white; padding: 6px 12px; font-weight: 700; font-size: 0.9rem; }
+  .agenda-desc { font-weight: 600; font-size: 1.05rem; text-align: right; }
+
+  /* Speakers Grid */
+  .speakers-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  .speaker-badge { display: flex; align-items: center; gap: 16px; background: var(--bg-light); border: 2px solid var(--primary); padding: 16px; }
+  .speaker-avatar { width: 45px; height: 45px; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: 700; border: 2px solid var(--primary); flex-shrink: 0; }
+  .avatar-purple { background: #7C3AED; }
+  .avatar-coral { background: var(--accent); }
+  .speaker-info .name { font-weight: 700; font-size: 0.95rem; text-transform: uppercase; margin-bottom: 2px; line-height: 1.2; }
+  .speaker-info .role { font-size: 0.8rem; color: #52525B; font-weight: 600; }
+
+  /* Inquiries List */
+  .inquiry-item { background: var(--bg-light); border: 2px solid var(--primary); padding: 14px; margin-bottom: 14px; }
+  .inquiry-item:last-child { margin-bottom: 0; }
+  .inq-name { font-weight: 700; text-transform: uppercase; margin-bottom: 4px; color: var(--primary); font-size: 0.95rem; }
+  .inquiry-item div { font-size: 0.9rem; font-weight: 600; }
+  .inquiry-item a { color: var(--accent); text-decoration: none; }
+  .inquiry-item a:hover { text-decoration: underline; }
+
+  @media (max-width: 960px) { 
+    .hero-grid { grid-template-columns: 1fr; }
+    .brutalist-img { transform: rotate(0); margin-top: 20px; box-shadow: 8px 8px 0px var(--accent); }
+    .main-layout { grid-template-columns: 1fr; }
+    .sidebar-column { position: static; }
+    .data-grid { grid-template-columns: 1fr 1fr; row-gap: 24px; } 
+    .data-grid div:nth-child(2) { border-right: none; } 
+  }
+  /* --- Navigation & Footer (project shared styles) --- */
+  :root {
+    --navbar-bg: var(--surface);
+    --red: var(--accent);
+    --red-hover: #c43a3a;
+    --beige: #CFC8B1;
+    --white: #ffffff;
+    --text-dark: var(--text-main);
+  }
+
+  @media (max-width:760px) {
+    .nav-links { display:none; }
+    .hamburger { display:inline-block; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+
+  footer{
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+  }
+</style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container nav-container">
+    <div>
+      <img src="../images/achiever_logo.svg" alt="Achievers Uganda Logo" style="width: 80px;">
+    </div>
+    <ul class="nav-links">
+      <li><a href="../">Home</a></li>
+      <li><a href="../aboutus/">About</a></li>
+      <li><a href="../programs/">Programs</a></li>
+      <li><a href="../events/" class="active">Events</a></li>
+      <li><a href="../blog/">Blog</a></li>
+      <li><a href="../gallery/">Gallery</a></li>
+      <li><a href="../contactus/" class="nav-btn">Contact Us</a></li>
+    </ul>
+    </div>
+  </nav>
+
+  <header class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="hero-tag">"Mindset shift" Residential Holiday Bootcamp</span>
+      <h1>Spark the Leader Within.</h1>
+      <p>An immersive 4-day life-changing experience for young minds. Beyond the classroom lies the real test</p>
+      <a href="#" class="btn btn-primary">Join the Bootcamp</a>
+    </div>
+    <div>
+      <img class="brutalist-img" src="https://images.unsplash.com/photo-1533561052604-c3beb6d55b8d?q=80&w=1200&auto=format&fit=crop" alt="Teenagers collaborating in an outdoor camp setting">
+    </div>
+  </div>
+</header>
+
+<div class="data-strip">
+  <div class="container data-grid">
+    <div><i class="fas fa-users"></i> Target: 13-20 Years</div>
+    <div><i class="far fa-calendar-alt"></i> Dec 10th - 13th, 2026</div>
+    <div><i class="fas fa-campground"></i> Venue: TBA Shortly</div>
+    <div><i class="fas fa-money-bill-wave"></i> UGX 250,000 (4 Days)</div>
+  </div>
+</div>
+
+<div class="container main-layout">
+  <!-- Left Column: Core Pillars & Event Agenda -->
+  <div class="content-column">
+    <div class="content-card">
+      <h3 style="border-bottom:none; padding-bottom:0; margin-bottom:16px;">Responsibility, Purpose, and Power.</h3>
+      <p style="font-size: 1.1rem; margin-bottom: 24px;">This isn't just another holiday camp. It is an intensive life-coaching and mentorship environment designed to forge resilience and self-leadership in young minds.</p>
+      <p style="font-size: 1.1rem;">We replace digital distractions with real-world interactions, problem-solving challenges, and deep character-building exercises.</p>
+      
+      <ul class="card-ul" style="margin-top: 32px;">
+        <li class="card-li"><i class="fas fa-fist-raised"></i> Self-Leadership & Integrity</li>
+        <li class="card-li"><i class="fas fa-mountain"></i> Character Building</li>
+        <li class="card-li"><i class="fas fa-battery-full"></i> Personal Responsibility</li>
+        <li class="card-li"><i class="fas fa-eye"></i> Creating a Life Vision</li>
+        <li class="card-li" style="border-bottom: none; padding-bottom: 0;"><i class="fas fa-mobile-alt" style="text-decoration: line-through;"></i> Digital Detox Environment</li>
+      </ul>
+    </div>
+
+    <!-- Event Agenda -->
+    <div class="content-card">
+      <h3><i class="fas fa-list-ul"></i> Event Agenda</h3>
+      <div class="agenda-row"><span class="agenda-time">9:00 AM</span><span class="agenda-desc">Registration & Networking Breakfast</span></div>
+      <div class="agenda-row"><span class="agenda-time">10:00 AM</span><span class="agenda-desc">Opening Session & Keynote</span></div>
+      <div class="agenda-row"><span class="agenda-time">11:30 AM</span><span class="agenda-desc">Workshops (Rotating Sessions)</span></div>
+      <div class="agenda-row"><span class="agenda-time">1:00 PM</span><span class="agenda-desc">Lunch Break & Mentor Check-ins</span></div>
+      <div class="agenda-row"><span class="agenda-time">2:30 PM</span><span class="agenda-desc">Afternoon Workshops & Group Activities</span></div>
+      <div class="agenda-row"><span class="agenda-time">4:00 PM</span><span class="agenda-desc">Wrap-up & Reflections</span></div>
+    </div>
+  </div>
+
+  <!-- Right Column: Fixed Sidebar (Speakers moved above Inquiries) -->
+  <div class="sidebar-column">
+    <!-- Speakers & Facilitators Box -->
+    <div class="sidebar-box">
+      <h3><i class="fas fa-microphone-alt"></i> Speakers</h3>
+      <div class="speakers-grid">
+        <div class="speaker-badge">
+          <div class="speaker-avatar avatar-purple">D</div>
+          <div class="speaker-info">
+            <div class="name">Ms. Hellen Mugumya Twinamasiko</div>
+            <div class="role">Executive Director & Keynote</div>
+          </div>
+        </div>
+        <div class="speaker-badge">
+          <div class="speaker-avatar avatar-coral">B</div>
+          <div class="speaker-info">
+            <div class="name">Ms. Imelda Kyaringabira Engabi</div>
+            <div class="role">Programme Manager, Trainer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Registration & Inquiries Box -->
+    <div class="sidebar-box">
+      <h3>Registration & Inquiries</h3>
+      <p style="color:#52525B; margin-bottom:16px; font-size:0.9rem; font-weight:600;">Secure your child's spot today! Spaces are limited.</p>
+      
+      <div class="inquiry-item">
+        <div class="inq-name">Ms. Hellen Mugumya Twinamasiko</div>
+        <div><i class="fa-solid fa-phone"></i><a href="tel:+256702132630"> 0702 132 630</a></div>
+        <div style="margin-top:2px;"><i class="fa-solid fa-envelope" aria-hidden="true"></i><a href="mailto:hellentwins@gmail.com"> hellentwins@gmail.com</a></div>
+      </div>
+      
+      <div class="inquiry-item">
+        <div class="inq-name">Ms. Imelda Kyaringabira Engabi</div>
+        <div><i class="fa-solid fa-phone"></i><a href="tel:+256772671158"> 0772 671 158</a></div>
+        <div style="margin-top:2px;"><i class="fa-solid fa-envelope" aria-hidden="true"></i><a href="mailto:imeldakyari@gmail.com"> imeldakyari@gmail.com</a></div>
+      </div>
+      
+      <div class="inquiry-item">
+        <div class="inq-name">Ms. Elina Tahungwa Mwebaze</div>
+        <div><i class="fa-solid fa-phone"></i><a href="tel:+256772683138"> 0772 683 138</a></div>
+        <div style="margin-top:2px;"><i class="fa-solid fa-envelope" aria-hidden="true"></i><a href="mailto:elinatahungwa@gmail.com"> elinatahungwa@gmail.com</a></div>
+      </div>
+
+      <a href="#" class="btn btn-primary" style="width:100%; text-align:center; margin-top:16px;">Register Now</a>
+    </div>
+  </div>
+</div>
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <img src="../images/achiever_logo.svg" alt="Achievers Uganda Logo" style="width: 260px; margin-bottom: 16px;">
+          </div>
+          <div class="footer-col">
+            <h4>Quick Links</h4>
+            <a href="../">Home</a>
+            <a href="../aboutus/">About Us</a>
+            <a href="../programs/">Programs</a>
+            <a href="../events/">Events</a>
+            <a href="../blog/">Blog</a>
+            <a href="../gallery/">Gallery</a>
+            <a href="../contactus/">Contact</a>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <a href="#" data-contact-link="phone"><i class="fas fa-phone-alt"></i> <span data-contact-text="phone"></span></a>
+            <a href="#" data-contact-link="email"><i class="fas fa-envelope"></i> <span data-contact-text="email"></span></a>
+            <a href="#" data-contact-link="maps"><i class="fas fa-map-marker-alt"></i> <span data-contact-text="location"></span></a>
+          </div>
+          <div class="footer-col">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+              <i class="fab fa-facebook"></i>
+              <i class="fab fa-instagram"></i>
+              <i class="fab fa-twitter"></i>
+              <i class="fab fa-linkedin"></i>
+            </div>
+          </div>
+        </div>
+        <div class="copyright" style="text-align:center; border-top:1px solid #444; padding-top:30px; margin-top:30px;">
+          <p>&copy; 2026 Achievers Uganda</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../shared-data.js"></script>
+    <script src="../script.js"></script>
+
+</body>
+</html>

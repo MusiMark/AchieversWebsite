@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mindset Shift Bootcamp | Achievers Uganda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+  :root {
+    --primary: #18181B; /* Dark Slate/Black */
+    --accent: #EF4444; /* Spark Red */
+    --bg-light: #F4F4F5;
+    --surface: #FFFFFF;
+    --text-main: #27272A;
+    /* Brutalist design - no rounded corners, harsh shadows */
+    --radius: 0px; 
+    --shadow: 8px 8px 0px var(--primary);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Space Grotesk', sans-serif; background: var(--bg-light); color: var(--text-main); }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  
+  .btn { display: inline-block; padding: 16px 32px; font-weight: 700; text-transform: uppercase; text-decoration: none; border: 2px solid var(--primary); transition: all 0.2s; cursor: pointer; }
+  .btn-primary { background: var(--accent); color: white; box-shadow: 4px 4px 0px var(--primary); }
+  .btn-primary:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0px var(--primary); }
+  
+  .hero { background: var(--primary); color: white; padding: 120px 0; border-bottom: 8px solid var(--accent); }
+  .hero-tag { display: inline-block; background: var(--accent); color: white; padding: 4px 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 24px; transform: rotate(-2deg); }
+  .hero h1 { font-size: clamp(3rem, 6vw, 5rem); text-transform: uppercase; line-height: 1; margin-bottom: 24px; text-shadow: 4px 4px 0px rgba(239, 68, 68, 0.5); }
+  .hero p { font-size: 1.25rem; max-width: 700px; border-left: 4px solid var(--accent); padding-left: 16px; margin-bottom: 40px; }
+  
+  .data-strip { background: var(--accent); color: white; padding: 24px 0; border-bottom: 4px solid var(--primary); font-weight: 600; font-size: 1.1rem; }
+  .data-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
+  .data-grid div { border-right: 2px solid rgba(0,0,0,0.2); }
+  .data-grid div:last-child { border-right: none; }
+  .data-grid i { display: block; font-size: 1.5rem; margin-bottom: 8px; color: var(--primary); }
+
+  .content-area { padding: 80px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  
+  .card { background: var(--surface); border: 4px solid var(--primary); padding: 40px; box-shadow: var(--shadow); }
+  .card h2 { font-size: 2.5rem; text-transform: uppercase; margin-bottom: 24px; line-height: 1.1; }
+  .card ul { list-style: none; margin-top: 24px; }
+  .card li { display: flex; align-items: center; gap: 16px; font-size: 1.1rem; font-weight: 600; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 2px dashed #E4E4E7; }
+  .card li i { color: var(--accent); font-size: 1.2rem; }
+  
+  @media (max-width: 900px) { .content-area { grid-template-columns: 1fr; } .data-grid { grid-template-columns: 1fr 1fr; row-gap: 24px; } .data-grid div:nth-child(2) { border-right: none; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="container">
+    <span class="hero-tag">Mindset Shift Residential Bootcamp</span>
+    <h1>Spark the Leader Within.</h1>
+    <p>Beyond the classroom lies the real test. Take holiday-makers off their screens and gadgets into a high-impact, immersive 4-day experience designed to build unstoppable character.</p>
+    <a href="#" class="btn btn-primary">Join the Bootcamp</a>
+  </div>
+</header>
+
+<div class="data-strip">
+  <div class="container data-grid">
+    <div><i class="fas fa-users"></i> Target: 13-20 Years</div>
+    <div><i class="far fa-calendar-alt"></i> Dec 10th - 13th, 2026</div>
+    <div><i class="fas fa-campground"></i> Venue: TBA Shortly</div>
+    <div><i class="fas fa-money-bill-wave"></i> UGX 250,000 (4 Days)</div>
+  </div>
+</div>
+
+<section class="container content-area">
+  <div>
+    <h2 style="font-size: 3rem; text-transform: uppercase; line-height: 1; margin-bottom: 24px;">Responsibility, Purpose, and Power.</h2>
+    <p style="font-size: 1.1rem; margin-bottom: 24px;">This isn't just another holiday camp. It is an intensive life-coaching and mentorship environment designed to forge resilience and self-leadership in young minds.</p>
+    <p style="font-size: 1.1rem;">We replace digital distractions with real-world interactions, problem-solving challenges, and deep character-building exercises.</p>
+  </div>
+  
+  <div class="card">
+    <h2>Core Pillars</h2>
+    <ul>
+      <li><i class="fas fa-fist-raised"></i> Self-Leadership & Integrity</li>
+      <li><i class="fas fa-mountain"></i> Character Building</li>
+      <li><i class="fas fa-battery-full"></i> Personal Responsibility</li>
+      <li><i class="fas fa-eye"></i> Creating a Life Vision</li>
+      <li style="border-bottom: none; padding-bottom: 0;"><i class="fas fa-mobile-alt" style="text-decoration: line-through;"></i> Digital Detox Environment</li>
+    </ul>
+  </div>
+</section>
+
+</body>
+</html>

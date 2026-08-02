@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>O-Level to A-Level Workshop - Achievers Uganda</title>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../style.css" />
+
+    <!-- Website Icon -->
+    <link rel="icon" href="../images/achiever_logo2.svg" type="image/svg+xml" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        :root {
+            --navy: #0A1128;
+            --coral: #FF5E5E;
+            --gold: #F9A826;
+            --cream: #FFF7EE;
+            --radius: 20px;
+            --text-muted: #4a4a5a;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--cream);
+            color: var(--navy);
+            line-height: 1.6;
+        }
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+        section {
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- navbar (minimal override) ---- */
+        .navbar .nav-container {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark-text);
+            font-size: clamp(1rem, calc(0.95rem + 0.23vw), 1.125rem);
+        }
+
+        /* ---- hero ---- */
+        .hero {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            display: flex;
+        }
+        .hero-image {
+            width: 50%;
+            height: 100%;
+            background: url('../images/acheiver_img3.jpg') center/cover no-repeat;
+            position: relative;
+            z-index: 1;
+            clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+        }
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, rgba(249, 168, 38, 0.4), rgba(255, 94, 94, 0.3));
+        }
+        .hero-text {
+            width: 50%;
+            background: var(--navy);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 60px;
+            position: relative;
+            z-index: 0;
+        }
+        .hero-text h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        .hero-text h1 span {
+            color: var(--gold);
+        }
+        .hero-text p {
+            font-size: 1.1rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                height: auto;
+            }
+            .hero-image {
+                width: 100%;
+                height: 250px;
+                clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            }
+            .hero-text {
+                width: 100%;
+                padding: 40px 24px;
+            }
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* ---- layout ---- */
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 32px;
+            padding: 50px 0;
+        }
+        @media (max-width: 900px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ---- cards ---- */
+        .card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 28px 32px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            margin-bottom: 24px;
+            transition: 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+        }
+        .card h3 {
+            font-weight: 600;
+            font-size: 1.4rem;
+            margin-bottom: 14px;
+            color: var(--navy);
+            letter-spacing: -0.01em;
+        }
+        .card p {
+            font-weight: 400;
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* ---- gain grid ---- */
+        .gain-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 20px;
+            list-style: none;
+            margin-top: 18px;
+        }
+        .gain-grid li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 6px 0;
+            color: var(--text-muted);
+        }
+        .gain-grid i {
+            color: var(--coral);
+            font-size: 0.9rem;
+            width: 18px;
+            text-align: center;
+        }
+
+        /* ---- timeline ---- */
+        .timeline-item {
+            display: flex;
+            gap: 14px;
+            padding: 12px 0;
+            border-bottom: 1px dashed #e8e8ec;
+            align-items: baseline;
+        }
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+        .timeline-time {
+            font-weight: 600;
+            color: var(--coral);
+            width: 80px;
+            flex-shrink: 0;
+            font-size: 0.95rem;
+        }
+        .timeline-item .timeline-desc {
+            font-weight: 400;
+            color: var(--text-muted);
+            font-size: 0.98rem;
+        }
+
+        /* ---- side card (event details) ---- */
+        .side-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 24px 26px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            border-top: 4px solid var(--gold);
+        }
+        .side-card h4 {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            color: var(--navy);
+            letter-spacing: -0.01em;
+        }
+        .side-card .detail-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 8px 0;
+            font-weight: 400;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .side-card .detail-row i {
+            width: 20px;
+            color: var(--gold);
+            font-size: 0.95rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+            text-align: center;
+        }
+        .side-card .detail-row .label {
+            font-weight: 500;
+            color: var(--navy);
+            flex-shrink: 0;
+        }
+        .side-card .detail-row .value {
+            font-weight: 400;
+            word-wrap: break-word;
+            word-break: break-word;
+            hyphens: auto;
+        }
+        /* long location fix */
+        .side-card .detail-row .value.location {
+            font-size: 0.85rem;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+
+        /* ---- buttons ---- */
+        .btn {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            padding: 14px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.2s;
+            margin-top: 12px;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+        }
+
+        /* ---- inquiry sidebar box ---- */
+        .sidebar-box {
+            background: #fff;
+            border-radius: 16px;
+            padding: 24px 26px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            border-top: 4px solid var(--coral);
+            margin-top: 16px;
+        }
+        .sidebar-box h3 {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--navy);
+            letter-spacing: -0.01em;
+        }
+        .sidebar-box .sub-text {
+            color: #555;
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+        .inquiry-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .inquiry-item:last-child {
+            border-bottom: none;
+        }
+        .inquiry-item .inq-name {
+            font-weight: 600;
+            color: var(--navy);
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+        .inquiry-item .inq-details {
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 4px 8px;
+        }
+        /* each contact pair (icon + link) stays together */
+        .inquiry-item .contact-pair {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .inquiry-item .contact-pair i {
+            font-size: 0.85rem;
+            width: 16px;
+            text-align: center;
+            flex-shrink: 0;
+            color: var(--coral);
+        }
+        .inquiry-item .contact-pair a {
+            color: var(--coral);
+            text-decoration: none;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .inquiry-item .contact-pair a:hover {
+            text-decoration: underline;
+        }
+        .inquiry-item .sep {
+            color: #ccc;
+            flex-shrink: 0;
+        }
+
+        /* ---- footer (preserved) ---- */
+        footer {
+            background: var(--navy);
+            color: #ddd;
+            padding: 50px 0 30px;
+            margin-top: 20px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+        @media (max-width: 700px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .footer-col h4 {
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 14px;
+            font-size: 1rem;
+        }
+        .footer-col a {
+            display: block;
+            color: #bbb;
+            text-decoration: none;
+            padding: 4px 0;
+            font-weight: 400;
+            font-size: 0.9rem;
+        }
+        .footer-col a:hover {
+            color: #fff;
+        }
+        .social-icons {
+            display: flex;
+            gap: 14px;
+            font-size: 1.4rem;
+            color: #bbb;
+        }
+        .social-icons i:hover {
+            color: #fff;
+            cursor: pointer;
+        }
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #444;
+            padding-top: 30px;
+            margin-top: 30px;
+            font-weight: 400;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        /* ---- fade-up (simple) ---- */
+        .fade-up {
+            animation: fadeUp 0.6s ease forwards;
+        }
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ---- responsive tweaks ---- */
+        @media (max-width: 600px) {
+            .gain-grid {
+                grid-template-columns: 1fr;
+            }
+            .card {
+                padding: 20px;
+            }
+            .side-card {
+                padding: 18px 20px;
+            }
+            .sidebar-box {
+                padding: 18px 20px;
+            }
+            .hero-text h1 {
+                font-size: 1.6rem;
+            }
+            .timeline-item {
+                flex-wrap: wrap;
+                gap: 4px;
+            }
+            .timeline-time {
+                width: 100%;
+            }
+            .inquiry-item .contact-pair a {
+                white-space: normal;
+                word-break: break-all;
+            }
+            .inquiry-item .inq-details {
+                gap: 4px 6px;
+            }
+        }
+        @media (max-width: 400px) {
+            .inquiry-item .contact-pair {
+                flex-wrap: wrap;
+                gap: 2px;
+            }
+            .inquiry-item .contact-pair i {
+                width: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div>
+                <img src="../images/achiever_logo.svg" alt="Achievers Uganda Logo" style="width: 80px;" />
+            </div>
+            <ul class="nav-links">
+                <li><a href="../">Home</a></li>
+                <li><a href="../aboutus/">About</a></li>
+                <li><a href="../programs/">Programs</a></li>
+                <li><a href="../events/" class="active">Events</a></li>
+                <li><a href="../blog/">Blog</a></li>
+                <li><a href="../gallery/">Gallery</a></li>
+                <li><a href="../contactus/" class="nav-btn">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-image"></div>
+        <div class="hero-text">
+            <h1>From Followers to <span>Leaders</span>: Own Your A-Level Journey!</h1>
+            <p>O-Level to A-Level Transition Workshop</p>
+        </div>
+    </section>
+
+    <!-- Main Layout -->
+    <div class="container layout">
+        <!-- Left Column -->
+        <div>
+            <!-- About -->
+            <div class="card">
+                <h3>About the Workshop</h3>
+                <p><strong>Transform academic pressure into personal mastery.</strong> Advanced Level demands
+                    independent thinking, sharp decision-making, and deep resilience. This workshop equips your
+                    teenager with the clarity, goal-setting strategies, and self-drive needed to excel at A-Level
+                    — without losing their way.
+                </p>
+                <ul class="gain-grid">
+                    <li><i class="fas fa-arrow-up"></i> Independent thinking &amp; decision-making</li>
+                    <li><i class="fas fa-arrow-up"></i> Resilience under pressure</li>
+                    <li><i class="fas fa-arrow-up"></i> Goal-setting &amp; study strategies</li>
+                    <li><i class="fas fa-arrow-up"></i> Leadership &amp; confidence</li>
+                </ul>
+            </div>
+
+            <!-- Agenda -->
+            <div class="card">
+                <h3>Agenda</h3>
+                <div class="timeline-item">
+                    <span class="timeline-time">9:00 AM</span>
+                    <span class="timeline-desc">Registration &amp; Breakfast</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-time">10:00 AM</span>
+                    <span class="timeline-desc">Keynote: Becoming an A-Level Leader</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-time">11:30 AM</span>
+                    <span class="timeline-desc">Interactive Workshops</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-time">1:00 PM</span>
+                    <span class="timeline-desc">Lunch &amp; Mentor Sessions</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-time">2:30 PM</span>
+                    <span class="timeline-desc">Goal-Setting &amp; Action Plans</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-time">4:00 PM</span>
+                    <span class="timeline-desc">Closing &amp; Certificates</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Sidebar -->
+        <aside>
+            <!-- Event Details -->
+            <div class="side-card">
+                <h4>Event Details</h4>
+                <div class="detail-row">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span><span class="label">Date:</span> <span class="value">Dec 7th – 8th, 2026</span></span>
+                </div>
+                <div class="detail-row">
+                    <i class="fas fa-clock"></i>
+                    <span><span class="label">Time:</span> <span class="value">9 AM – 4 PM daily</span></span>
+                </div>
+                <div class="detail-row">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span><span class="label">Venue:</span> <span class="value location">Makerere University, Faculty of Food Science &amp; Technology</span></span>
+                </div>
+                <div class="detail-row">
+                    <i class="fas fa-tag"></i>
+                    <span><span class="label">Fee:</span> <span class="value">UGX 120,000 / learner (both days)</span></span>
+                </div>
+                <a href="#" class="btn btn-primary">Register Now</a>
+                <a href="../events/" class="btn btn-outline">&larr; All Events</a>
+            </div>
+
+            <!-- Registration & Inquiries -->
+            <div class="sidebar-box fade-up">
+                <h3>Registration &amp; Inquiries</h3>
+                <p class="sub-text">Secure your child's spot today to get lessons of what is not taught in class! Spaces are limited.</p>
+
+                <div class="inquiry-item">
+                    <div class="inq-name">Ms. Hellen Mugumya Twinamasiko</div>
+                    <div class="inq-details">
+                        <span class="contact-pair">
+                            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                            <a href="tel:+256702132630">0702 132 630</a>
+                        </span>
+                        <span class="sep">|</span>
+                        <span class="contact-pair">
+                            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                            <a href="mailto:hellentwins@gmail.com">hellentwins@gmail.com</a>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="inquiry-item">
+                    <div class="inq-name">Ms. Imelda Kyaringabira Engabi</div>
+                    <div class="inq-details">
+                        <span class="contact-pair">
+                            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                            <a href="tel:+256772671158">0772 671 158</a>
+                        </span>
+                        <span class="sep">|</span>
+                        <span class="contact-pair">
+                            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                            <a href="mailto:imeldakyari@gmail.com">imeldakyari@gmail.com</a>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="inquiry-item">
+                    <div class="inq-name">Ms. Elina Tahungwa Mwebaze</div>
+                    <div class="inq-details">
+                        <span class="contact-pair">
+                            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                            <a href="tel:+256772683138">0772 683 138</a>
+                        </span>
+                        <span class="sep">|</span>
+                        <span class="contact-pair">
+                            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                            <a href="mailto:elinatahungwa@gmail.com">elinatahungwa@gmail.com</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="../images/achiever_logo.svg" alt="Achievers Uganda Logo" style="width: 260px; margin-bottom: 16px;" />
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="../">Home</a>
+                    <a href="../aboutus/">About Us</a>
+                    <a href="../programs/">Programs</a>
+                    <a href="../events/">Events</a>
+                    <a href="../blog/">Blog</a>
+                    <a href="../gallery/">Gallery</a>
+                    <a href="../contactus/">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <a href="#" data-contact-link="phone"><i class="fas fa-phone-alt"></i> <span data-contact-text="phone"></span></a>
+                    <a href="#" data-contact-link="email"><i class="fas fa-envelope"></i> <span data-contact-text="email"></span></a>
+                    <a href="#" data-contact-link="maps"><i class="fas fa-map-marker-alt"></i> <span data-contact-text="location"></span></a>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <i class="fab fa-facebook"></i>
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Achievers Uganda</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../shared-data.js"></script>
+    <script src="../script.js"></script>
+</body>
+</html>

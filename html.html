@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* ==========================================================================
-           1. BASE RESET & ROOT SETUP (Mobile‑First)
+           1. BASE RESET & ROOT SETUP (Mobile-First)
            ========================================================================== */
         html {
             font-size: 100%;
@@ -64,16 +64,51 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        h1 { font-size: clamp(2.2rem, 1rem + 3.5vw, 3.5rem); font-weight: 800; line-height: 1.15; margin-bottom: 0.5em; }
-        h2 { font-size: clamp(1.6rem, 0.8rem + 2.5vw, 2.5rem); font-weight: 700; line-height: 1.2; margin-bottom: 0.5em; }
-        h3 { font-size: clamp(1.25rem, 0.7rem + 1.8vw, 1.9rem); font-weight: 600; line-height: 1.3; margin-bottom: 0.4em; }
-        h4 { font-size: clamp(1.05rem, 0.75rem + 1vw, 1.35rem); font-weight: 600; line-height: 1.35; margin-bottom: 0.3em; }
-        p { margin-bottom: 1rem; }
+        h1 {
+            font-size: clamp(2.2rem, 1rem + 3.5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 0.5em;
+        }
+        h2 {
+            font-size: clamp(1.6rem, 0.8rem + 2.5vw, 2.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0.5em;
+        }
+        h3 {
+            font-size: clamp(1.25rem, 0.7rem + 1.8vw, 1.9rem);
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 0.4em;
+        }
+        h4 {
+            font-size: clamp(1.05rem, 0.75rem + 1vw, 1.35rem);
+            font-weight: 600;
+            line-height: 1.35;
+            margin-bottom: 0.3em;
+        }
+        p {
+            margin-bottom: 1rem;
+        }
 
-        img { max-width: 100%; height: auto; display: block; }
-        a { color: var(--red); text-decoration: none; transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease; }
-        a:hover { color: var(--red-hover); }
-        ul, ol { list-style: none; }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        a {
+            color: var(--red);
+            text-decoration: none;
+            transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+        }
+        a:hover {
+            color: var(--red-hover);
+        }
+        ul,
+        ol {
+            list-style: none;
+        }
 
         /* ==========================================================================
            4. LAYOUT CONTAINER
@@ -103,15 +138,23 @@
             text-align: center;
             line-height: 1.4;
         }
-        .btn-primary { background-color: var(--red); color: var(--white); box-shadow: 0 4px 10px rgba(200,12,31,0.3); }
-        .btn-primary:hover { background-color: var(--red-hover); transform: translateY(-2px); color: var(--white); }
+        .btn-primary {
+            background-color: var(--red);
+            color: var(--white);
+            box-shadow: 0 4px 10px rgba(200, 12, 31, 0.3);
+        }
+        .btn-primary:hover {
+            background-color: var(--red-hover);
+            transform: translateY(-2px);
+            color: var(--white);
+        }
 
         /* ==========================================================================
            6. NAVIGATION (Sticky Header)
            ========================================================================== */
         .navbar {
             background: var(--navbar-bg);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -135,7 +178,9 @@
             margin-bottom: 0;
             white-space: nowrap;
         }
-        .logo span { color: #625E52; }
+        .logo span {
+            color: #625E52;
+        }
 
         /* ---------- Hamburger Button (hidden on desktop) ---------- */
         .hamburger {
@@ -150,8 +195,12 @@
             transition: color 0.2s;
             z-index: 1001;
         }
-        .hamburger:hover { color: var(--red); }
-        .hamburger i { pointer-events: none; } 
+        .hamburger:hover {
+            color: var(--red);
+        }
+        .hamburger i {
+            pointer-events: none;
+        }
 
         /* ---------- Desktop Navigation Links ---------- */
         .nav-links {
@@ -170,7 +219,9 @@
             font-size: clamp(0.9rem, 0.8rem + 0.25vw, 0.95rem);
             white-space: nowrap;
         }
-        .nav-links a:hover { color: var(--red); }
+        .nav-links a:hover {
+            color: var(--red);
+        }
 
         .nav-btn {
             background: var(--red);
@@ -179,14 +230,21 @@
             border-radius: 40px;
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
-        .nav-btn:hover { background: var(--red-hover); transform: translateY(-1px); color: var(--white) !important; }
+        .nav-btn:hover {
+            background: var(--red-hover);
+            transform: translateY(-1px);
+            color: var(--white) !important;
+        }
 
         /* ==========================================================================
            7. MOBILE SIDE DRAWER (Hamburger Menu Overlay)
            ========================================================================== */
         .drawer-overlay {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(0, 0, 0, 0.4);
             z-index: 998;
             opacity: 0;
@@ -194,7 +252,7 @@
             transition: opacity 0.3s ease, visibility 0.3s ease;
             pointer-events: none;
         }
-        
+
         .drawer-overlay.active {
             opacity: 1;
             visibility: visible;
@@ -203,12 +261,14 @@
 
         .drawer-menu {
             position: fixed;
-            top: 0; right: -100%;
-            width: 100%; max-width: 400px;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 400px;
             height: 100vh;
             background: #ffffff;
             z-index: 999;
-            box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
             transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
@@ -245,7 +305,9 @@
             padding: 5px;
             transition: transform 0.2s;
         }
-        .drawer-close:hover { transform: rotate(90deg); }
+        .drawer-close:hover {
+            transform: rotate(90deg);
+        }
 
         .drawer-body {
             flex: 1;
@@ -292,7 +354,7 @@
             font-weight: 700;
             font-size: 1.05rem;
             text-align: center;
-            margin-top: 8px; /* Give it a little space from the last link */
+            margin-top: 8px;
             transition: background 0.2s ease;
         }
         .drawer-links li.drawer-btn-item a.drawer-btn-link:hover {
@@ -314,17 +376,35 @@
         .page-header::before {
             content: '';
             position: absolute;
-            top: -30%; left: -10%; width: 120%; height: 120%;
-            background: repeating-linear-gradient(45deg, rgba(248,229,46,0.08) 0px, rgba(248,229,46,0.08) 2px, transparent 2px, transparent 8px);
+            top: -30%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            background: repeating-linear-gradient(45deg, rgba(248, 229, 46, 0.08) 0px, rgba(248, 229, 46, 0.08) 2px, transparent 2px, transparent 8px);
             pointer-events: none;
         }
-        .page-header h1 { font-size: clamp(2.4rem, 1.2rem + 4vw, 3.8rem); margin-bottom: 16px; font-weight: 800; position: relative; color: var(--white); }
-        .page-header p { font-size: clamp(1rem, 0.9rem + 0.4vw, 1.25rem); max-width: 700px; margin: 0 auto; opacity: 0.95; position: relative; line-height: 1.6; }
+        .page-header h1 {
+            font-size: clamp(2.4rem, 1.2rem + 4vw, 3.8rem);
+            margin-bottom: 16px;
+            font-weight: 800;
+            position: relative;
+            color: var(--white);
+        }
+        .page-header p {
+            font-size: clamp(1rem, 0.9rem + 0.4vw, 1.25rem);
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.95;
+            position: relative;
+            line-height: 1.6;
+        }
 
         /* ==========================================================================
            9. SECTIONS & TITLES
            ========================================================================== */
-        section { padding: 80px 0; }
+        section {
+            padding: 80px 0;
+        }
         .section-title {
             font-size: clamp(1.6rem, 0.8rem + 2.5vw, 2.5rem);
             font-weight: 700;
@@ -336,12 +416,17 @@
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px; left: 0;
-            width: 70px; height: 4px;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 4px;
             background: var(--yellow);
             border-radius: 4px;
         }
-        .section-header { text-align: center; margin-bottom: 48px; }
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
 
         /* ==========================================================================
            10. CONTACT LAYOUT (CSS Grid)
@@ -356,7 +441,7 @@
             background: var(--white);
             border-radius: 32px;
             padding: 24px;
-            box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
             margin-bottom: 24px;
         }
         .info-item {
@@ -366,7 +451,9 @@
             margin-bottom: 24px;
         }
         .info-icon {
-            width: 48px; height: 48px; min-width: 48px;
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
             background: var(--soft-red);
             border-radius: 30px;
             display: flex;
@@ -375,14 +462,30 @@
             font-size: 1.3rem;
             color: var(--red);
         }
-        .info-text h4 { margin-bottom: 4px; color: var(--dark-bg); }
-        .info-text a, .info-text p { color: var(--text-muted); font-size: clamp(0.9rem, 0.82rem + 0.25vw, 0.98rem); line-height: 1.5; }
-        .info-text a:hover { color: var(--red); }
+        .info-text h4 {
+            margin-bottom: 4px;
+            color: var(--dark-bg);
+        }
+        .info-text a,
+        .info-text p {
+            color: var(--text-muted);
+            font-size: clamp(0.9rem, 0.82rem + 0.25vw, 0.98rem);
+            line-height: 1.5;
+        }
+        .info-text a:hover {
+            color: var(--red);
+        }
 
-        .social-links { display: flex; gap: 16px; margin-top: 24px; flex-wrap: wrap; }
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
         .social-links a {
             background: var(--gray-light);
-            width: 44px; height: 44px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             display: inline-flex;
             align-items: center;
@@ -391,16 +494,24 @@
             color: var(--red);
             transition: background-color 0.2s, transform 0.2s;
         }
-        .social-links a:hover { background: var(--yellow); transform: translateY(-3px); color: var(--dark-bg); }
+        .social-links a:hover {
+            background: var(--yellow);
+            transform: translateY(-3px);
+            color: var(--dark-bg);
+        }
 
         .contact-form-card {
             background: var(--white);
             border-radius: 32px;
             padding: 28px;
-            box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
         }
-        .form-group { margin-bottom: 20px; }
-        .form-group input, .form-group textarea, .form-group select {
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 14px 18px;
             border: 1px solid var(--border-light);
@@ -419,15 +530,31 @@
             padding-right: 42px;
             cursor: pointer;
         }
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
             outline: none;
             border-color: var(--red);
-            box-shadow: 0 0 0 3px rgba(200,12,31,0.1);
+            box-shadow: 0 0 0 3px rgba(200, 12, 31, 0.1);
         }
-        .form-group textarea { resize: vertical; min-height: 120px; border-radius: 20px; }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+            border-radius: 20px;
+        }
 
-        .map-container { border-radius: 32px; overflow: hidden; box-shadow: 0 12px 28px rgba(0,0,0,0.08); margin-top: 20px; }
-        .map-container iframe { width: 100%; height: 280px; border: 0; display: block; }
+        .map-container {
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+            margin-top: 20px;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 280px;
+            border: 0;
+            display: block;
+        }
 
         /* ==========================================================================
            11. FOOTER
@@ -444,13 +571,39 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 32px;
         }
-        .footer-col h4 { color: var(--yellow); margin-bottom: 20px; }
-        .footer-col a { color: var(--text-footer-link); text-decoration: none; display: block; margin-bottom: 10px; font-size: clamp(0.88rem, 0.8rem + 0.2vw, 0.95rem); transition: color 0.2s; }
-        .footer-col a:hover { color: var(--yellow); }
-        .footer-col p { font-size: clamp(0.88rem, 0.8rem + 0.2vw, 0.95rem); color: var(--text-footer-link); }
-        .social-icons { display: flex; gap: 16px; margin-top: 12px; }
-        .social-icons i { font-size: 1.5rem; color: var(--text-footer-link); transition: color 0.2s; cursor: pointer; }
-        .social-icons i:hover { color: var(--yellow); }
+        .footer-col h4 {
+            color: var(--yellow);
+            margin-bottom: 20px;
+        }
+        .footer-col a {
+            color: var(--text-footer-link);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            font-size: clamp(0.88rem, 0.8rem + 0.2vw, 0.95rem);
+            transition: color 0.2s;
+        }
+        .footer-col a:hover {
+            color: var(--yellow);
+        }
+        .footer-col p {
+            font-size: clamp(0.88rem, 0.8rem + 0.2vw, 0.95rem);
+            color: var(--text-footer-link);
+        }
+        .social-icons {
+            display: flex;
+            gap: 16px;
+            margin-top: 12px;
+        }
+        .social-icons i {
+            font-size: 1.5rem;
+            color: var(--text-footer-link);
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+        .social-icons i:hover {
+            color: var(--yellow);
+        }
         .copyright {
             text-align: center;
             border-top: 1px solid #3E3B33;
@@ -465,331 +618,961 @@
            ========================================================================== */
         .whatsapp-float {
             position: fixed;
-            bottom: 24px; right: 24px;
+            bottom: 24px;
+            right: 24px;
             background: #25D366;
             color: var(--white);
-            width: 56px; height: 56px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.8rem;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
             z-index: 99;
             transition: transform 0.2s, box-shadow 0.2s;
             text-decoration: none;
         }
-        .whatsapp-float:hover { transform: scale(1.08); box-shadow: 0 8px 22px rgba(0,0,0,0.3); color: var(--white); }
+        .whatsapp-float:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
+            color: var(--white);
+        }
 
         /* ==========================================================================
            13. RESPONSIVE: MOBILE MENU TOGGLE (UPDATED TO 810px)
            ========================================================================== */
         @media (max-width: 810px) {
-            /* Show hamburger button on screens 810px and below */
-            .hamburger { display: block; }
-            
-            /* Hide the standard horizontal nav list */
-            .nav-links { display: none; }
+            .hamburger {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+            }
         }
 
         /* ==========================================================================
-           14. MOBILE‑FIRST MEDIA QUERIES (Breakpoints)
+           14. MOBILE-FIRST MEDIA QUERIES (Breakpoints)
            ========================================================================== */
         @media (min-width: 481px) {
-            .container { padding-left: 20px; padding-right: 20px; }
-            .contact-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
-            .contact-info-card { padding: 28px; margin-bottom: 0; }
-            .info-icon { width: 50px; height: 50px; min-width: 50px; font-size: 1.4rem; }
-            .map-container iframe { height: 300px; }
-            .whatsapp-float { width: 58px; height: 58px; font-size: 2rem; bottom: 28px; right: 28px; }
+            .container {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 28px;
+            }
+            .contact-info-card {
+                padding: 28px;
+                margin-bottom: 0;
+            }
+            .info-icon {
+                width: 50px;
+                height: 50px;
+                min-width: 50px;
+                font-size: 1.4rem;
+            }
+            .map-container iframe {
+                height: 300px;
+            }
+            .whatsapp-float {
+                width: 58px;
+                height: 58px;
+                font-size: 2rem;
+                bottom: 28px;
+                right: 28px;
+            }
         }
 
         @media (min-width: 768px) {
-            .container { padding-left: 24px; padding-right: 24px; }
-            .contact-grid { gap: 40px; }
-            .contact-info-card { padding: 32px; }
-            .contact-form-card { padding: 36px; }
-            .info-icon { width: 54px; height: 54px; min-width: 54px; font-size: 1.5rem; }
-            .info-item { gap: 18px; }
-            .map-container iframe { height: 320px; }
-            section { padding: 90px 0; }
-            .page-header { padding: 90px 0; }
+            .container {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+            .contact-grid {
+                gap: 40px;
+            }
+            .contact-info-card {
+                padding: 32px;
+            }
+            .contact-form-card {
+                padding: 36px;
+            }
+            .info-icon {
+                width: 54px;
+                height: 54px;
+                min-width: 54px;
+                font-size: 1.5rem;
+            }
+            .info-item {
+                gap: 18px;
+            }
+            .map-container iframe {
+                height: 320px;
+            }
+            section {
+                padding: 90px 0;
+            }
+            .page-header {
+                padding: 90px 0;
+            }
         }
 
         @media (min-width: 1024px) {
-            .container { padding-left: 32px; padding-right: 32px; }
-            .contact-grid { gap: 48px; }
-            .contact-info-card { padding: 36px; }
-            .contact-form-card { padding: 40px; }
-            .info-item { gap: 20px; margin-bottom: 28px; }
-            .map-container iframe { height: 350px; }
-            section { padding: 100px 0; }
-            .page-header { padding: 100px 0; }
-            .footer-grid { gap: 40px; }
+            .container {
+                padding-left: 32px;
+                padding-right: 32px;
+            }
+            .contact-grid {
+                gap: 48px;
+            }
+            .contact-info-card {
+                padding: 36px;
+            }
+            .contact-form-card {
+                padding: 40px;
+            }
+            .info-item {
+                gap: 20px;
+                margin-bottom: 28px;
+            }
+            .map-container iframe {
+                height: 350px;
+            }
+            section {
+                padding: 100px 0;
+            }
+            .page-header {
+                padding: 100px 0;
+            }
+            .footer-grid {
+                gap: 40px;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto; }
-            *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+            html {
+                scroll-behavior: auto;
+            }
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* ==========================================================================
+           15. CUSTOM CURSOR STYLES
+           ========================================================================== */
+        /* Hide default cursor when custom cursor is active */
+        body.custom-cursor-active,
+        body.custom-cursor-active * {
+            cursor: none !important;
+        }
+
+        /* Main cursor dot */
+        .cursor-dot {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            background: #C80C1F;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            will-change: transform;
+            transition: width 0.15s ease, height 0.15s ease, background-color 0.2s ease, border-radius 0.2s ease;
+            box-shadow: 0 0 8px rgba(200, 12, 31, 0.5);
+        }
+
+        /* Cursor dot - click state */
+        .cursor-dot.clicking {
+            width: 5px;
+            height: 5px;
+            background: #a00a1a;
+            box-shadow: 0 0 14px rgba(200, 12, 31, 0.8);
+            transition: width 0.08s ease, height 0.08s ease, background-color 0.08s ease;
+        }
+
+        /* Cursor dot - hover on interactive elements */
+        .cursor-dot.hover-interactive {
+            width: 10px;
+            height: 10px;
+            background: #a00a1a;
+            box-shadow: 0 0 16px rgba(200, 12, 31, 0.7);
+        }
+
+        /* Cursor dot - text input hover */
+        .cursor-dot.hover-text {
+            border-radius: 2px;
+            width: 2.5px;
+            height: 22px;
+            background: #C80C1F;
+            box-shadow: 0 0 6px rgba(200, 12, 31, 0.4);
+        }
+
+        /* Outer cursor ring */
+        .cursor-ring {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 38px;
+            height: 38px;
+            border: 2px solid rgba(200, 12, 31, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            will-change: transform, width, height, border-color, border-width;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+            box-sizing: border-box;
+        }
+
+        /* Ring - hover on interactive elements */
+        .cursor-ring.hover-interactive {
+            border-color: rgba(200, 12, 31, 0.85);
+            border-width: 2.5px;
+            box-shadow: 0 0 20px rgba(200, 12, 31, 0.35), 0 0 40px rgba(200, 12, 31, 0.12);
+        }
+
+        /* Ring - text input hover */
+        .cursor-ring.hover-text {
+            border-color: rgba(200, 12, 31, 0.5);
+            border-style: dashed;
+            border-width: 1.8px;
+            box-shadow: none;
+        }
+
+        /* Ring - social icon hover (yellow accent) */
+        .cursor-ring.hover-social {
+            border-color: rgba(248, 229, 46, 0.9);
+            border-width: 2.5px;
+            box-shadow: 0 0 22px rgba(248, 229, 46, 0.45), 0 0 45px rgba(248, 229, 46, 0.15);
+        }
+        .cursor-dot.hover-social {
+            background: #e6c800;
+            box-shadow: 0 0 14px rgba(248, 229, 46, 0.7);
+        }
+
+        /* Ring - click state */
+        .cursor-ring.clicking {
+            border-color: rgba(160, 10, 26, 0.9);
+            border-width: 3px;
+            box-shadow: 0 0 30px rgba(200, 12, 31, 0.5);
+            transition: border-color 0.08s ease, border-width 0.08s ease, box-shadow 0.08s ease;
+        }
+
+        /* Trail echo rings */
+        .cursor-trail {
+            position: fixed;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9997;
+            will-change: transform;
+            box-sizing: border-box;
+            border: 1.5px solid rgba(200, 12, 31, 0.35);
+            background: transparent;
+        }
+        .cursor-trail.trail-1 {
+            width: 30px;
+            height: 30px;
+            border-color: rgba(200, 12, 31, 0.3);
+            border-width: 1.4px;
+        }
+        .cursor-trail.trail-2 {
+            width: 22px;
+            height: 22px;
+            border-color: rgba(200, 12, 31, 0.2);
+            border-width: 1.1px;
+        }
+        .cursor-trail.trail-3 {
+            width: 14px;
+            height: 14px;
+            border-color: rgba(200, 12, 31, 0.14);
+            border-width: 0.9px;
+            background: rgba(200, 12, 31, 0.04);
+        }
+
+        /* Click ripple */
+        .cursor-ripple {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            border-radius: 50%;
+            border: 2px solid rgba(200, 12, 31, 0.7);
+            animation: cursor-ripple-out 0.5s ease-out forwards;
+        }
+
+        @keyframes cursor-ripple-out {
+            0% {
+                width: 8px;
+                height: 8px;
+                opacity: 0.8;
+                border-width: 2.5px;
+            }
+            100% {
+                width: 70px;
+                height: 70px;
+                opacity: 0;
+                border-width: 0.5px;
+            }
         }
     </style>
 </head>
-<body>
+<body class="custom-cursor-active">
 
-<!-- WhatsApp Float Button -->
-<a href="https://wa.me/256700123456?text=Hello%20AMP!%20I%20have%20a%20question%20about%20your%20programs"
-   class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-</a>
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/256700123456?text=Hello%20AMP!%20I%20have%20a%20question%20about%20your%20programs"
+       class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-<!-- Navigation -->
-<nav class="navbar">
-    <div class="container nav-container">
-        <!-- Logo -->
-        <div class="logo">
-            <h2>Achievers<span>Mindset</span></h2>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <!-- Logo -->
+            <div class="logo">
+                <h2>Achievers<span>Mindset</span></h2>
+            </div>
+
+            <!-- Hamburger button -->
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Desktop Navigation Links -->
+            <ul class="nav-links" id="navLinksDesktop">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Programs</a></li>
+                <li><a href="blog/">Blog</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Events</a></li>
+                <li><a href="#" class="nav-btn">Contact</a></li>
+            </ul>
         </div>
+    </nav>
 
-        <!-- Hamburger button -->
-        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu">
-            <i class="fas fa-bars"></i>
-        </button>
-
-        <!-- Desktop Navigation Links -->
-        <ul class="nav-links" id="navLinksDesktop">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Programs</a></li>
-            <li><a href="blog/">Blog</a></li>
-            <li><a href="#">Gallery</a></li>
-            <li><a href="#">Events</a></li>
-            <li><a href="#" class="nav-btn">Contact</a></li>
-        </ul>
-    </div>
-</nav>
-
-<!-- Mobile Menu Overlay & Drawer -->
-<div class="drawer-overlay" id="drawerOverlay"></div>
-<div class="drawer-menu" id="drawerMenu">
-    <div class="drawer-header">
-        <!-- Actual Logo inserted here, replacing the circle "A" -->
-        <div class="logo">
-            <h2>Achievers<span>Mindset</span></h2>
+    <!-- Mobile Menu Overlay & Drawer -->
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <div class="drawer-menu" id="drawerMenu">
+        <div class="drawer-header">
+            <div class="logo">
+                <h2>Achievers<span>Mindset</span></h2>
+            </div>
+            <button class="drawer-close" id="drawerCloseBtn" aria-label="Close navigation menu">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
-        <button class="drawer-close" id="drawerCloseBtn" aria-label="Close navigation menu">
-            <i class="fas fa-times"></i>
-        </button>
+        <div class="drawer-body">
+            <ul class="drawer-links">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Programs</a></li>
+                <li><a href="#">Events</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li class="drawer-btn-item"><a href="#" class="drawer-btn-link">Contact Us</a></li>
+            </ul>
+        </div>
     </div>
-    
-    <div class="drawer-body">
-        <ul class="drawer-links">
-            <li><a href="#" class="active">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Programs</a></li>
-            <li><a href="#">Events</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Gallery</a></li>
-            <!-- Contact Us now moved into the list -->
-            <li class="drawer-btn-item"><a href="#" class="drawer-btn-link">Contact Us</a></li>
-        </ul>
-    </div>
-</div>
 
-<!-- Page Header -->
-<div class="page-header">
-    <div class="container">
-        <h1>Get in Touch</h1>
-        <p>We'd love to hear from you — whether you're a student, parent, school leader, or partner. Reach out and let's empower youth together.</p>
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Get in Touch</h1>
+            <p>We'd love to hear from you — whether you're a student, parent, school leader, or partner. Reach out and let's empower youth together.</p>
+        </div>
     </div>
-</div>
 
-<!-- Contact Section -->
-<section style="padding-top: 40px;">
-    <div class="container">
-        <div class="contact-grid">
-            <!-- Left Column: Contact Info -->
-            <div>
-                <div class="contact-info-card">
-                    <h3 style="color: var(--red); margin-bottom: 24px;">Contact Information</h3>
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
-                        <div class="info-text">
-                            <h4>Call Us</h4>
-                            <a href="tel:+256700123456">+256 700 123 456</a><br>
-                            <a href="tel:+256782345678">+256 782 345 678</a>
+    <!-- Contact Section -->
+    <section style="padding-top: 40px;">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Left Column: Contact Info -->
+                <div>
+                    <div class="contact-info-card">
+                        <h3 style="color: var(--red); margin-bottom: 24px;">Contact Information</h3>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div class="info-text">
+                                <h4>Call Us</h4>
+                                <a href="tel:+256700123456">+256 700 123 456</a><br>
+                                <a href="tel:+256782345678">+256 782 345 678</a>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="info-text">
+                                <h4>Email Us</h4>
+                                <a href="mailto:hello@amp.ug">hello@amp.ug</a><br>
+                                <a href="mailto:partnerships@amp.ug">partnerships@amp.ug</a>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fab fa-whatsapp"></i></div>
+                            <div class="info-text">
+                                <h4>WhatsApp</h4>
+                                <a href="https://wa.me/256700123456" target="_blank">+256 700 123 456 (Chat only)</a>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="info-text">
+                                <h4>Visit Us</h4>
+                                <p>Plot 45, Kampala Road,<br>2nd Floor, Achievers Hub, Kampala, Uganda</p>
+                            </div>
+                        </div>
+                        <div class="social-links">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                         </div>
                     </div>
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fas fa-envelope"></i></div>
-                        <div class="info-text">
-                            <h4>Email Us</h4>
-                            <a href="mailto:hello@amp.ug">hello@amp.ug</a><br>
-                            <a href="mailto:partnerships@amp.ug">partnerships@amp.ug</a>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fab fa-whatsapp"></i></div>
-                        <div class="info-text">
-                            <h4>WhatsApp</h4>
-                            <a href="https://wa.me/256700123456" target="_blank">+256 700 123 456 (Chat only)</a>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <div class="info-text">
-                            <h4>Visit Us</h4>
-                            <p>Plot 45, Kampala Road,<br>2nd Floor, Achievers Hub, Kampala, Uganda</p>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.746391140888!2d32.582619!3d0.313611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbb5b2f6f2b5f%3A0x9e7b5c5c5c5c5c5c!2sKampala%20Road%2C%20Kampala!5e0!3m2!1sen!2sug!4v1700000000000!5m2!1sen!2sug"
+                                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                                title="Our location on Google Maps"></iframe>
                     </div>
                 </div>
-                <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.746391140888!2d32.582619!3d0.313611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbb5b2f6f2b5f%3A0x9e7b5c5c5c5c5c5c!2sKampala%20Road%2C%20Kampala!5e0!3m2!1sen!2sug!4v1700000000000!5m2!1sen!2sug"
-                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                            title="Our location on Google Maps"></iframe>
+
+                <!-- Right Column: Contact Form -->
+                <div class="contact-form-card">
+                    <h3 style="color: var(--red); margin-bottom: 24px;">Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Your Full Name *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Email Address *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" placeholder="Phone Number (optional)">
+                        </div>
+                        <div class="form-group">
+                            <select id="subject">
+                                <option value="General Inquiry">General Inquiry</option>
+                                <option value="School Partnership">School Partnership</option>
+                                <option value="Invite AMP to School">Invite AMP to School</option>
+                                <option value="Mentorship/Volunteer">Mentorship/Volunteer</option>
+                                <option value="Sponsorship/Donation">Sponsorship/Donation</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" placeholder="Your Message *" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width:100%;">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                        <p style="font-size:0.85rem; margin-top:16px; text-align:center; color:var(--stone);">
+                            We'll get back to you within 24 hours.
+                        </p>
+                    </form>
                 </div>
             </div>
-
-            <!-- Right Column: Contact Form -->
-            <div class="contact-form-card">
-                <h3 style="color: var(--red); margin-bottom: 24px;">Send Us a Message</h3>
-                <form id="contactForm">
-                    <div class="form-group">
-                        <input type="text" id="name" placeholder="Your Full Name *" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" placeholder="Email Address *" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" id="phone" placeholder="Phone Number (optional)">
-                    </div>
-                    <div class="form-group">
-                        <select id="subject">
-                            <option value="General Inquiry">General Inquiry</option>
-                            <option value="School Partnership">School Partnership</option>
-                            <option value="Invite AMP to School">Invite AMP to School</option>
-                            <option value="Mentorship/Volunteer">Mentorship/Volunteer</option>
-                            <option value="Sponsorship/Donation">Sponsorship/Donation</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" placeholder="Your Message *" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width:100%;">
-                        <i class="fas fa-paper-plane"></i> Send Message
-                    </button>
-                    <p style="font-size:0.85rem; margin-top:16px; text-align:center; color:var(--stone);">
-                        We'll get back to you within 24 hours.
-                    </p>
-                </form>
-            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>Achievers Mindset</h4>
-                <p>Empowering Uganda's youth with life skills, mentorship & mindset training.</p>
-                <div class="social-icons">
-                    <i class="fab fa-facebook"></i>
-                    <i class="fab fa-instagram"></i>
-                    <i class="fab fa-twitter"></i>
-                    <i class="fab fa-linkedin"></i>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Achievers Mindset</h4>
+                    <p>Empowering Uganda's youth with life skills, mentorship & mindset training.</p>
+                    <div class="social-icons">
+                        <i class="fab fa-facebook"></i>
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="#">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Programs</a>
+                    <a href="#">Gallery</a>
+                    <a href="#">Events</a>
+                    <a href="#">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <a href="tel:+256700123456"><i class="fas fa-phone-alt"></i> +256 700 123456</a>
+                    <a href="mailto:hello@amp.ug"><i class="fas fa-envelope"></i> hello@amp.ug</a>
+                    <a href="https://wa.me/256700123456" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Chat</a>
+                    <a href="#"><i class="fas fa-map-marker-alt"></i> Kampala, Uganda</a>
                 </div>
             </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <a href="#">Home</a>
-                <a href="#">About</a>
-                <a href="#">Programs</a>
-                <a href="#">Gallery</a>
-                <a href="#">Events</a>
-                <a href="#">Contact</a>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <a href="tel:+256700123456"><i class="fas fa-phone-alt"></i> +256 700 123456</a>
-                <a href="mailto:hello@amp.ug"><i class="fas fa-envelope"></i> hello@amp.ug</a>
-                <a href="https://wa.me/256700123456" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Chat</a>
-                <a href="#"><i class="fas fa-map-marker-alt"></i> Kampala, Uganda</a>
+            <div class="copyright">
+                <p>© 2025 Achievers Mindset Program — Building Confident & Purpose-Driven Leaders</p>
             </div>
         </div>
-        <div class="copyright">
-            <p>© 2025 Achievers Mindset Program — Building Confident & Purpose-Driven Leaders</p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
-<script>
-    // ---------- Mobile Drawer Menu Toggle ----------
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const drawerMenu = document.getElementById('drawerMenu');
-    const drawerOverlay = document.getElementById('drawerOverlay');
-    const drawerCloseBtn = document.getElementById('drawerCloseBtn');
-    const hamburgerIcon = hamburgerBtn.querySelector('i');
+    <script>
+        // =========================================================================
+        // CUSTOM CURSOR SYSTEM
+        // =========================================================================
+        (function() {
+            // Check for touch device - disable custom cursor on touch screens
+            const isTouchDevice = ('ontouchstart' in window ||
+                navigator.maxTouchPoints > 0 ||
+                window.matchMedia('(pointer: coarse)').matches);
 
-    function openDrawer() {
-        drawerMenu.classList.add('active');
-        drawerOverlay.classList.add('active');
-        hamburgerIcon.classList.remove('fa-bars');
-        hamburgerIcon.classList.add('fa-times');
-        document.body.style.overflow = 'hidden'; // Prevent scrolling behind
-    }
+            // Check for reduced motion preference
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    function closeDrawer() {
-        drawerMenu.classList.remove('active');
-        drawerOverlay.classList.remove('active');
-        hamburgerIcon.classList.remove('fa-times');
-        hamburgerIcon.classList.add('fa-bars');
-        document.body.style.overflow = ''; // Restore scrolling
-    }
+            if (isTouchDevice || prefersReducedMotion) {
+                // Remove custom cursor class, let default system cursor show
+                document.body.classList.remove('custom-cursor-active');
+                return;
+            }
 
-    hamburgerBtn.addEventListener('click', function() {
-        if (drawerMenu.classList.contains('active')) {
-            closeDrawer();
-        } else {
-            openDrawer();
+            // Ensure body has the custom cursor class
+            document.body.classList.add('custom-cursor-active');
+
+            // =========================================================================
+            // DOM ELEMENT CREATION
+            // =========================================================================
+            function createCursorElement(tag, className, parent) {
+                const el = document.createElement(tag);
+                el.className = className;
+                el.setAttribute('aria-hidden', 'true');
+                if (parent) parent.appendChild(el);
+                return el;
+            }
+
+            // Create main cursor dot
+            const cursorDot = createCursorElement('div', 'cursor-dot', document.body);
+
+            // Create outer ring
+            const cursorRing = createCursorElement('div', 'cursor-ring', document.body);
+
+            // Create trail echo rings
+            const trailRings = [];
+            for (let i = 1; i <= 3; i++) {
+                const trail = createCursorElement('div', `cursor-trail trail-${i}`, document.body);
+                trailRings.push(trail);
+            }
+
+            // =========================================================================
+            // STATE VARIABLES
+            // =========================================================================
+            let mouseX = window.innerWidth / 2;
+            let mouseY = window.innerHeight / 2;
+            let targetMouseX = mouseX;
+            let targetMouseY = mouseY;
+
+            // Display positions (for magnetic effect on dot)
+            let displayDotX = mouseX;
+            let displayDotY = mouseY;
+
+            // Ring position (spring-follows mouse)
+            let ringX = mouseX;
+            let ringY = mouseY;
+
+            // Ring size interpolation
+            let currentRingSize = 38;
+            let targetRingSize = 38;
+
+            // Trail positions (each follows with progressively more lag)
+            const trailPositions = [
+                { x: mouseX, y: mouseY },
+                { x: mouseX, y: mouseY },
+                { x: mouseX, y: mouseY }
+            ];
+
+            // State flags
+            let isHoveringInteractive = false;
+            let isHoveringTextInput = false;
+            let isHoveringSocial = false;
+            let isClicking = false;
+            let magneticTarget = null; // The element currently exerting magnetic pull
+            const MAGNETIC_STRENGTH = 0.22; // How strongly the dot is pulled toward button centers
+
+            // =========================================================================
+            // HELPER: CHECK WHAT ELEMENT IS UNDER THE CURSOR
+            // =========================================================================
+            function getElementUnderCursor(ex, ey) {
+                // Temporarily hide cursor elements so they don't get in the way
+                cursorDot.style.display = 'none';
+                cursorRing.style.display = 'none';
+                trailRings.forEach(t => t.style.display = 'none');
+
+                const el = document.elementFromPoint(ex, ey);
+
+                // Restore cursor elements
+                cursorDot.style.display = '';
+                cursorRing.style.display = '';
+                trailRings.forEach(t => t.style.display = '');
+
+                return el;
+            }
+
+            function isInteractiveElement(el) {
+                if (!el) return false;
+                // Check tag name
+                const interactiveTags = ['A', 'BUTTON', 'SELECT'];
+                if (interactiveTags.includes(el.tagName)) return true;
+                // Check for clickable classes/roles
+                if (el.closest('.btn, .nav-btn, .drawer-btn-link, .whatsapp-float, .hamburger, .drawer-close, .social-links a, .social-icons i, .footer-col a')) return true;
+                // Check if it's inside an interactive container
+                if (el.closest('a, button, [role="button"], [onclick]')) return true;
+                // Check if it has cursor pointer style
+                const style = window.getComputedStyle(el);
+                if (style.cursor === 'pointer') return true;
+                return false;
+            }
+
+            function isTextInputElement(el) {
+                if (!el) return false;
+                const textTags = ['INPUT', 'TEXTAREA'];
+                if (textTags.includes(el.tagName)) return true;
+                if (el.closest('input, textarea, [contenteditable="true"]')) return true;
+                return false;
+            }
+
+            function isSocialIconElement(el) {
+                if (!el) return false;
+                if (el.closest('.social-links a, .social-icons i, .social-icons')) {
+                    // More specific: check if it's actually a social icon link/icon
+                    const socialContainer = el.closest('.social-links a, .social-icons');
+                    if (socialContainer) return true;
+                }
+                return false;
+            }
+
+            function findMagneticElement(el) {
+                if (!el) return null;
+                // Check for buttons and links that should have magnetic pull
+                const magneticEl = el.closest('.btn, .nav-btn, .drawer-btn-link, .whatsapp-float, button, a[href], .social-links a');
+                if (magneticEl && isInteractiveElement(magneticEl)) {
+                    return magneticEl;
+                }
+                return null;
+            }
+
+            // =========================================================================
+            // UPDATE CURSOR STATE BASED ON ELEMENT UNDER CURSOR
+            // =========================================================================
+            function updateCursorState(ex, ey) {
+                const elUnder = getElementUnderCursor(ex, ey);
+
+                const wasInteractive = isHoveringInteractive;
+                const wasTextInput = isHoveringTextInput;
+                const wasSocial = isHoveringSocial;
+
+                isHoveringInteractive = isInteractiveElement(elUnder);
+                isHoveringTextInput = isTextInputElement(elUnder);
+                isHoveringSocial = isSocialIconElement(elUnder);
+
+                // Find magnetic element
+                const newMagnetic = findMagneticElement(elUnder);
+                magneticTarget = newMagnetic;
+
+                // Update target ring size
+                if (isHoveringInteractive || isHoveringSocial) {
+                    targetRingSize = 56;
+                } else if (isHoveringTextInput) {
+                    targetRingSize = 24;
+                } else {
+                    targetRingSize = 38;
+                }
+
+                // Update CSS classes on dot and ring
+                // Interactive hover
+                if (isHoveringInteractive !== wasInteractive) {
+                    if (isHoveringInteractive) {
+                        cursorDot.classList.add('hover-interactive');
+                        cursorRing.classList.add('hover-interactive');
+                    } else {
+                        cursorDot.classList.remove('hover-interactive');
+                        cursorRing.classList.remove('hover-interactive');
+                    }
+                }
+
+                // Text input hover
+                if (isHoveringTextInput !== wasTextInput) {
+                    if (isHoveringTextInput) {
+                        cursorDot.classList.add('hover-text');
+                        cursorRing.classList.add('hover-text');
+                    } else {
+                        cursorDot.classList.remove('hover-text');
+                        cursorRing.classList.remove('hover-text');
+                    }
+                }
+
+                // Social icon hover (overrides interactive styling partially)
+                if (isHoveringSocial !== wasSocial) {
+                    if (isHoveringSocial) {
+                        cursorDot.classList.add('hover-social');
+                        cursorRing.classList.add('hover-social');
+                    } else {
+                        cursorDot.classList.remove('hover-social');
+                        cursorRing.classList.remove('hover-social');
+                    }
+                }
+            }
+
+            // =========================================================================
+            // MOUSE EVENT HANDLERS
+            // =========================================================================
+            function onMouseMove(e) {
+                targetMouseX = e.clientX;
+                targetMouseY = e.clientY;
+
+                // Update cursor state (throttled for performance)
+                updateCursorState(e.clientX, e.clientY);
+            }
+
+            function onMouseDown(e) {
+                isClicking = true;
+                cursorDot.classList.add('clicking');
+                cursorRing.classList.add('clicking');
+
+                // Spawn click ripple at mouse position
+                spawnRipple(e.clientX, e.clientY);
+            }
+
+            function onMouseUp() {
+                isClicking = false;
+                cursorDot.classList.remove('clicking');
+                cursorRing.classList.remove('clicking');
+            }
+
+            function onMouseLeave() {
+                // Hide cursor elements when mouse leaves the window
+                cursorDot.style.opacity = '0';
+                cursorRing.style.opacity = '0';
+                trailRings.forEach(t => t.style.opacity = '0');
+            }
+
+            function onMouseEnter() {
+                // Show cursor elements when mouse enters the window
+                cursorDot.style.opacity = '1';
+                cursorRing.style.opacity = '1';
+                trailRings.forEach(t => t.style.opacity = '1');
+            }
+
+            // =========================================================================
+            // CLICK RIPPLE EFFECT
+            // =========================================================================
+            function spawnRipple(x, y) {
+                const ripple = document.createElement('div');
+                ripple.className = 'cursor-ripple';
+                ripple.setAttribute('aria-hidden', 'true');
+                const size = 8;
+                ripple.style.left = (x - size / 2) + 'px';
+                ripple.style.top = (y - size / 2) + 'px';
+                ripple.style.width = size + 'px';
+                ripple.style.height = size + 'px';
+                document.body.appendChild(ripple);
+
+                // Remove after animation completes
+                ripple.addEventListener('animationend', function() {
+                    if (ripple.parentNode) {
+                        ripple.parentNode.removeChild(ripple);
+                    }
+                });
+
+                // Fallback removal after 600ms
+                setTimeout(function() {
+                    if (ripple.parentNode) {
+                        ripple.parentNode.removeChild(ripple);
+                    }
+                }, 600);
+            }
+
+            // =========================================================================
+            // ANIMATION LOOP (requestAnimationFrame)
+            // =========================================================================
+            const SPRING_RING = 0.18; // Ring follows mouse with this lerp factor
+            const SPRING_TRAIL_1 = 0.09; // Trail 1 follows ring
+            const SPRING_TRAIL_2 = 0.055; // Trail 2 follows trail 1
+            const SPRING_TRAIL_3 = 0.035; // Trail 3 follows trail 2
+            const SIZE_LERP = 0.22; // Ring size interpolation speed
+
+            function animate() {
+                // Update mouse position (instant for the dot target)
+                mouseX = targetMouseX;
+                mouseY = targetMouseY;
+
+                // --- Magnetic effect on dot ---
+                let magPullX = 0;
+                let magPullY = 0;
+                if (magneticTarget && !isClicking) {
+                    const rect = magneticTarget.getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2;
+                    const centerY = rect.top + rect.height / 2;
+                    // Pull the dot toward the element center
+                    magPullX = (centerX - mouseX) * MAGNETIC_STRENGTH;
+                    magPullY = (centerY - mouseY) * MAGNETIC_STRENGTH;
+                }
+                displayDotX = mouseX + magPullX;
+                displayDotY = mouseY + magPullY;
+
+                // --- Spring-update ring position ---
+                ringX += (mouseX - ringX) * SPRING_RING;
+                ringY += (mouseY - ringY) * SPRING_RING;
+
+                // --- Spring-update trail positions (cascade) ---
+                trailPositions[0].x += (ringX - trailPositions[0].x) * SPRING_TRAIL_1;
+                trailPositions[0].y += (ringY - trailPositions[0].y) * SPRING_TRAIL_1;
+
+                trailPositions[1].x += (trailPositions[0].x - trailPositions[1].x) * SPRING_TRAIL_2;
+                trailPositions[1].y += (trailPositions[0].y - trailPositions[1].y) * SPRING_TRAIL_2;
+
+                trailPositions[2].x += (trailPositions[1].x - trailPositions[2].x) * SPRING_TRAIL_3;
+                trailPositions[2].y += (trailPositions[1].y - trailPositions[2].y) * SPRING_TRAIL_3;
+
+                // --- Interpolate ring size ---
+                currentRingSize += (targetRingSize - currentRingSize) * SIZE_LERP;
+
+                // --- Apply positions to DOM elements ---
+                // Cursor dot (centered)
+                const dotHalf = cursorDot.offsetWidth / 2;
+                cursorDot.style.transform = `translate3d(${displayDotX - dotHalf}px, ${displayDotY - dotHalf}px, 0)`;
+
+                // Cursor ring (centered, with dynamic size)
+                const ringHalf = currentRingSize / 2;
+                cursorRing.style.width = currentRingSize + 'px';
+                cursorRing.style.height = currentRingSize + 'px';
+                cursorRing.style.transform = `translate3d(${ringX - ringHalf}px, ${ringY - ringHalf}px, 0)`;
+
+                // Trail rings
+                for (let i = 0; i < trailRings.length; i++) {
+                    const trail = trailRings[i];
+                    const pos = trailPositions[i];
+                    const trailSize = trail.offsetWidth;
+                    const trailHalf = trailSize / 2;
+                    trail.style.transform = `translate3d(${pos.x - trailHalf}px, ${pos.y - trailHalf}px, 0)`;
+                }
+
+                requestAnimationFrame(animate);
+            }
+
+            // =========================================================================
+            // EVENT LISTENERS
+            // =========================================================================
+            document.addEventListener('mousemove', onMouseMove, { passive: true });
+            document.addEventListener('mousedown', onMouseDown, { passive: true });
+            document.addEventListener('mouseup', onMouseUp, { passive: true });
+            document.addEventListener('mouseleave', onMouseLeave);
+            document.addEventListener('mouseenter', onMouseEnter);
+
+            // Handle window resize - keep cursor in bounds
+            window.addEventListener('resize', function() {
+                targetMouseX = Math.min(targetMouseX, window.innerWidth);
+                targetMouseY = Math.min(targetMouseY, window.innerHeight);
+            });
+
+            // =========================================================================
+            // INITIALIZE POSITIONS & START ANIMATION
+            // =========================================================================
+            // Set initial positions to center of screen
+            ringX = mouseX;
+            ringY = mouseY;
+            displayDotX = mouseX;
+            displayDotY = mouseY;
+            trailPositions[0].x = mouseX;
+            trailPositions[0].y = mouseY;
+            trailPositions[1].x = mouseX;
+            trailPositions[1].y = mouseY;
+            trailPositions[2].x = mouseX;
+            trailPositions[2].y = mouseY;
+            currentRingSize = targetRingSize;
+
+            // Apply initial positions immediately (no transform yet, set via JS)
+            const dotHalfInit = cursorDot.offsetWidth / 2;
+            cursorDot.style.transform = `translate3d(${displayDotX - dotHalfInit}px, ${displayDotY - dotHalfInit}px, 0)`;
+            const ringHalfInit = currentRingSize / 2;
+            cursorRing.style.width = currentRingSize + 'px';
+            cursorRing.style.height = currentRingSize + 'px';
+            cursorRing.style.transform = `translate3d(${ringX - ringHalfInit}px, ${ringY - ringHalfInit}px, 0)`;
+            trailRings.forEach((trail, i) => {
+                const sz = trail.offsetWidth;
+                const h = sz / 2;
+                trail.style.transform = `translate3d(${mouseX - h}px, ${mouseY - h}px, 0)`;
+            });
+
+            // Start the animation loop
+            requestAnimationFrame(animate);
+
+            console.log('🎯 Custom cursor activated! Hover over buttons, links, inputs, and social icons to see it transform.');
+        })();
+
+        // =========================================================================
+        // EXISTING SITE SCRIPTS (Mobile Drawer + Contact Form)
+        // =========================================================================
+
+        // ---------- Mobile Drawer Menu Toggle ----------
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const drawerMenu = document.getElementById('drawerMenu');
+        const drawerOverlay = document.getElementById('drawerOverlay');
+        const drawerCloseBtn = document.getElementById('drawerCloseBtn');
+        const hamburgerIcon = hamburgerBtn.querySelector('i');
+
+        function openDrawer() {
+            drawerMenu.classList.add('active');
+            drawerOverlay.classList.add('active');
+            hamburgerIcon.classList.remove('fa-bars');
+            hamburgerIcon.classList.add('fa-times');
+            document.body.style.overflow = 'hidden';
         }
-    });
 
-    drawerCloseBtn.addEventListener('click', closeDrawer);
-    drawerOverlay.addEventListener('click', closeDrawer);
+        function closeDrawer() {
+            drawerMenu.classList.remove('active');
+            drawerOverlay.classList.remove('active');
+            hamburgerIcon.classList.remove('fa-times');
+            hamburgerIcon.classList.add('fa-bars');
+            document.body.style.overflow = '';
+        }
 
-    // Close on Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && drawerMenu.classList.contains('active')) {
-            closeDrawer();
-        }
-    });
+        hamburgerBtn.addEventListener('click', function() {
+            if (drawerMenu.classList.contains('active')) {
+                closeDrawer();
+            } else {
+                openDrawer();
+            }
+        });
 
-    // ---------- Contact Form Handling (demo) ----------
-    const contactForm = document.getElementById('contactForm');
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const message = document.getElementById('message').value.trim();
-        if (!name || !email || !message) {
-            alert('Please fill in all required fields (*)');
-            return;
-        }
-        if (!email.includes('@') || !email.includes('.')) {
-            alert('Please enter a valid email address.');
-            return;
-        }
-        alert(`Thank you ${name}! Your message has been sent. We'll reply via ${email} within 24 hours.`);
-        contactForm.reset();
-    });
-</script>
+        drawerCloseBtn.addEventListener('click', closeDrawer);
+        drawerOverlay.addEventListener('click', closeDrawer);
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && drawerMenu.classList.contains('active')) {
+                closeDrawer();
+            }
+        });
+
+        // ---------- Contact Form Handling (demo) ----------
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            if (!name || !email || !message) {
+                alert('Please fill in all required fields (*)');
+                return;
+            }
+            if (!email.includes('@') || !email.includes('.')) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            alert(
+                `Thank you ${name}! Your message has been sent. We'll reply via ${email} within 24 hours.`);
+            contactForm.reset();
+        });
+    </script>
 </body>
 </html>

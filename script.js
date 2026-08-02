@@ -253,7 +253,7 @@ function renderHomeUpcomingEvents(events) {
             return [
                 '<div class="event-card">',
                 '  <div class="event-info">',
-                `    <span class="event-date"><i class="far fa-calendar-alt"></i> ${formatEventDate(eventItem.date)}</span>`,
+                `    <span class="event-date1"><i class="far fa-calendar-alt"></i> ${formatEventDate(eventItem.date)}</span>`,
                 `    <h3>${eventItem.name}</h3>`,
                 `    <p>${eventItem.location}</p>`,
                 `    <p>${eventItem.description}</p>`,
