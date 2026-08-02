@@ -322,7 +322,7 @@ footer {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
     gap: 32px;
 }
 
@@ -1605,6 +1605,11 @@ footer {
     transform: scale(1.08);
 } */
 
+/* ==========================================================================
+   RESPONSIVE CSS (CSS Mobile Breakpoints) 
+   ========================================================================== */
+
+
 @media (max-width: 810px) {
     .hamburger {
         display: inline-flex;
@@ -1653,6 +1658,11 @@ footer {
     .event-content h3 {
         font-size: 24px;
     }
+
+    .three-column,.four-column {
+        grid-template-columns: 1fr 1fr;
+    }
+
 }
 
 @media (max-width: 980px) {
@@ -1711,5 +1721,25 @@ footer {
 
     .blog-page .hero-image-wrap {
         min-height: 200px;
+    }
+
+    .two-column {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .three-column,.four-column {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        justify-items: center;
+    }
+
+    .footer-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }

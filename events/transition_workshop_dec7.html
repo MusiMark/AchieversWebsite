@@ -349,60 +349,6 @@
             flex-shrink: 0;
         }
 
-        /* ---- footer (preserved) ---- */
-        footer {
-            background: var(--navy);
-            color: #ddd;
-            padding: 50px 0 30px;
-            margin-top: 20px;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 40px;
-        }
-        @media (max-width: 700px) {
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-        .footer-col h4 {
-            color: #fff;
-            font-weight: 600;
-            margin-bottom: 14px;
-            font-size: 1rem;
-        }
-        .footer-col a {
-            display: block;
-            color: #bbb;
-            text-decoration: none;
-            padding: 4px 0;
-            font-weight: 400;
-            font-size: 0.9rem;
-        }
-        .footer-col a:hover {
-            color: #fff;
-        }
-        .social-icons {
-            display: flex;
-            gap: 14px;
-            font-size: 1.4rem;
-            color: #bbb;
-        }
-        .social-icons i:hover {
-            color: #fff;
-            cursor: pointer;
-        }
-        .copyright {
-            text-align: center;
-            border-top: 1px solid #444;
-            padding-top: 30px;
-            margin-top: 30px;
-            font-weight: 400;
-            font-size: 0.85rem;
-            color: #888;
-        }
-
         /* ---- fade-up (simple) ---- */
         .fade-up {
             animation: fadeUp 0.6s ease forwards;
@@ -513,6 +459,9 @@
             <div class="card">
                 <h3>Agenda</h3>
                 <div class="timeline-item">
+                    <span class="timeline-desc">Unavailable</span>
+                </div>
+                <!-- <div class="timeline-item">
                     <span class="timeline-time">9:00 AM</span>
                     <span class="timeline-desc">Registration &amp; Breakfast</span>
                 </div>
@@ -535,7 +484,7 @@
                 <div class="timeline-item">
                     <span class="timeline-time">4:00 PM</span>
                     <span class="timeline-desc">Closing &amp; Certificates</span>
-                </div>
+                </div> -->
             </div>
         </div>
 
@@ -546,11 +495,11 @@
                 <h4>Event Details</h4>
                 <div class="detail-row">
                     <i class="fas fa-calendar-alt"></i>
-                    <span><span class="label">Date:</span> <span class="value">Dec 7th – 8th, 2026</span></span>
+                    <span><span class="label">Date:</span> <span class="value">Dec 7th - 8th, 2026</span></span>
                 </div>
                 <div class="detail-row">
                     <i class="fas fa-clock"></i>
-                    <span><span class="label">Time:</span> <span class="value">9 AM – 4 PM daily</span></span>
+                    <span><span class="label">Time:</span> <span class="value">9 AM - 4 PM daily</span></span>
                 </div>
                 <div class="detail-row">
                     <i class="fas fa-map-marker-alt"></i>
@@ -650,7 +599,7 @@
                     </div>
                 </div>
             </div>
-            <div class="copyright">
+            <div class="copyright" style="text-align:center; border-top:1px solid #444; padding-top:30px; margin-top:30px;">
                 <p>&copy; 2026 Achievers Uganda</p>
             </div>
         </div>
