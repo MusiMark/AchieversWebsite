@@ -1,3 +1,9 @@
+/**
+ * Build drawer navigation links by cloning the desktop nav links.
+ * Converts `.nav-btn` to `.drawer-btn-link` for mobile styling.
+ * @param {HTMLElement} desktopLinks - The <ul> containing desktop nav links
+ * @returns {HTMLElement} A <ul> ready for the drawer menu
+ */
 function buildDrawerLinks(desktopLinks) {
     const drawerList = document.createElement('ul');
     drawerList.className = 'drawer-links';
@@ -6,6 +12,7 @@ function buildDrawerLinks(desktopLinks) {
         const listItem = document.createElement('li');
         const drawerLink = link.cloneNode(true);
 
+        // Replace desktop button class with drawer-specific class
         if (drawerLink.classList.contains('nav-btn')) {
             drawerLink.classList.remove('nav-btn');
             drawerLink.classList.add('drawer-btn-link');
@@ -18,13 +25,16 @@ function buildDrawerLinks(desktopLinks) {
     return drawerList;
 }
 
+/**
+ * Initialize mobile navigation: hamburger button, drawer overlay,
+ * drawer menu, and all open/close behavior.
+ */
 function initMobileNavigation() {
     const navContainer = document.querySelector('.nav-container');
     const desktopLinks = document.querySelector('.nav-links');
-    if (!navContainer || !desktopLinks) {
-        return;
-    }
+    if (!navContainer || !desktopLinks) return;
 
+    // Create hamburger button if it doesn't exist
     let hamburgerBtn = document.getElementById('hamburgerBtn');
     if (!hamburgerBtn) {
         hamburgerBtn = document.createElement('button');
@@ -36,9 +46,8 @@ function initMobileNavigation() {
         navContainer.appendChild(hamburgerBtn);
     }
 
+    // Create drawer overlay if it doesn't exist
     let drawerOverlay = document.getElementById('drawerOverlay');
-    let drawerMenu = document.getElementById('drawerMenu');
-
     if (!drawerOverlay) {
         drawerOverlay = document.createElement('div');
         drawerOverlay.id = 'drawerOverlay';
@@ -46,18 +55,20 @@ function initMobileNavigation() {
         document.body.appendChild(drawerOverlay);
     }
 
+    // Create drawer menu if it doesn't exist
+    let drawerMenu = document.getElementById('drawerMenu');
     if (!drawerMenu) {
         drawerMenu = document.createElement('aside');
         drawerMenu.id = 'drawerMenu';
         drawerMenu.className = 'drawer-menu';
-        drawerMenu.innerHTML = [
-            '<div class="drawer-header">',
-            '  <div class="drawer-brand">Achievers Uganda</div>',
-            '  <button type="button" class="drawer-close" id="drawerCloseBtn" aria-label="Close navigation menu">',
-            '    <i class="fas fa-times" aria-hidden="true"></i>',
-            '  </button>',
-            '</div>'
-        ].join('');
+        drawerMenu.innerHTML = `
+            <div class="drawer-header">
+                <div class="drawer-brand">Achievers Uganda</div>
+                <button type="button" class="drawer-close" id="drawerCloseBtn" aria-label="Close navigation menu">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+        `;
         drawerMenu.appendChild(buildDrawerLinks(desktopLinks));
         document.body.appendChild(drawerMenu);
     }
@@ -81,21 +92,24 @@ function initMobileNavigation() {
         document.body.style.overflow = '';
     }
 
+    // Event listeners
     hamburgerBtn.addEventListener('click', () => {
         if (drawerMenu.classList.contains('active')) {
             closeDrawer();
-            return;
+        } else {
+            openDrawer();
         }
-        openDrawer();
     });
 
     drawerCloseBtn?.addEventListener('click', closeDrawer);
     drawerOverlay.addEventListener('click', closeDrawer);
 
+    // Close drawer when any drawer link is clicked
     drawerMenu.querySelectorAll('a').forEach((drawerLink) => {
         drawerLink.addEventListener('click', closeDrawer);
     });
 
+    // Close on Escape key
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' && drawerMenu.classList.contains('active')) {
             closeDrawer();
@@ -103,6 +117,10 @@ function initMobileNavigation() {
     });
 }
 
+/**
+ * Initialize the hero slider with auto-advance, navigation buttons,
+ * dot indicators, and dynamic title/description text.
+ */
 function initHeroSlider() {
     const slides = document.querySelectorAll('.hero-slider .slide');
     const prevBtn = document.querySelector('.prev-slide');
@@ -111,24 +129,19 @@ function initHeroSlider() {
     const slideTitle = document.getElementById('slideTitle');
     const slideDesc = document.getElementById('slideDesc');
 
-    if (!slides.length || !prevBtn || !nextBtn || !dotsContainer || !slideTitle || !slideDesc) {
-        return;
-    }
+    if (!slides.length || !prevBtn || !nextBtn || !dotsContainer || !slideTitle || !slideDesc) return;
 
-    const slideData = [
-        {
-            title: "Empowering Uganda's Young Generation with Life Skills, Mindset & Purpose",
-            desc: 'Building confident, emotionally intelligent leaders who thrive in school, work, and life.'
-        },
-        {
-            title: 'Unlock Your Potential with AMP',
-            desc: 'Learn emotional intelligence, goal setting, and leadership - skills that last a lifetime.'
-        },
-        {
-            title: 'Join a Movement of Young Achievers',
-            desc: 'Mentorship, workshops, and community support for youth aged 10-25 across Uganda.'
-        }
-    ];
+    // Content for each slide
+    const slideData = [{
+        title: "Empowering Uganda's Young Generation with Life Skills, Mindset & Purpose",
+        desc: 'Building confident, emotionally intelligent leaders who thrive in school, work, and life.'
+    }, {
+        title: 'Unlock Your Potential with AMP',
+        desc: 'Learn emotional intelligence, goal setting, and leadership - skills that last a lifetime.'
+    }, {
+        title: 'Join a Movement of Young Achievers',
+        desc: 'Mentorship, workshops, and community support for youth aged 10-25 across Uganda.'
+    }];
 
     let currentSlide = 0;
     let autoInterval;
@@ -151,9 +164,7 @@ function initHeroSlider() {
         slides.forEach((_, idx) => {
             const dot = document.createElement('div');
             dot.classList.add('dot');
-            if (idx === currentSlide) {
-                dot.classList.add('active');
-            }
+            if (idx === currentSlide) dot.classList.add('active');
             dot.addEventListener('click', () => {
                 clearInterval(autoInterval);
                 currentSlide = idx;
@@ -175,9 +186,7 @@ function initHeroSlider() {
     }
 
     function startAutoSlide() {
-        if (autoInterval) {
-            clearInterval(autoInterval);
-        }
+        if (autoInterval) clearInterval(autoInterval);
         autoInterval = setInterval(nextSlide, 6000);
     }
 
@@ -198,126 +207,136 @@ function initHeroSlider() {
     startAutoSlide();
 }
 
+/**
+ * Format an ISO date string (YYYY-MM-DD) into an object
+ * with `day` (number) and `month` (short string like "Aug").
+ * @param {string} dateString - e.g. "2026-08-15"
+ * @returns {{ day: number, month: string }}
+ */
+function formatEventDate(dateString) {
+    const eventDate = new Date(`${dateString}T00:00:00`);
+    const day = eventDate.getDate();
+    const month = eventDate.toLocaleDateString('en-US', { month: 'short' });
+    return { day, month };
+}
+
+/**
+ * Resolve an event details URL. Accepts absolute URLs, root-relative
+ * paths, or bare filenames (which get prefixed with `events/`).
+ * @param {string} rawUrl
+ * @returns {string}
+ */
+function resolveDetailsUrl(rawUrl) {
+    if (!rawUrl) return '#';
+    if (rawUrl.startsWith('http://') || rawUrl.startsWith('https://') || rawUrl.startsWith('/')) {
+        return rawUrl;
+    }
+    return `events/${rawUrl}`;
+}
+
+/**
+ * Bind click handlers to all "Contact for details" buttons
+ * so they show an alert with site contact info.
+ */
 function bindEventContactButtons() {
     document.querySelectorAll('.event-contact-btn').forEach((button) => {
         button.addEventListener('click', () => {
             const contact = window.AchieversSiteData || {};
+            const whatsapp = contact.whatsappDisplay || 'WhatsApp';
+            const email = contact.emailDisplay || 'email';
             alert(
-                `For more information about this event, please reach out via WhatsApp: ${contact.whatsappDisplay || 'WhatsApp'} or email ${contact.emailDisplay || 'email'}`
+                `For more information about this event, please reach out via WhatsApp: ${whatsapp} or email ${email}`
             );
         });
     });
 }
 
-function resolveDetailsUrl(rawUrl) {
-    if (!rawUrl) {
-        return '#';
-    }
-
-    if (rawUrl.startsWith('http://') || rawUrl.startsWith('https://') || rawUrl.startsWith('/')) {
-        return rawUrl;
-    }
-
-    return `events/${rawUrl}`;
-}
-
-function formatEventDate(dateString) {
-    const eventDate = new Date(`${dateString}T00:00:00`);
-    return eventDate.toLocaleDateString('en-US', {
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric'
-    });
-}
-
+/**
+ * Render the upcoming events cards into the #homeUpcomingEvents container.
+ * @param {Array} events - Array of event objects
+ */
 function renderHomeUpcomingEvents(events) {
-    const eventsGrid = document.getElementById('homeUpcomingEvents');
-    if (!eventsGrid) {
-        return;
-    }
+    const container = document.getElementById('homeUpcomingEvents');
+    if (!container) return;
 
     if (!events.length) {
-        eventsGrid.innerHTML = '<p>No upcoming events right now. Please check again soon.</p>';
+        container.innerHTML = '<p>No upcoming events right now. Please check again soon.</p>';
         return;
     }
 
-    eventsGrid.innerHTML = events
-        .map((eventItem) => {
-            const contactButton =
-                '<button class="btn btn-outline event-contact-btn" style="margin-top: 16px; padding: 8px 20px; border-color: var(--red); color: var(--red);">Contact for details</button>';
+    container.innerHTML = events
+        .map((event) => {
+            const dateObj = formatEventDate(event.date);
 
-            const detailLink = eventItem.detailsUrl
-                ? `<a class="btn btn-primary" href="${resolveDetailsUrl(eventItem.detailsUrl)}" style="margin-top: 12px;">View details</a>`
-                : '';
+            // "Contact for details" button (always shown)
+            const contactBtn =
+                '<button class="btn btn-outline event-contact-btn" style="padding:8px 18px; font-size:0.9rem;">Contact for details</button>';
 
-            return [
-                '<div class="event-card">',
-                '  <div class="event-info">',
-                `    <span class="event-date1"><i class="far fa-calendar-alt"></i> ${formatEventDate(eventItem.date)}</span>`,
-                `    <h3>${eventItem.name}</h3>`,
-                `    <p>${eventItem.location}</p>`,
-                `    <p>${eventItem.description}</p>`,
-                `    ${contactButton}`,
-                `    ${detailLink}`,
-                '  </div>',
-                '</div>'
-            ].join('');
+            // "View details" link (only if detailsUrl exists)
+            const detailsLink = event.detailsUrl ?
+                `<a class="btn btn-primary" href="${resolveDetailsUrl(event.detailsUrl)}" style="padding:8px 18px; font-size:0.9rem;">View details</a>` :
+                '';
+
+            return `
+                <div class="home-event-card">
+                    <div class="event-date-block">
+                        <div class="date-day">${dateObj.day}</div>
+                        <div class="date-month">${dateObj.month}</div>
+                    </div>
+                    <div class="event-info-v3">
+                        <h3>${event.name}</h3>
+                        <p>${event.location} · ${event.description}</p>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:8px;">
+                        ${contactBtn}
+                        ${detailsLink}
+                    </div>
+                </div>
+            `;
         })
         .join('');
 
+    // Re-bind contact buttons after injecting new HTML
     bindEventContactButtons();
 }
 
+/**
+ * Fetch events from events.json, filter to upcoming only,
+ * sort by date ascending, and take the first 3.
+ */
 function initHomeUpcomingEvents() {
-    const eventsGrid = document.getElementById('homeUpcomingEvents');
-    if (!eventsGrid) {
-        return;
-    }
+    const container = document.getElementById('homeUpcomingEvents');
+    if (!container) return;
 
     fetch('events/events.json')
         .then((response) => {
-            if (!response.ok) {
-                throw new Error('Unable to load events feed');
-            }
+            if (!response.ok) throw new Error('Unable to load events feed');
             return response.json();
         })
         .then((events) => {
             const today = new Date();
             today.setHours(0, 0, 0, 0);
 
-            const nextEvents = events
-                .filter((eventItem) => {
-                    const eventDate = new Date(`${eventItem.date}T00:00:00`);
+            const upcoming = events
+                .filter((event) => {
+                    const eventDate = new Date(`${event.date}T00:00:00`);
                     return !Number.isNaN(eventDate.getTime()) && eventDate >= today;
                 })
                 .sort((a, b) => a.date.localeCompare(b.date))
                 .slice(0, 3);
 
-            renderHomeUpcomingEvents(nextEvents);
+            renderHomeUpcomingEvents(upcoming);
         })
         .catch(() => {
-            eventsGrid.innerHTML = '<p>Unable to load upcoming events at the moment. Please try again later.</p>';
+            container.innerHTML =
+                '<p>Unable to load upcoming events at the moment. Please try again later.</p>';
         });
 }
 
-function initInviteButton() {
-    const inviteButton = document.getElementById('inviteSchoolHeroBtn');
-    if (!inviteButton) {
-        return;
-    }
-
-    inviteButton.addEventListener('click', () => {
-        const contact = window.AchieversSiteData || {};
-        alert(
-            `Contact us on WhatsApp: ${contact.whatsappDisplay || 'WhatsApp'} or email ${contact.emailDisplay || 'email'} to invite AMP to your school. We will respond within 24 hours.`
-        );
-    });
-}
-
+// ==================== BOOTSTRAP ON DOM READY ====================
 document.addEventListener('DOMContentLoaded', () => {
     initMobileNavigation();
     initHeroSlider();
     initHomeUpcomingEvents();
-    initInviteButton();
     bindEventContactButtons();
 });

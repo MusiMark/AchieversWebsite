@@ -17,125 +17,161 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
-
-<!-- WhatsApp Float Button
-<a href="https://wa.me/256700123456?text=Hello%20AMP!%20I'd%20like%20to%20know%20more%20about%20your%20programs" class="whatsapp-float" target="_blank">
-  <i class="fab fa-whatsapp"></i>
-</a> -->
-
+<body style="background-color: #FFFFFF;">
 <!-- Navigation -->
-<nav class="navbar">
-  <div class="container nav-container">
-    <div>
-      <img src="images/achiever_logo.svg" alt="Achievers Uganda Logo" style="width: 80px;">
-    </div>
-    <ul class="nav-links">
-      <li><a href="./" class="active">Home</a></li>
-      <li><a href="aboutus/">About</a></li>
-      <li><a href="programs/">Programs</a></li>
-      <li><a href="events/">Events</a></li>
-      <li><a href="blog/">Blog</a></li>
-      <li><a href="gallery/">Gallery</a></li>
-      <li><a href="contactus/" class="nav-btn">Contact Us</a></li>
-    </ul>
-  </div>
-</nav>
-
-<!-- SECTION 1: Hero Banner with Slider -->
-<div class="hero-slider">
-  <div class="slide active" id="slide1" style="background-image: url('images/acheiver_img1.jpg');"></div>
-  <div class="slide" id="slide2" style="background-image: url('images/acheiver_img2.jpg');"></div>
-  <div class="slide" id="slide3" style="background-image: url('images/acheiver_img3.jpg');"></div>
-  <div class="overlay"></div>
-  <div class="slide-content">
-    <h2 id="slideTitle">Empowering Uganda's Young Generation with Life Skills, Mindset & Purpose</h2>
-    <p id="slideDesc">Building confident, emotionally intelligent leaders who thrive in school, work, and life.</p>
-  </div>
-  <button class="slider-control prev-slide"><i class="fas fa-chevron-left"></i></button>
-  <button class="slider-control next-slide"><i class="fas fa-chevron-right"></i></button>
-  <div class="dots-container" id="dotsSlider"></div>
-</div>
-
-<!-- SECTION 2: Who are we? -->
-<section style="padding: 70px 0 50px;">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Who Are We?</h2>
-    </div>
-    <div style="max-width: 850px; margin: 0 auto; text-align: center; font-size: 1.1rem; color: #4a4a4a;">
-      <p><strong>Achievers Mindset Program (AMP)</strong> is a youth empowerment initiative based in Uganda. We help young people (ages 10-25) develop essential life skills, emotional intelligence, and a growth mindset. Through workshops, mentorship, and community outreach, we partner with schools, parents, and organizations to unlock the potential of the next generation of leaders.</p>
-      <p style="margin-top: 20px;">Our goal: to equip every young person with the confidence and purpose to succeed — no matter their background.</p>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 3: Why Choose Us (Icons) -->
-<section style="background: #FFFFFF; padding: 70px 0; border-radius: 48px 48px 0 0;">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Why Choose AMP</h2>
-    </div>
-    <div class="why-grid">
-      <div class="why-item"><div class="why-icon"><i class="fas fa-seedling"></i></div><h3>Growth Mindset</h3><p>Replace “I can't” with “I can learn” — build resilience and embrace challenges.</p></div>
-      <div class="why-item"><div class="why-icon"><i class="fas fa-heart"></i></div><h3>Emotional Intelligence</h3><p>Master self-awareness, empathy, and healthy relationships for life success.</p></div>
-      <div class="why-item"><div class="why-icon"><i class="fas fa-flag-checkered"></i></div><h3>Leadership Skills</h3><p>Develop communication, teamwork, and the courage to lead in any situation.</p></div>
-      <div class="why-item"><div class="why-icon"><i class="fas fa-bullseye"></i></div><h3>Purpose & Direction</h3><p>Discover personal strengths and set meaningful goals for the future.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 4: Upcoming Events (informational only) -->
-<section style="padding: 70px 0;">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Upcoming Events</h2>
-      <p>Join us — contact our team for details</p>
-    </div>
-    <div class="events-grid" id="homeUpcomingEvents">
-      <p>Loading upcoming events...</p>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 5: Footer -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <img src="images/achiever_logo.svg" alt="Achievers Uganda Logo" style="width: 260px; margin-bottom: 16px;">
-      </div>
-      <div class="footer-col">
-        <h4>Quick Links</h4>
-        <a href="./">Home</a>
-        <a href="aboutus/">About Us</a>
-        <a href="programs/">Programs</a>
-        <a href="events/">Events</a>
-        <a href="blog/">Blog</a>
-        <a href="gallery/">Gallery</a>
-        <a href="contactus/">Contact</a>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <a href="#" data-contact-link="phone"><i class="fas fa-phone-alt"></i> <span data-contact-text="phone"></span></a>
-        <a href="#" data-contact-link="email"><i class="fas fa-envelope"></i> <span data-contact-text="email"></span></a>
-        <a href="#" data-contact-link="maps"><i class="fas fa-map-marker-alt"></i> <span data-contact-text="location"></span></a>
-      </div>
-      <div class="footer-col">
-        <h4>Follow Us</h4>
-        <div class="social-icons">
-          <i class="fab fa-facebook"></i>
-          <i class="fab fa-instagram"></i>
-          <i class="fab fa-twitter"></i>
-          <i class="fab fa-linkedin"></i>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="nav-logo">
+                <img src="images/achiever_logo.svg" alt="Achievers Uganda Logo" style="width: 80px;">
+            </div>
+            <ul class="nav-links">
+                <li><a href="./" class="active">Home</a></li>
+                <li><a href="aboutus/">About</a></li>
+                <li><a href="programs/">Programs</a></li>
+                <li><a href="events/">Events</a></li>
+                <li><a href="blog/">Blog</a></li>
+                <li><a href="gallery/">Gallery</a></li>
+                <li><a href="contactus/" class="nav-btn">Contact Us</a></li>
+            </ul>
         </div>
-      </div>
+    </nav>
+
+    <!-- ==================== HERO SLIDER ==================== -->
+    <div class="hero-slider">
+        <div class="slide active" id="slide1" style="background-image: url('images/acheiver_img1.jpg');"></div>
+        <div class="slide" id="slide2" style="background-image: url('images/acheiver_img2.jpg');"></div>
+        <div class="slide" id="slide3" style="background-image: url('images/acheiver_img3.jpg');"></div>
+        <div class="overlay"></div>
+        <div class="slide-content">
+            <h2 id="slideTitle">Empowering Uganda's Young Generation with Life Skills, Mindset & Purpose</h2>
+            <p id="slideDesc">Building confident, emotionally intelligent leaders who thrive in school, work, and life.</p>
+        </div>
+        <button class="slider-control prev-slide" aria-label="Previous slide">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="slider-control next-slide" aria-label="Next slide">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="dots-container" id="dotsSlider"></div>
     </div>
-    <div class="copyright" style="text-align:center; border-top:1px solid #444; padding-top:30px; margin-top:30px;">
-      <p>&copy; 2026 Achievers Uganda</p>
-    </div>
-  </div>
-</footer>
+
+    <!-- ==================== WHO ARE WE ==================== -->
+    <section style="padding: 80px 0; background: #FFFFFF;">
+        <div class="container">
+            <div class="who-v1">
+                <div class="who-v1__visual">
+                    <div class="decorative-dot"></div>
+                    <i class="fas fa-users big-icon"></i>
+                </div>
+                <div class="who-v1__content">
+                    <div class="section-header-v1" style="margin-bottom: 28px;">
+                        <p class="section-eyebrow">Our Story</p>
+                        <h2 class="section-title">Who Are We?</h2>
+                    </div>
+                    <p><strong>Achievers Mindset Program (AMP)</strong> is a youth empowerment initiative based in Uganda.
+                        We help young people develop essential life skills, emotional intelligence, and a growth mindset
+                        through workshops, mentorship, and community outreach.</p>
+                    <p>Our goal: to equip <strong>every young person</strong> with the confidence and purpose to succeed —
+                        no matter their background.</p>
+                    <a href="aboutus/" class="btn btn-outline" style="margin-top: 12px;">Learn More About Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== WHY CHOOSE US ==================== -->
+    <section style="padding: 70px 0; background: #F2EFE6;">
+        <div class="container">
+            <div class="section-header-v1 centered">
+                <p class="section-eyebrow">Our Advantage</p>
+                <h2 class="section-title">Why Choose AMP</h2>
+            </div>
+            <div class="why-v1">
+                <div class="why-card-v1">
+                    <div class="why-icon-v1"><i class="fas fa-seedling"></i></div>
+                    <h3>Growth Mindset</h3>
+                    <p>Replace "I can't" with "I can learn" — build resilience and embrace every challenge.</p>
+                </div>
+                <div class="why-card-v1">
+                    <div class="why-icon-v1"><i class="fas fa-heart"></i></div>
+                    <h3>Emotional Intelligence</h3>
+                    <p>Master self-awareness, empathy, and healthy relationships for lifelong success.</p>
+                </div>
+                <div class="why-card-v1">
+                    <div class="why-icon-v1"><i class="fas fa-flag-checkered"></i></div>
+                    <h3>Leadership Skills</h3>
+                    <p>Develop communication, teamwork, and the courage to lead in any situation.</p>
+                </div>
+                <div class="why-card-v1">
+                    <div class="why-icon-v1"><i class="fas fa-bullseye"></i></div>
+                    <h3>Purpose & Direction</h3>
+                    <p>Discover personal strengths and set meaningful goals for a bright future.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== UPCOMING EVENTS ==================== -->
+    <section style="padding: 70px 0;">
+        <div class="container">
+            <div class="section-header-v1 centered">
+                <p class="section-eyebrow">Get Involved</p>
+                <h2 class="section-title">Upcoming Events</h2>
+            </div>
+            <div class="events-v3" id="homeUpcomingEvents">
+                <p>Loading upcoming events...</p>
+            </div>
+            <div style="text-align: center; margin-top: 36px;">
+                <a href="events/" class="btn btn-primary">View All Events &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="images/achiever_logo.svg" alt="Achievers Uganda Logo"
+                    style="width: 260px; margin-bottom: 16px;">
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="./">Home</a>
+                    <a href="aboutus/">About Us</a>
+                    <a href="programs/">Programs</a>
+                    <a href="events/">Events</a>
+                    <a href="blog/">Blog</a>
+                    <a href="gallery/">Gallery</a>
+                    <a href="contactus/">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <a href="#" data-contact-link="phone">
+                        <i class="fas fa-phone-alt"></i> <span data-contact-text="phone"></span>
+                    </a>
+                    <a href="#" data-contact-link="email">
+                        <i class="fas fa-envelope"></i> <span data-contact-text="email"></span>
+                    </a>
+                    <a href="#" data-contact-link="maps">
+                        <i class="fas fa-map-marker-alt"></i> <span data-contact-text="location"></span>
+                    </a>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <i class="fab fa-facebook"></i>
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Achievers Uganda</p>
+            </div>
+        </div>
+    </footer>
 
 <script src="shared-data.js"></script>
 <script src="script.js"></script>
