@@ -17,6 +17,93 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script src="https://kit.fontawesome.com/04925a1789.js" crossorigin="anonymous"></script>
+
+  <!-- Additional styles for video modal and fallback -->
+  <style>
+    /* Video lightbox overlay */
+    .video-lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-lightbox.active {
+      display: flex;
+    }
+    .video-lightbox .close-video {
+      position: absolute;
+      top: 20px; right: 30px;
+      font-size: 40px;
+      color: #fff;
+      cursor: pointer;
+      z-index: 10001;
+      opacity: 0.9;
+      transition: 0.2s;
+    }
+    .video-lightbox .close-video:hover {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+    .video-lightbox video {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      background: #000;
+    }
+
+    /* Thumbnail container (ensures aspect ratio and places elements on top of each other) */
+    .video-thumb {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 */
+      background: #2c3e50;     /* fallback colour if nothing shows */
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    /* Fallback placeholder when no thumbnail is available */
+    .video-thumb-fallback {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+    }
+
+    /* The generated thumbnail image will cover the whole container */
+    .video-thumb img.generated-thumb {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: none; /* hidden until loaded */
+      z-index: 2;
+    }
+
+    /* Play icon overlay – stays on top of everything */
+    .play-icon {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3rem;
+      color: white;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    /* Ensure the video modal stays on top */
+    .video-lightbox {
+      z-index: 99999;
+    }
+  </style>
 </head>
 <body>
     
@@ -54,7 +141,7 @@
       <p>Capturing transformation, one frame at a time</p>
     </div>
     <div class="gallery-grid" id="photoGrid">
-      <!-- Images will be populated via JS but we add static for reliability -->
+      <!-- Images will be populated via JS -->
     </div>
   </div>
 </section>
@@ -67,17 +154,22 @@
       <p>Watch our impact in action</p>
     </div>
     <div class="video-grid" id="videoGrid">
-      <!-- Video thumbnails -->
+      <!-- Video cards will be populated via JS -->
     </div>
   </div>
 </section>
 
-<!-- Lightbox Modal -->
+<!-- Lightbox Modal (for photos) -->
 <div id="lightbox" class="lightbox">
   <span class="close-lightbox">&times;</span>
   <img id="lightboxImg" src="" alt="Enlarged view">
 </div>
 
+<!-- Video Modal -->
+<div id="videoModal" class="video-lightbox">
+  <span class="close-video">&times;</span>
+  <video id="modalVideo" controls playsinline preload="none"></video>
+</div>
 
 <footer>
   <div class="container">
@@ -116,29 +208,69 @@
     </div>
   </div>
 </footer>
+
 <script src="../shared-data.js"></script>
 <script src="../script.js"></script>
 <script>
-  // Photo Gallery Data (high-quality images from Pexels + some local style)
+  // Photo Gallery Data
   const photos = [
-    { src: "https://images.pexels.com/photos/7078627/pexels-photo-7078627.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Youth workshop in Kampala" },
-    { src: "../images/acheiver_img3.jpg", caption: "Group mentorship session" },
-    { src: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Leadership training" },
-    { src: "https://images.pexels.com/photos/5428859/pexels-photo-5428859.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Outdoor team building" },
-    { src: "https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Mindset talk session" },
-    { src: "https://images.pexels.com/photos/4578820/pexels-photo-4578820.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Emotional intelligence circle" },
-    { src: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Goal setting workshop" },
-    { src: "https://images.pexels.com/photos/7691301/pexels-photo-7691301.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Graduation ceremony" }
+    { src: "../images/gallery/IMG-20260802-WA0009.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0012.jpg", caption: "Group mentorship session" },
+    { src: "../images/gallery/IMG-20260802-WA0013.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0014.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0015.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0016.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0017.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0018.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0021.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0022.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0023.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0024.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0025.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0031.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0036.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0038.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0039.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0041.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0042.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0045.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0046.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0048.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0049.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0055.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0056.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0060.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0062.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0065.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0066.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0068.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0070.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0071.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0072.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0073.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0074.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0077.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0079.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0081.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0082.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0084.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0086.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0087.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0090.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0092.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0095.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0097.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0099.jpg", caption: "" },
+    { src: "../images/gallery/IMG-20260802-WA0101.jpg", caption: "" }
   ];
 
-  // Video Data (YouTube embed thumbnails + links)
+  // Video Data
   const videos = [
-    { thumb: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg", videoId: "dQw4w9WgXcQ", title: "AMP Impact Story 2024" },
-    { thumb: "https://img.youtube.com/vi/3JZ_D3ELwOQ/maxresdefault.jpg", videoId: "3JZ_D3ELwOQ", title: "Youth Testimonials" },
-    { thumb: "https://img.youtube.com/vi/tgbNymZ7vqY/maxresdefault.jpg", videoId: "tgbNymZ7vqY", title: "Mindset Bootcamp Highlights" }
+    { src: "../images/gallery/VID-20260802-WA0010.mp4", title: "Video 1" },
+    { src: "../images/gallery/VID-20260802-WA0011.mp4", title: "Video 2" }
   ];
 
-  // Render Photo Gallery
+  // Render Photo Gallery (unchanged)
   const photoGrid = document.getElementById('photoGrid');
   photos.forEach(photo => {
     const col = document.createElement('div');
@@ -156,37 +288,157 @@
     photoGrid.appendChild(col);
   });
 
-  // Render Video Gallery
+  // Render Video Gallery with auto‑generated thumbnails
   const videoGrid = document.getElementById('videoGrid');
+
   videos.forEach(video => {
     const videoCard = document.createElement('div');
     videoCard.className = 'video-card';
-    videoCard.innerHTML = `
-      <div class="video-thumb" data-video-id="${video.videoId}">
-        <img src="${video.thumb}" alt="${video.title}">
-        <div class="play-icon"><i class="fas fa-play"></i></div>
-      </div>
-      <div class="video-info">
-        <h3>${video.title}</h3>
-        <p>Click to watch on YouTube</p>
-      </div>
-    `;
-    const thumbDiv = videoCard.querySelector('.video-thumb');
-    thumbDiv.addEventListener('click', () => {
-      window.open(`https://www.youtube.com/watch?v=${video.videoId}`, '_blank');
+
+    // Thumbnail container
+    const thumbDiv = document.createElement('div');
+    thumbDiv.className = 'video-thumb';
+    thumbDiv.dataset.videoSrc = video.src;
+
+    // The generated thumbnail image (hidden until loaded)
+    const thumbnailImg = document.createElement('img');
+    thumbnailImg.className = 'generated-thumb';
+    thumbnailImg.alt = video.title;
+
+    // Fallback placeholder (play icon background)
+    const fallbackDiv = document.createElement('div');
+    fallbackDiv.className = 'video-thumb-fallback';
+    fallbackDiv.innerHTML = '<i class="fas fa-play"></i>';
+
+    // Play icon overlay (always visible)
+    const playIconDiv = document.createElement('div');
+    playIconDiv.className = 'play-icon';
+    playIconDiv.innerHTML = '<i class="fas fa-play"></i>';
+
+    // Assemble the thumbnail container
+    thumbDiv.appendChild(thumbnailImg);
+    thumbDiv.appendChild(fallbackDiv);
+    thumbDiv.appendChild(playIconDiv);
+
+    // Video info
+    const videoInfo = document.createElement('div');
+    videoInfo.className = 'video-info';
+    videoInfo.innerHTML = `<h3>${video.title}</h3><p>Click to play</p>`;
+
+    videoCard.appendChild(thumbDiv);
+    videoCard.appendChild(videoInfo);
+
+    // ----- Generate the real thumbnail -----
+    generateThumbnail(video.src, 1)
+      .then(dataUrl => {
+        thumbnailImg.src = dataUrl;
+        // When the image has fully loaded, show it and hide the fallback
+        thumbnailImg.onload = () => {
+          thumbnailImg.style.display = 'block';
+          fallbackDiv.style.display = 'none';
+        };
+        // In case the image loads instantly from cache
+        if (thumbnailImg.complete) {
+          thumbnailImg.style.display = 'block';
+          fallbackDiv.style.display = 'none';
+        }
+      })
+      .catch(() => {
+        // If generation fails, keep the fallback visible (do nothing)
+        console.warn('Could not generate thumbnail for ' + video.src);
+      });
+
+    // Click handler → open video modal and auto‑play
+    videoCard.addEventListener('click', () => {
+      const modal = document.getElementById('videoModal');
+      const modalVideo = document.getElementById('modalVideo');
+      modalVideo.src = video.src;
+      // Use the generated thumbnail as poster for the modal if available
+      if (thumbnailImg.src && thumbnailImg.src.startsWith('data:')) {
+        modalVideo.poster = thumbnailImg.src;
+      }
+      modal.classList.add('active');
+      modalVideo.load();
+      modalVideo.play();
     });
+
     videoGrid.appendChild(videoCard);
   });
 
-  // Lightbox close functionality
+  /**
+   * Extracts a frame from a video at a given time (in seconds)
+   * and returns a data URL (JPEG, 80% quality).
+   * @param {string} videoSrc - URL of the video file (must be same‑origin)
+   * @param {number} seekTime  - Time in seconds to capture (default 1)
+   * @returns {Promise<string>} Data URL of the captured frame
+   */
+  function generateThumbnail(videoSrc, seekTime = 1) {
+    return new Promise((resolve, reject) => {
+      const video = document.createElement('video');
+      video.crossOrigin = 'anonymous';  // harmless, helps if CORS needed later
+      video.preload = 'metadata';
+      video.muted = true;
+      video.src = videoSrc;
+
+      // Safety timeout – reject if loading takes too long
+      const timeout = setTimeout(() => {
+        reject(new Error('Thumbnail generation timed out'));
+        video.src = '';
+        video.load();
+      }, 10000); // 10 seconds
+
+      video.addEventListener('loadeddata', () => {
+        const targetTime = (video.duration && video.duration > seekTime) ? seekTime : 0;
+        video.currentTime = targetTime;
+      });
+
+      video.addEventListener('seeked', () => {
+        clearTimeout(timeout);
+        const canvas = document.createElement('canvas');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
+        // Clean up
+        video.src = '';
+        video.load();
+        resolve(dataUrl);
+      });
+
+      video.addEventListener('error', (e) => {
+        clearTimeout(timeout);
+        reject(e);
+      });
+
+      // Start loading
+      video.load();
+    });
+  }
+
+  // Lightbox close (photo)
   const lightbox = document.getElementById('lightbox');
   const closeBtn = document.querySelector('.close-lightbox');
-  closeBtn.addEventListener('click', () => {
-    lightbox.classList.remove('active');
-  });
+  closeBtn.addEventListener('click', () => lightbox.classList.remove('active'));
   lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
-      lightbox.classList.remove('active');
+    if (e.target === lightbox) lightbox.classList.remove('active');
+  });
+
+  // Video modal close (stop playback and clear source)
+  const videoModal = document.getElementById('videoModal');
+  const closeVideoBtn = document.querySelector('.close-video');
+  const modalVideo = document.getElementById('modalVideo');
+
+  closeVideoBtn.addEventListener('click', () => {
+    modalVideo.pause();
+    modalVideo.src = '';
+    videoModal.classList.remove('active');
+  });
+  videoModal.addEventListener('click', (e) => {
+    if (e.target === videoModal) {
+      modalVideo.pause();
+      modalVideo.src = '';
+      videoModal.classList.remove('active');
     }
   });
 </script>
