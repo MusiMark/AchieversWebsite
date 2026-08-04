@@ -1,0 +1,87 @@
+/* Program Outcomes */
+.center-outcomes {
+    font-size: 1.05rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    list-style: none;
+}
+
+/* Story & mission grid */
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-top: 20px;
+}
+
+.three-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 48px;
+    margin-top: 20px;
+}
+
+.three-column-item{
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+}
+
+.four-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.four-column-item {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+}
+
+.four-column-item i {
+    color: var(--red);
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.mission-card, .vision-card {
+    height: 200px;
+}
+
+.goal-card {
+    height: 120px;
+}
+
+.goal-card i{
+    color: var(--red);
+    font-size: 1.5rem;
+}
+
+.story-card h3, .mission-card h3, .vision-card h3 {
+    font-size: 1.8rem;
+    color: var(--red);
+    margin-bottom: 4px;
+}
+.story-card p, .mission-card p, .vision-card p {
+    font-size: 1.1rem;
+    color: var(--dark-text);
+    line-height: 1.6;
+}
+/* Icons */
+.icon-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--soft-red);
+    width: 48px;
+    height: 48px;
+    border-radius: 30px;
+    color: var(--red);
+    font-size: 1.4rem;
+}

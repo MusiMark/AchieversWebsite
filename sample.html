@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+  <title>Achievers Mindset Program</title>
+
+  <style>
+    /* ===== Theme & Reset ===== */
+    :root {
+      color-scheme: only light;
+      --cream: rgb(242, 239, 230);
+      --red: #C80C1F;
+      --yellow: #F8E52E;
+      --stone: #918179;
+      --light-text: #5a5a5a;
+      --dark-text: #3E3B33;
+      --soft-red: #FEC7C1;
+    }
+
+    html {
+      font-size: 100%;
+      -webkit-text-size-adjust: 100%;
+      scroll-behavior: smooth;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #F2EFE6;
+      color: var(--dark-text);
+      line-height: 1.6;
+      font-size: clamp(1rem, calc(0.95rem + 0.23vw), 1.125rem);
+    }
+
+    h1, h2, h3, h4, .nav-links a, .section-title {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    h1 {
+      font-size: clamp(2rem, calc(1.4rem + 2.2vw), 3.2rem);
+      line-height: 1.15;
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, calc(1.2rem + 1.4vw), 2.4rem);
+      line-height: 1.2;
+    }
+
+    /* ===== Layout ===== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .container-programs {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      padding-bottom: 80px;
+    }
+
+    /* ===== Shared Components ===== */
+    /* Section Headers */
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, calc(1.2rem + 1.4vw), 2.2rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--red);
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background: var(--yellow);
+      border-radius: 4px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    /* Icons */
+    .icon-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--soft-red);
+      width: 48px;
+      height: 48px;
+      border-radius: 30px;
+      color: var(--red);
+      font-size: 1.4rem;
+    }
+
+    /* ===== Navigation ===== */
+    .navbar {
+      background: var(--cream);
+      box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 4px 0;
+      border-bottom: 3px solid var(--red);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.7rem;
+      color: var(--dark-text);
+      cursor: pointer;
+      padding: 8px;
+      line-height: 1;
+      z-index: 1001;
+    }
+
+    .hamburger:hover {
+      color: var(--red);
+    }
+
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.42);
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+    }
+
+    .drawer-overlay.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .drawer-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: min(90vw, 380px);
+      height: 100vh;
+      background: #FFFFFF;
+      z-index: 999;
+      box-shadow: -6px 0 20px rgba(0, 0, 0, 0.12);
+      transition: right 0.28s ease;
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+    }
+
+    .drawer-menu.active {
+      right: 0;
+    }
+
+    .drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #EFEAE7;
+    }
+
+    .drawer-brand {
+      color: var(--red);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .drawer-close {
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      color: var(--dark-text);
+      cursor: pointer;
+    }
+
+    .drawer-links {
+      display: grid;
+      gap: 10px;
+      list-style: none;
+      margin-top: 20px;
+    }
+
+    .drawer-links a {
+      display: inline-block;
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 40px;
+      color: var(--dark-text);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .drawer-links a.active,
+    .drawer-links a:hover {
+      color: var(--red);
+      background: #FFF0F0;
+    }
+
+    .drawer-links a.drawer-btn-link {
+      background: var(--red);
+      color: #FFFFFF;
+      text-align: center;
+      margin-top: 6px;
+    }
+
+    .drawer-links a.drawer-btn-link:hover {
+      color: #FFFFFF;
+      background: #A20C1C;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--dark-text);
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--red);
+    }
+
+    .nav-links a.active {
+      color: var(--red);
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: var(--yellow);
+    }
+
+    .nav-btn {
+      background: var(--red);
+      color: #FFFFFF !important;
+      padding: 8px 20px;
+      border-radius: 40px;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background: #1C1B17;
+      color: #F5F3F2;
+      padding: 48px 0 24px;
+      margin-top: 20px;
+      border-top: 4px solid var(--yellow);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+      gap: 32px;
+    }
+
+    .footer-col h4 {
+      color: var(--yellow);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .footer-col a {
+      color: #D4CAC5;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+      transition: 0.2s ease;
+    }
+
+    .footer-col a:hover {
+      color: var(--red);
+      padding-left: 6px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .social-icons i {
+      color: #D4CAC5;
+      font-size: 1.6rem;
+      margin-right: 16px;
+      transition: 0.2s;
+    }
+
+    .social-icons i:hover {
+      color: var(--red);
+      transform: translateY(-6px) scale(1.1);
+    }
+
+    /* ===== Page-Specific: Programs ===== */
+    .page-header {
+      background: linear-gradient(135deg, var(--red), #a00a1a);
+      color: #FFFFFF;
+      text-align: center;
+      padding: 60px 0;
+      margin-bottom: 40px;
+    }
+
+    .page-header h1 {
+      font-size: clamp(2rem, calc(1.35rem + 2.3vw), 3.2rem);
+      margin-bottom: 12px;
+    }
+
+    .page-header p {
+      font-size: clamp(1rem, calc(0.92rem + 0.45vw), 1.2rem);
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0.9;
+    }
+
+    .center-outcomes {
+      font-size: 1.05rem;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-content: center;
+      list-style: none;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 20px;
+    }
+
+    .three-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 48px;
+      margin-top: 20px;
+    }
+
+    .three-column-item {
+      background: #FFFFFF;
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+    }
+
+    .four-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .four-column-item {
+      background: #FFFFFF;
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+    }
+
+    .four-column-item i {
+      color: var(--red);
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .goal-card, .vision-card {
+      height: auto;
+      /* height was set to 200px for mission-card, but we don't have .mission-card */
+    }
+
+    .goal-card i {
+      color: var(--red);
+      font-size: 1.5rem;
+    }
+
+    .story-card h3, .goal-card h3, .vision-card h3 {
+      font-size: 1.8rem;
+      color: var(--red);
+      margin-bottom: 4px;
+    }
+
+    .story-card p, .goal-card p, .vision-card p {
+      font-size: 1.1rem;
+      color: var(--dark-text);
+      line-height: 1.6;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 810px) {
+      .hamburger {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section-title { font-size: 1.8rem; }
+      .nav-container { gap: 8px; }
+      .three-column,
+      .four-column {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .two-column {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .three-column,
+      .four-column {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        justify-items: center;
+      }
+
+      .footer-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  </style>
+
+  <!-- Website Icon -->
+  <link rel="icon" href="../images/achiever_logo2.svg" type="image/svg+xml">
+
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://kit.fontawesome.com/04925a1789.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="container nav-container">
+    <div>
+      <img src="../images/achiever_logo.svg" alt="Achievers Uganda Logo" style="width: 80px;">
+    </div>
+    <ul class="nav-links">
+      <li><a href="../">Home</a></li>
+      <li><a href="../aboutus/">About</a></li>
+      <li><a href="../programs/" class="active">Programs</a></li>
+      <li><a href="../events/">Events</a></li>
+      <li><a href="../blog/">Blog</a></li>
+      <li><a href="../gallery/">Gallery</a></li>
+      <li><a href="../contactus/" class="nav-btn">Contact Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Page Header -->
+<div class="page-header">
+  <div class="container">
+    <h1>Achievers Mindset Program</h1>
+  </div>
+</div>
+
+<!-- Introduction -->
+<section style="padding-top: 20px;">
+  <div class="container">
+    <div class="story-card" style="margin-bottom: 40px;">
+        <p>
+            Achievers Mindset Program is a program that supports young people between ages 10 -25 to discover themselves and exploit
+            their full potential. The program enables young people to acquire knowledge, skills and practices to help them develop posi-
+            tive mindsets they need to be successful in all aspects of life. The program further helps parents to connect and teach their
+            children how to handle ups and downs of life, to think for themselves and make good decisions, to dream big and work hard to
+            make their dreams happen.<br><br> The Achievers mindset program is a time away from our daily schedules as young
+            people to learn, un learn, re- learn, share experiences, connect, network, have fun and enroll new members. More so, the
+            young people's training events addresses both Psycho-socio and socio-economic impacts of COVID 19 disruptions to enable
+            them adjust to the "new normal".
+        </p>
+    </div>
+  </div>
+</section>
+
+<!-- Target, Goal, and Scope -->
+<section style="background: #FFFFFF; border-radius: 48px 48px 0 0; padding: 24px 0 0 0;">
+  <div class="container">
+    <div class="two-column">
+        <div style="grid-column: span 2;">
+            <div class="section-header">
+                <h3 class="section-title">Target</h3>
+            </div>
+            <div class="problem-card">
+                <p>
+                    The program targets young people aged 10 - 25 years who want to learn powerful mindset skills that will enable
+                    them discover and choose the right path in life.
+                </p>
+            </div>
+        </div>
+        <div>
+            <div class="section-header">
+                <h3 class="section-title">Goal</h3>
+            </div>
+            <div class="goal-card">
+                <ul class="center-outcomes">
+                    <li><i class="fa-solid fa-caret-right"></i>To empower young people with the mindset and skills they need to succeed in life.</li>
+                    <li><i class="fa-solid fa-caret-right"></i> To enhance the capacity of parents and guardians to mentor their children.</li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <div class="section-header">
+                <h3 class="section-title">Scope and Program coverage</h3>
+            </div>
+            <div class="vision-card">
+                <p>
+                    The Achievers Mindset Program is designed to cover all young persons in Uganda both in and out-of-school. The program will be implemented
+                    in the urban areas i.e. schools, communities, groups, places of worship, among others.
+                </p>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <!-- Program Objectives -->
+  <section style="background: #F2EFE6; border-radius: 48px 48px 0 0; padding: 24px 0 0 0;">
+    <div class="container-programs">
+        <div class="section-header">
+            <h2 class="section-title">Program Objectives</h2>
+            <p>The achievers Mindset Program has been developed to:</p>
+        </div>
+        <div class="three-column">
+            <div class="three-column-item">
+                <div class="icon-badge" style="margin-bottom: 16px;"><i class="fa-regular fa-lightbulb"></i></div>
+                <h3>Objective 1</h3>
+                <p>Build the capacity of young people to make appropriate choices in life</p>
+            </div>
+            <div class="three-column-item">
+                <div class="icon-badge" style="margin-bottom: 16px;"><i class="fa-solid fa-atom"></i></div>
+                <h3>Objective 2</h3>
+                <p>Equip young people with scientific information on the relationship between the mind and reality</p>
+            </div>
+            <div class="three-column-item">
+                <div class="icon-badge" style="margin-bottom: 16px;"><i class="fa-solid fa-shield-heart"></i></div>
+                <h3>Objective 3</h3>
+                <p>Empower young people to manage their thoughts and emotions to withstand adversity</p>
+            </div>
+            <div class="three-column-item">
+                <div class="icon-badge" style="margin-bottom: 16px;"><i class="fa-solid fa-hands-holding-child"></i></div>
+                <h3>Objective 4</h3>
+                <p>Develop abilities of parents and guardians to build and manage emotional connection with their children</p>
+            </div>
+            <div class="three-column-item">
+                <div class="icon-badge" style="margin-bottom: 16px;"><i class="fa-solid fa-map-location-dot"></i></div>
+                <h3>Objective 5</h3>
+                <p>Provide life planning education to young people and develop positive attitude towards work among young people.</p>
+            </div>
+        </div>
+    </div>
+    <!-- Program Outcomes -->
+    <section style="background: #FFFFFF; border-radius: 48px 48px 0 0; padding: 24px 0 0 0;">
+        <div class="container-programs">
+            <div class="section-header">
+                <h2 class="section-title">Expected Program Outcomes</h2>
+            </div>
+            <ul class="center-outcomes">
+                <li><i class="fas fa-check-circle" style="color: var(--red); margin-right: 12px;"></i>Strong-willed young people</li>
+                <li><i class="fas fa-check-circle" style="color: var(--red); margin-right: 12px;"></i>Resilient young people;</li>
+                <li><i class="fas fa-check-circle" style="color: var(--red); margin-right: 12px;"></i>Confident and successful young people;</li>
+                <li><i class="fas fa-check-circle" style="color: var(--red); margin-right: 12px;"></i>Focused and courageous young people; and Responsible adults</li>
+            </ul>
+        </div>
+        <!-- Program Activities -->
+        <section style="background: #F2EFE6; border-radius: 48px 48px 0 0; padding: 24px 0 0 0;">
+            <div class="container-programs">
+                <div class="section-header">
+                    <h2 class="section-title">Program Activities</h2>
+                </div>
+                <div class="four-column">
+                    <div class="four-column-item">
+                        <i class="fa-solid fa-people-group"></i>
+                        <h4>Interactive Training Workshops</h4>
+                        <p>Hands-on sessions where youth learn practical skills like leadership, communication, entrepreneurship, and digital literacy through group exercises and real-life scenarios.</p>
+                    </div>
+                    <div class="four-column-item">
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+                        <h4>Guidance & Counseling Circles</h4>
+                        <p>Safe spaces (group or one-on-one) where young people can openly discuss challenges, receive emotional support, and learn coping strategies.</p>
+                    </div>
+                    <div class="four-column-item">
+                        <i class="fa-solid fa-microphone-lines"></i>
+                        <h4>Guest Speakers</h4>
+                        <p>Learn directly from successful professionals, entrepreneurs, and community leaders who share real-life experiences and practical insights.</p>
+                    </div>
+                    <div class="four-column-item">
+                        <i class="fa-solid fa-users-viewfinder"></i>
+                        <h4>Peer Educator Program</h4>
+                        <p>We train passionate young leaders to become peer educators who inspire, guide, and positively influence their fellow youth.</p>
+                    </div>
+                    <div class="four-column-item">
+                        <i class="fa-solid fa-people-arrows"></i>
+                        <h4>Parent-Youth Engagement Sessions</h4>
+                        <p>Bridging the gap between generations through open conversations, shared experiences, and practical parenting and communication strategies.</p>
+                    </div>
+                    <div class="four-column-item">
+                        <i class="fa-solid fa-trophy"></i>
+                        <h4>Competitions & Challenges</h4>
+                        <p>Exciting contests including debates, innovation challenges, and talent showcases that build confidence, creativity, and teamwork.</p>
+                    </div>
+                    <div class="four-column-item">
+                        <i class="fa-solid fa-person-chalkboard"></i>
+                        <h4>Mentorship & Coaching</h4>
+                        <p>Personalized one-on-one and group mentoring sessions to support youth in achieving their personal, academic, and career goals.</p>
+                    </div>
+                    <div class="four-column-item">
+                        <i class="fa-solid fa-route"></i>
+                        <h4>Career Guidance & Development</h4>
+                        <p>Helping youth explore career paths, develop job-ready skills, and prepare for future opportunities with confidence.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+  </section>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <img src="../images/achiever_logo.svg" alt="Achievers Uganda Logo" style="width: 260px; margin-bottom: 16px;">
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="../">Home</a>
+        <a href="../aboutus/">About Us</a>
+        <a href="../programs/">Programs</a>
+        <a href="../events/">Events</a>
+        <a href="../blog/">Blog</a>
+        <a href="../gallery/">Gallery</a>
+        <a href="../contactus/">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="#" data-contact-link="phone"><i class="fas fa-phone-alt"></i> <span data-contact-text="phone"></span></a>
+        <a href="#" data-contact-link="email"><i class="fas fa-envelope"></i> <span data-contact-text="email"></span></a>
+        <a href="#" data-contact-link="maps"><i class="fas fa-map-marker-alt"></i> <span data-contact-text="location"></span></a>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-linkedin"></i>
+        </div>
+      </div>
+    </div>
+    <div class="copyright" style="text-align:center; border-top:1px solid #444; padding-top:30px; margin-top:30px;">
+      <p>&copy; 2026 Achievers Uganda</p>
+    </div>
+  </div>
+</footer>
+
+<script src="../shared-data.js"></script>
+
+<script>
+  function buildDrawerLinks(desktopLinks) {
+    const drawerList = document.createElement('ul');
+    drawerList.className = 'drawer-links';
+
+    desktopLinks.querySelectorAll('a').forEach((link) => {
+        const listItem = document.createElement('li');
+        const drawerLink = link.cloneNode(true);
+
+        if (drawerLink.classList.contains('nav-btn')) {
+            drawerLink.classList.remove('nav-btn');
+            drawerLink.classList.add('drawer-btn-link');
+        }
+
+        listItem.appendChild(drawerLink);
+        drawerList.appendChild(listItem);
+    });
+
+    return drawerList;
+  }
+
+  function initMobileNavigation() {
+    const navContainer = document.querySelector('.nav-container');
+    const desktopLinks = document.querySelector('.nav-links');
+    if (!navContainer || !desktopLinks) {
+        return;
+    }
+
+    let hamburgerBtn = document.getElementById('hamburgerBtn');
+    if (!hamburgerBtn) {
+        hamburgerBtn = document.createElement('button');
+        hamburgerBtn.type = 'button';
+        hamburgerBtn.id = 'hamburgerBtn';
+        hamburgerBtn.className = 'hamburger';
+        hamburgerBtn.setAttribute('aria-label', 'Toggle navigation menu');
+        hamburgerBtn.innerHTML = '<i class="fas fa-bars" aria-hidden="true"></i>';
+        navContainer.appendChild(hamburgerBtn);
+    }
+
+    let drawerOverlay = document.getElementById('drawerOverlay');
+    let drawerMenu = document.getElementById('drawerMenu');
+
+    if (!drawerOverlay) {
+        drawerOverlay = document.createElement('div');
+        drawerOverlay.id = 'drawerOverlay';
+        drawerOverlay.className = 'drawer-overlay';
+        document.body.appendChild(drawerOverlay);
+    }
+
+    if (!drawerMenu) {
+        drawerMenu = document.createElement('aside');
+        drawerMenu.id = 'drawerMenu';
+        drawerMenu.className = 'drawer-menu';
+        drawerMenu.innerHTML = [
+            '<div class="drawer-header">',
+            '  <div class="drawer-brand">Achievers Uganda</div>',
+            '  <button type="button" class="drawer-close" id="drawerCloseBtn" aria-label="Close navigation menu">',
+            '    <i class="fas fa-times" aria-hidden="true"></i>',
+            '  </button>',
+            '</div>'
+        ].join('');
+        drawerMenu.appendChild(buildDrawerLinks(desktopLinks));
+        document.body.appendChild(drawerMenu);
+    }
+
+    const drawerCloseBtn = document.getElementById('drawerCloseBtn');
+    const hamburgerIcon = hamburgerBtn.querySelector('i');
+
+    function openDrawer() {
+        drawerMenu.classList.add('active');
+        drawerOverlay.classList.add('active');
+        hamburgerIcon.classList.remove('fa-bars');
+        hamburgerIcon.classList.add('fa-times');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+        drawerMenu.classList.remove('active');
+        drawerOverlay.classList.remove('active');
+        hamburgerIcon.classList.remove('fa-times');
+        hamburgerIcon.classList.add('fa-bars');
+        document.body.style.overflow = '';
+    }
+
+    hamburgerBtn.addEventListener('click', () => {
+        if (drawerMenu.classList.contains('active')) {
+            closeDrawer();
+            return;
+        }
+        openDrawer();
+    });
+
+    drawerCloseBtn?.addEventListener('click', closeDrawer);
+    drawerOverlay.addEventListener('click', closeDrawer);
+
+    drawerMenu.querySelectorAll('a').forEach((drawerLink) => {
+        drawerLink.addEventListener('click', closeDrawer);
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && drawerMenu.classList.contains('active')) {
+            closeDrawer();
+        }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+      initMobileNavigation();
+  });
+</script>
+
+</body>
+</html>

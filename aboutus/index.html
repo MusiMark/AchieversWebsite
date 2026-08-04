@@ -10,6 +10,7 @@
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="aboutus.css">
 
   <!-- Website Icon -->
   <link rel="icon" href="../images/achiever_logo2.svg" type="image/svg+xml">
@@ -18,21 +19,20 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap"
     rel="stylesheet">
+  <script src="https://kit.fontawesome.com/04925a1789.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
-
-  <!-- Navigation -->
   <nav class="navbar">
     <div class="container nav-container">
       <div>
-        <img src="../images/achiever_logo.svg" alt="Achievers Uganda Logo" style="width: 80px;">
+        <img src="../images/achiever_logo.svg" alt="Achievers Uganda Logo" style="width:80px;">
       </div>
       <ul class="nav-links">
         <li><a href="../">Home</a></li>
         <li><a href="../aboutus/" class="active">About</a></li>
-        <li><a href="../programs/">Programs</a></li>
+        <!-- <li><a href="../programs/">Programs</a></li> -->
         <li><a href="../events/">Events</a></li>
         <li><a href="../blog/">Blog</a></li>
         <li><a href="../gallery/">Gallery</a></li>
@@ -40,149 +40,297 @@
       </ul>
     </div>
   </nav>
-  <!-- Page Header -->
-  <div class="page-header">
+
+  <!-- 1. PAGE HEADER to CHALLENGE SECTION (Original) -->
+  <header class="page-header">
     <div class="container">
       <h1>About Achievers Uganda</h1>
       <p>Discover our journey, mission, and the passionate team behind Uganda's youth transformation.</p>
     </div>
-  </div>
+  </header>
 
-  <!-- Our Story + Problem -->
-  <section style="padding-top: 20px;">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Our Story</h2>
+  <section class="story-section">
+    <div class="container story-grid">
+      <div class="story-left">
+        <span class="kicker" style="color:var(--red)">Our beginning</span>
+        <h2>A movement that started with a simple observation.</h2>
       </div>
-      <div class="story-card" style="margin-bottom: 40px;">
-        <p>In 2018, our founder witnessed a recurring gap among talented Ugandan youth: they had dreams but lacked the
-          <strong>mindset, emotional tools, and mentorship</strong> to turn those dreams into reality. Many struggled
-          with low self-confidence, poor decision-making, and an inability to cope with failure — leading to
-          unemployment and unrealized potential.</p>
-        <p style="margin-top: 20px;">That's how <strong>Achievers Uganda</strong> was born. Starting with small
-          community workshops in Kampala, we have grown into a movement reaching thousands of young people across the
-          country. Our hands-on training in growth mindset, emotional intelligence, and leadership equips youth (10-25)
-          to navigate school, relationships, and future careers with resilience and purpose.</p>
-      </div>
-      <div class="two-column">
-        <div>
-          <div class="section-header">
-            <h2 class="section-title">Our Mission</h2>
-          </div>
-          <div class="mission-card">
-            <p>To equip young people in Uganda with the life skills, growth mindset, and emotional intelligence they
-              need to become confident, purpose-driven leaders who thrive in school, work, and life.</p>
-          </div>
-        </div>
-        <div>
-          <div class="section-header">
-            <h2 class="section-title">Our Vision</h2>
-          </div>
-          <div class="vision-card">
-            <p>A generation of empowered young achievers who break cycles of poverty and limitation, transforming their
-              communities and the nation through mindset-driven success.</p>
-          </div>
-        </div>
+      <div class="story-right">
+        <div class="rule"></div>
+        <p>In 2018, our founder saw a recurring gap among talented Ugandan youth: they had dreams but lacked the <strong>mindset, emotional tools, and mentorship</strong> to turn those dreams into reality. Low confidence, poor decision-making, and difficulty coping with failure often led to unemployment and unrealized potential.</p>
+        <p><strong>Achievers Uganda</strong> began with small community workshops in Kampala. We now equip young people aged 10-25 with hands-on learning in growth mindset, emotional intelligence, and leadership.</p>
       </div>
     </div>
+  </section>
 
-    <!-- The Problem We're Solving -->
-    <section style="background: #FFFFFF; border-radius: 48px; margin: 20px 0; padding-bottom: 0;">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">The Problem We're Solving</h2>
-        </div>
-        <div style="max-width: 850px; margin: 0 auto; text-align: center; margin-bottom: 80px;">
-          <p style="font-size: 1.1rem; color: #4a4a4a;">Uganda has one of the youngest populations in the world — over
-            75% under 30. Yet, many youth leave school without critical soft skills like self-belief, emotional
-            regulation, and goal-setting. Unemployment, peer pressure, and lack of mentorship lead to lost potential.
-            AMP bridges this gap by providing <strong>mindset training and real-life skills</strong> that formal
-            education often misses.</p>
-        </div>
+  <section class="purpose-section">
+    <div class="container purpose-grid">
+      <article class="purpose-card">
+        <h2>Our mission</h2>
+        <p>To equip young people in Uganda with the life skills, growth mindset, and emotional intelligence they need to become confident, purpose-driven leaders who thrive in school, work, and life.</p>
+      </article>
+      <article class="purpose-card">
+        <h2>Our vision</h2>
+        <p>A generation of empowered young achievers who break cycles of poverty and limitation, transforming their communities and the nation through mindset-driven success.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="challenge-section">
+    <div class="container challenge-grid">
+      <div class="section-head">
+        <span class="tag">The challenge</span>
+        <h2>Young people need more than a classroom can provide.</h2>
+        <p class="challenge-copy">Uganda has one of the youngest populations in the world, yet many youth leave school without critical soft skills such as self-belief, emotional regulation, and goal-setting. <strong>We make these practical skills accessible, relatable, and lasting.</strong></p>
+        <ul class="skill-list">
+          <li><i class="fa-solid fa-check"></i> Mindset training for real life</li>
+          <li><i class="fa-solid fa-check"></i> Emotional resilience and wellbeing</li>
+          <li><i class="fa-solid fa-check"></i> Leadership that serves communities</li>
+        </ul>
       </div>
-
-
-      <!-- Our Team -->
-      <section style="padding: 60px 0; background: #F2EFE6; border-radius: 48px">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Meet Our Team</h2>
-            <p style="font-size: 1.1rem;">Behind every program is a team passionate about empowering adolescents and youth, strengthening communities, and driving change.</p>
-          </div>
-          <div class="team-grid">
-            <!-- Member 1 -->
-            <div class="team-card">
-              <img class="team-img" src="../images/placeholder.jpg" alt="Founder & Director">
-              <div class="team-info">
-                <h3>Hellen Mugumya Twinamasiko</h3>
-                <div class="team-title">Executive Director</div>
-                <p class="team-bio">
-                  Hellen is a passionate Mindset Coach, Professional Teacher, and Youth Mentor with over 10 years of 
-                  experience guiding young people to thrive.<br><br>She believes that when young people believe in themselves, 
-                  they can transform their families and communities.
-                </p>
-              </div>
-            </div>
-            <!-- Member 2 -->
-            <div class="team-card">
-              <img class="team-img" src="../images/placeholder.jpg" alt="Founder & Lead Facilitator">
-              <div class="team-info">
-                <h3>Imelda Kyaringabira Engabi</h3>
-                <div class="team-title">Programme Manager, Trainer</div>
-                <p class="team-bio">
-                  Imelda is a professional Social Worker and trained Life Coach with over 10 years of experience.<br><br>She 
-                  equips young people with life skills, livelihood skills, and psychosocial support to help them thrive 
-                  socially and emotionally — building confidence, resilience, and purpose.
-                </p>
-              </div>
-            </div>
-            <!-- Member 3 -->
-            <div class="team-card">
-              <img class="team-img" src="../images/20250115_194757.jpg" alt="Founder">
-              <div class="team-info">
-                <h3>Elina Tahungwa Mwebaze</h3>
-                <div class="team-title">Legal Manager &amp; Human Rights Activist</div>
-                <p class="team-bio">
-                  Elina is a dedicated teacher and legal professional passionate about guiding young people to grow 
-                  mentally, physically, and emotionally.<br><br>She works to raise a generation of confident, responsible future
-                  leaders who know their rights and stand up for them.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Call to Action (optional) -->
-        <section style="padding: 0 0 60px;">
-          <div class="container" style=" margin-top: 80px;">
-            <div
-              style="background: var(--red); border-radius: 48px; padding: 50px 30px; text-align: center; color: #FFFFFF;">
-              <h2 style="font-size: 2rem;">Join the Movement</h2>
-              <p style="margin: 20px 0; font-size: 1.1rem;">Whether you're a student, parent, or school leader — let's
-                build confident achievers together.</p>
-              <a href="https://wa.me/256707691130" class="btn btn-outline-light">📞 Get in Touch →</a>
-            </div>
-          </div>
-        </section>
-      </section>
-
-
-    </section>
-
+      <aside class="message-box">
+        <i class="fa-solid fa-quote-left quote"></i>
+        <p>We meet young people where they are, then help them see how far they can go.</p>
+        <span>THE ACHIEVERS UGANDA APPROACH</span>
+      </aside>
+    </div>
   </section>
 
 
+  <!-- 2. HEADER (HERO) & 3. INTRO SECTION (Snippet 1) -->
+  <div class="program-page">
+    <header class="hero">
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <span class="label" style="color:#fff">Ages 10-25</span>
+          <h1>Achievers Mindset Program</h1>
+          <p>A practical space for young people to discover themselves, build strong mindsets, and step confidently into their full potential.</p>
+        </div>
+        <aside class="hero-note">
+          <strong>Learn. Unlearn. Re-learn.</strong>
+          <p>Make time to connect, grow, share experiences, and build a more purposeful future.</p>
+        </aside>
+      </div>
+    </header>
+
+    <section class="intro">
+      <div class="wrap intro-grid">
+        <div>
+          <span class="label">The programme</span>
+          <h2>A better way forward starts in the mind.</h2>
+        </div>
+        <div>
+          <p>Achievers Mindset Program supports young people aged 10-25 to discover themselves and exploit their full potential. It develops the knowledge, skills, and practices needed to build a positive mindset for success in every area of life.</p>
+          <p>We also help parents connect with and guide their children through life’s ups and downs — teaching them to think independently, make good decisions, dream big, and work steadily toward those dreams.</p>
+          <aside>A time away from daily schedules to learn, share, connect, have fun, and grow.</aside>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- 4. FOCUS SECTION (Snippet 2 - Modified for Goal, Target, Scope) -->
+  <div class="mindset">
+    <section class="focus">
+      <div class="frame focus-grid">
+        <article class="focus-card">
+          <i class="fa-solid fa-bullseye"></i>
+          <h2>Goal</h2>
+          <ul>
+            <li><span>01 </span> To empower young people with the mindset and skills they need to succeed in life.</li>
+            <li><span>02 </span> To enhance the capacity of parents and guardians to mentor their children.</li>
+          </ul>
+        </article>
+        <article class="focus-card">
+          <i class="fa-solid fa-users"></i>
+          <h2>Target</h2>
+          <p>Young people aged 10 - 25, who want to learn powerful mindset skills that will enable them discover and choose the right path in life.</p>
+        </article>
+        <article class="focus-card">
+          <i class="fa-solid fa-globe"></i>
+          <h2>Scope</h2>
+          <p>The Achievers Mindset Program is designed to cover all young persons in Uganda both in and out-of-school. The program will be implemented in the urban areas i.e. schools, communities, groups, places of worship, among others.</p>
+        </article>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- 5. JOURNEY SECTION (Snippet 1) -->
+  <div class="program-page">
+    <section class="journey">
+      <div class="wrap">
+        <span class="label">What we develop</span>
+        <h2 class="journey-title">Five foundations for a confident, purposeful life.</h2>
+        <div class="objective-grid">
+          <article class="objective">
+            <span>01</span>
+            <i class="fa-regular fa-lightbulb"></i>
+            <h3>Wise choices</h3>
+            <p>Build the capacity to make appropriate choices in life.</p>
+          </article>
+          <article class="objective">
+            <span>02</span>
+            <i class="fa-solid fa-atom"></i>
+            <h3>Mind &amp; reality</h3>
+            <p>Understand the relationship between the mind and reality.</p>
+          </article>
+          <article class="objective">
+            <span>03</span>
+            <i class="fa-solid fa-shield"></i>
+            <h3>Inner resilience</h3>
+            <p>Manage thoughts and emotions to withstand adversity.</p>
+          </article>
+          <article class="objective">
+            <span>04</span>
+            <i class="fa-solid fa-children"></i>
+            <h3>Family connection</h3>
+            <p>Help parents build and manage emotional connection.</p>
+          </article>
+          <article class="objective">
+            <span>05</span>
+            <i class="fa-solid fa-route"></i>
+            <h3>Life direction</h3>
+            <p>Build life-planning skills and a positive attitude to work.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- 6. OUTCOMES & 7. ACTIVITIES SECTIONS -->
+  <div class="mindset">
+    <section class="outcomes">
+      <div class="frame outcome-layout">
+        <div>
+          <span class="eyebrow" style="color:var(--red)">Expected outcomes</span>
+          <h2>Ready. Resilient. <span>Responsible.</span></h2>
+        </div>
+        <div class="outcome-grid">
+          <article class="outcome"><i class="fa-solid fa-bolt"></i>Strong-willed young people</article>
+          <article class="outcome"><i class="fa-solid fa-shield"></i>Resilient young people</article>
+          <article class="outcome"><i class="fa-solid fa-medal"></i>Confident and successful young people</article>
+          <article class="outcome"><i class="fa-solid fa-flag"></i>Focused, courageous, responsible adults</article>
+        </div>
+      </div>
+    </section>
+
+    <section class="activities">
+      <div class="frame">
+        <span class="eyebrow" style="color:var(--red)">Program activities</span>
+        <h2>Learning made active.</h2>
+        <div class="activity-grid">
+          <article class="activity">
+            <i class="fa-solid fa-user-group"></i>
+            <h3>Training workshops</h3>
+            <p>Hands-on sessions on leadership, communication, entrepreneurship, and digital literacy.</p>
+          </article>
+          <article class="activity">
+            <i class="fa-solid fa-hand-holding-heart"></i>
+            <h3>Guidance circles</h3>
+            <p>Supportive spaces to discuss challenges and practise coping strategies.</p>
+          </article>
+          <article class="activity">
+            <i class="fa-solid fa-microphone-lines"></i>
+            <h3>Guest speakers</h3>
+            <p>Real-life insight from professionals, entrepreneurs, and community leaders.</p>
+          </article>
+          <article class="activity">
+            <i class="fa-solid fa-users-viewfinder"></i>
+            <h3>Peer education</h3>
+            <p>Training young leaders to inspire and positively influence their peers.</p>
+          </article>
+          <article class="activity">
+            <i class="fa-solid fa-people-arrows"></i>
+            <h3>Parent-youth sessions</h3>
+            <p>Open conversation, shared experience, and practical communication tools.</p>
+          </article>
+          <article class="activity">
+            <i class="fa-solid fa-trophy"></i>
+            <h3>Challenges</h3>
+            <p>Debates, innovation challenges, and talent showcases that grow teamwork.</p>
+          </article>
+          <article class="activity">
+            <i class="fa-solid fa-person-chalkboard"></i>
+            <h3>Mentorship</h3>
+            <p>Personalised one-to-one and group coaching to pursue meaningful goals.</p>
+          </article>
+          <article class="activity">
+            <i class="fa-solid fa-route"></i>
+            <h3>Career development</h3>
+            <p>Exploring career paths and preparing for future opportunity with confidence.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- 8. MEET THE TEAM (Original) -->
+  <section class="team-section">
+    <div class="container">
+      <div class="team-header">
+        <div>
+          <span class="kicker" style="color:var(--red)">The people</span>
+          <h2>Meet the <span>team.</span></h2>
+        </div>
+        <p>Behind every programme is a team passionate about empowering adolescents and youth, strengthening communities, and driving change.</p>
+      </div>
+      <div class="team-grid">
+        <article class="team-card">
+          <img class="team-img" src="../images/placeholder.jpg" alt="Hellen Mugumya Twinamasiko">
+          <div class="team-info">
+            <h3>Hellen Mugumya Twinamasiko</h3>
+            <div class="team-title">Executive Director</div>
+            <p class="team-bio">A passionate mindset coach, teacher, and youth mentor with over 10 years of experience guiding young people to thrive.</p>
+          </div>
+        </article>
+        <article class="team-card">
+          <img class="team-img" src="../images/placeholder.jpg" alt="Imelda Kyaringabira Engabi">
+          <div class="team-info">
+            <h3>Imelda Kyaringabira Engabi</h3>
+            <div class="team-title">Programme Manager, Trainer</div>
+            <p class="team-bio">A professional social worker and trained life coach who builds young people’s confidence, resilience, and purpose.</p>
+          </div>
+        </article>
+        <article class="team-card">
+          <img class="team-img" src="../images/20250115_194757.jpg" alt="Elina Tahungwa Mwebaze">
+          <div class="team-info">
+            <h3>Elina Tahungwa Mwebaze</h3>
+            <div class="team-title">Legal Manager &amp; Human Rights Activist</div>
+            <p class="team-bio">A teacher and legal professional raising confident, responsible future leaders who know and stand up for their rights.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 9. CALL TO ACTION (Original) -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box">
+        <div>
+          <h2>Build confident achievers with us.</h2>
+          <p>Whether you’re a student, parent, or school leader — let’s shape meaningful futures together.</p>
+        </div>
+        <a href="https://wa.me/256707691130" class="outline-btn"><i class="fa-brands fa-whatsapp"></i> Get in touch</a>
+      </div>
+    </div>
+  </section>
 
   <footer>
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
-          <img src="../images/achiever_logo.svg" alt="Achievers Uganda Logo" style="width: 260px; margin-bottom: 16px;">
+          <img src="../images/achiever_logo.svg" alt="Achievers Uganda Logo" style="width:260px;margin-bottom:16px;">
         </div>
         <div class="footer-col">
           <h4>Quick Links</h4>
           <a href="../">Home</a>
           <a href="../aboutus/">About Us</a>
-          <a href="../programs/">Programs</a>
+          <!-- <a href="../programs/">Programs</a> -->
           <a href="../events/">Events</a>
           <a href="../blog/">Blog</a>
           <a href="../gallery/">Gallery</a>
@@ -204,7 +352,7 @@
           </div>
         </div>
       </div>
-      <div class="copyright">
+      <div class="copyright" style="text-align:center;border-top:1px solid #444;padding-top:30px;margin-top:30px;">
         <p>&copy; 2026 Achievers Uganda</p>
       </div>
     </div>
