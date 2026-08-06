@@ -1,6 +1,6 @@
 window.AchieversSiteData = {
-  phoneDisplay: '+256 702 132630',
-  phoneHref: 'tel:+256702132630',
+  phoneDisplay: '+256 744 321121',
+  phoneHref: 'tel:+256744321121',
   emailDisplay: 'achievers256@gmail.com',
   emailHref: 'mailto:achievers256@gmail.com',
   whatsappDisplay: '+256 702 132630 (Chat)',
