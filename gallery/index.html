@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -15,433 +16,464 @@
   <link rel="icon" href="../images/achiever_logo2.svg" type="image/svg+xml">
 
   <!-- Google Fonts & Font Awesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script src="https://kit.fontawesome.com/04925a1789.js" crossorigin="anonymous"></script>
-
-  <!-- Additional styles for video modal and fallback -->
-  <style>
-    /* Video lightbox overlay */
-    .video-lightbox {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.85);
-      z-index: 10000;
-      align-items: center;
-      justify-content: center;
-    }
-    .video-lightbox.active {
-      display: flex;
-    }
-    .video-lightbox .close-video {
-      position: absolute;
-      top: 20px; right: 30px;
-      font-size: 40px;
-      color: #fff;
-      cursor: pointer;
-      z-index: 10001;
-      opacity: 0.9;
-      transition: 0.2s;
-    }
-    .video-lightbox .close-video:hover {
-      opacity: 1;
-      transform: scale(1.1);
-    }
-    .video-lightbox video {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      background: #000;
-    }
-
-    /* Thumbnail container (ensures aspect ratio and places elements on top of each other) */
-    .video-thumb {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%; /* 16:9 */
-      background: #2c3e50;     /* fallback colour if nothing shows */
-      overflow: hidden;
-      cursor: pointer;
-    }
-
-    /* Fallback placeholder when no thumbnail is available */
-    .video-thumb-fallback {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 3rem;
-    }
-
-    /* The generated thumbnail image will cover the whole container */
-    .video-thumb img.generated-thumb {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: none; /* hidden until loaded */
-      z-index: 2;
-    }
-
-    /* Play icon overlay - stays on top of everything */
-    .play-icon {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 3rem;
-      color: white;
-      z-index: 5;
-      pointer-events: none;
-    }
-
-    /* Ensure the video modal stays on top */
-    .video-lightbox {
-      z-index: 99999;
-    }
-  </style>
 </head>
+
 <body>
-    
-<!-- Navigation -->
-<nav class="navbar">
-  <div class="container nav-container">
-    <div>
-      <img src="../images/achiever_logo.svg" alt="Achievers Uganda Logo" style="width: 80px;">
-    </div>
-    <ul class="nav-links">
-      <li><a href="../">Home</a></li>
-      <li><a href="../aboutus/">About</a></li>
-      <!-- <li><a href="../programs/">Programs</a></li> -->
-      <li><a href="../events/">Events</a></li>
-      <li><a href="../blog/">Blog</a></li>
-      <li><a href="../gallery/" class="active">Gallery</a></li>
-      <li><a href="../contactus/" class="nav-btn">Contact Us</a></li>
-    </ul>
-  </div>
-</nav>
 
-<!-- Page Header -->
-<div class="page-header">
-  <div class="container">
-    <h1>Moments That Matter</h1>
-    <p>Explore photos and videos from our workshops, mentorship sessions, and youth empowerment events across Uganda.</p>
-  </div>
-</div>
-
-<!-- Photo Gallery Section -->
-<section style="padding-bottom: 40px;">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Photo Gallery</h2>
-      <p>Capturing transformation, one frame at a time</p>
-    </div>
-    <div class="gallery-grid" id="photoGrid">
-      <!-- Images will be populated via JS -->
-    </div>
-  </div>
-</section>
-
-<!-- Video Gallery Section -->
-<section style="background: #EDEFF0; border-radius: 60px 60px 0 0;">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Video Highlights</h2>
-      <p>Watch our impact in action</p>
-    </div>
-    <div class="video-grid" id="videoGrid">
-      <!-- Video cards will be populated via JS -->
-    </div>
-  </div>
-</section>
-
-<!-- Lightbox Modal (for photos) -->
-<div id="lightbox" class="lightbox">
-  <span class="close-lightbox">&times;</span>
-  <img id="lightboxImg" src="" alt="Enlarged view">
-</div>
-
-<!-- Video Modal -->
-<div id="videoModal" class="video-lightbox">
-  <span class="close-video">&times;</span>
-  <video id="modalVideo" controls playsinline preload="none"></video>
-</div>
-
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <img src="../images/achiever_logo.svg" alt="Achievers Uganda Logo" style="width: 260px; margin-bottom: 16px;">
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <div>
+        <img src="../images/achiever_logo.svg" alt="Achievers Mindset Uganda Logo" style="width: 80px;">
       </div>
-      <div class="footer-col">
-        <h4>Quick Links</h4>
-        <a href="../">Home</a>
-        <a href="../aboutus/">About Us</a>
-        <!-- <a href="../programs/">Programs</a> -->
-        <a href="../events/">Events</a>
-        <a href="../blog/">Blog</a>
-        <a href="../gallery/">Gallery</a>
-        <a href="../contactus/">Contact</a>
+      <ul class="nav-links">
+        <li><a href="../">Home</a></li>
+        <li><a href="../aboutus/">About</a></li>
+        <!-- <li><a href="../programs/">Programs</a></li> -->
+        <li><a href="../events/">Events</a></li>
+        <li><a href="../blog/">Blog</a></li>
+        <li><a href="../gallery/" class="active">Gallery</a></li>
+        <li><a href="../contactus/" class="nav-btn">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container">
+      <h1>Moments That Matter</h1>
+      <p>Explore photos and videos from our workshops, mentorship sessions, and youth empowerment events across Uganda.
+      </p>
+    </div>
+  </div>
+
+  <!-- Photo Gallery Section -->
+  <section style="padding-bottom: 40px;">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Photo Gallery</h2>
+        <p>Capturing transformation, one frame at a time</p>
       </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <a href="#" data-contact-link="phone"><i class="fas fa-phone-alt"></i> <span data-contact-text="phone"></span></a>
-        <a href="#" data-contact-link="email"><i class="fas fa-envelope"></i> <span data-contact-text="email"></span></a>
-        <a href="#" data-contact-link="maps"><i class="fas fa-map-marker-alt"></i> <span data-contact-text="location"></span></a>
+      <div class="gallery-grid" id="photoGrid">
+        <!-- Images will be populated via JS -->
       </div>
-      <div class="footer-col">
-        <h4>Follow Us</h4>
-        <div class="social-icons">
-          <i class="fab fa-facebook"></i>
-          <i class="fab fa-instagram"></i>
-          <i class="fab fa-twitter"></i>
-          <i class="fab fa-linkedin"></i>
+      <div style="text-align: center; margin-top: 30px;">
+        <button id="loadMorePhotos" class="load-more-btn">Load More Photos</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Gallery Section -->
+  <section style="background: #EDEFF0; border-radius: 60px 60px 0 0;">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Video Highlights</h2>
+        <p>Watch our impact in action</p>
+      </div>
+      <div class="video-grid" id="videoGrid">
+        <!-- Video cards will be populated via JS -->
+      </div>
+      <div style="text-align: center; margin-top: 30px; padding-bottom: 40px;">
+        <button id="loadMoreVideos" class="load-more-btn">Load More Videos</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal (for photos) -->
+  <div id="lightbox" class="lightbox">
+    <span class="close-lightbox">&times;</span>
+    <img id="lightboxImg" src="" alt="Enlarged view">
+  </div>
+
+  <!-- Video Modal -->
+  <div id="videoModal" class="video-lightbox">
+    <span class="close-video">&times;</span>
+    <video id="modalVideo" controls playsinline preload="none"></video>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <img src="../images/achiever_logo.svg" alt="Achievers Mindset Uganda Logo" style="width: 260px; margin-bottom: 16px;">
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="../">Home</a>
+          <a href="../aboutus/">About Us</a>
+          <!-- <a href="../programs/">Programs</a> -->
+          <a href="../events/">Events</a>
+          <a href="../blog/">Blog</a>
+          <a href="../gallery/">Gallery</a>
+          <a href="../contactus/">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="#" data-contact-link="phone"><i class="fas fa-phone-alt"></i> <span
+              data-contact-text="phone"></span></a>
+          <a href="#" data-contact-link="email"><i class="fas fa-envelope"></i> <span
+              data-contact-text="email"></span></a>
+          <a href="#" data-contact-link="maps"><i class="fas fa-map-marker-alt"></i> <span
+              data-contact-text="location"></span></a>
+        </div>
+        <div class="footer-col">
+          <h4>Follow Us</h4>
+          <div class="social-icons">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-linkedin"></i>
+          </div>
         </div>
       </div>
+      <div class="copyright">
+        <p>&copy; 2026 Achievers Mindset Uganda</p>
+      </div>
     </div>
-    <div class="copyright">
-      <p>&copy; 2026 Achievers Uganda</p>
-    </div>
-  </div>
-</footer>
+  </footer>
 
-<script src="../shared-data.js"></script>
-<script src="../script.js"></script>
-<script>
-  // Photo Gallery Data
-  const photos = [
-    { src: "../images/gallery/IMG-20260802-WA0009.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0012.jpg", caption: "Group mentorship session" },
-    { src: "../images/gallery/IMG-20260802-WA0013.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0014.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0015.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0016.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0017.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0018.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0021.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0022.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0023.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0024.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0025.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0031.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0036.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0038.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0039.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0041.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0042.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0045.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0046.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0048.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0049.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0055.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0056.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0060.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0062.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0065.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0066.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0068.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0070.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0071.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0072.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0073.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0074.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0077.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0079.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0081.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0082.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0084.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0086.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0087.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0090.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0092.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0095.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0097.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0099.jpg", caption: "" },
-    { src: "../images/gallery/IMG-20260802-WA0101.jpg", caption: "" }
-  ];
+  <script src="../shared-data.js"></script>
+  <script src="../script.js"></script>
+  <script>
+    // Photo Gallery Data
+    const photos = [
+      { src: "../images/gallery/images/IMG-20260802-WA0009.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0012.jpg", caption: "Group mentorship session" },
+      { src: "../images/gallery/images/IMG-20260802-WA0013.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0014.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260806-WA0038.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260806-WA0039.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260806-WA0040.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260806-WA0013.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260806-WA0014.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260806-WA0015.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260806-WA0016.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260806-WA0017.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260806-WA0019.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260806-WA0020.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260806-WA0021.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260806-WA0024.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260806-WA0028.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260806-WA0029.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260806-WA0030.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260806-WA0031.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260806-WA0032.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0015.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0016.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0017.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0018.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0101.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260806-WA0006.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260806-WA0007.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260806-WA0008.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0021.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0022.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0023.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0024.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0025.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0031.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0036.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0038.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0039.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0041.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0042.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0045.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0046.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0048.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0049.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0055.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0056.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0060.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0062.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0066.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0068.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0070.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0071.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0072.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0073.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0074.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0077.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0079.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0081.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0082.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0084.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0086.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0087.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0090.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0092.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0095.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0097.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260802-WA0099.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260806-WA0009.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260806-WA0010.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260806-WA0011.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260806-WA0012.jpg", caption: "" },
+      { src: "../images/gallery/images/IMG-20260806-WA0033.jpg", caption: "" }
+    ];
 
-  // Video Data
-  const videos = [
-    { src: "../images/gallery/VID-20260802-WA0010.mp4", title: "Video 1" },
-    { src: "../images/gallery/VID-20260802-WA0011.mp4", title: "Video 2" }
-  ];
+    // Video Data
+    const videos = [
+      { src: "../images/gallery/videos/VID-20260802-WA0010.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260802-WA0011.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0018.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0022.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0023.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0025.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0026.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0027.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0034.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0035.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0036.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0037.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0043.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0044.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0045.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0046.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0047.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0048.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0049.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0050.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0051.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0052.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0053.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0054.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0055.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0056.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0057.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0058.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0059.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0060.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0061.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0062.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0063.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0064.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0065.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0066.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0067.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0068.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0069.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0070.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0071.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0072.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0073.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0074.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0075.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0076.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0077.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0078.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0079.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0080.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0081.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0082.mp4", title: "" },
+      { src: "../images/gallery/videos/VID-20260806-WA0083.mp4", title: "" }
+    ];
 
-  // Render Photo Gallery (unchanged)
-  const photoGrid = document.getElementById('photoGrid');
-  photos.forEach(photo => {
-    const col = document.createElement('div');
-    col.className = 'gallery-item';
-    col.innerHTML = `
-      <img src="${photo.src}" alt="${photo.caption}" loading="lazy">
-      <div class="overlay-caption">${photo.caption}</div>
-    `;
-    col.addEventListener('click', () => {
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImg = document.getElementById('lightboxImg');
-      lightboxImg.src = photo.src;
-      lightbox.classList.add('active');
-    });
-    photoGrid.appendChild(col);
-  });
+    // Render Photo Gallery (Paginated to prevent infinite scrolling)
+    const photoGrid = document.getElementById('photoGrid');
+    let photosIndex = 0;
+    const photosPerPage = 12; // Load 12 photos at a time
+    const loadMorePhotosBtn = document.getElementById('loadMorePhotos');
 
-  // Render Video Gallery with auto‑generated thumbnails
-  const videoGrid = document.getElementById('videoGrid');
-
-  videos.forEach(video => {
-    const videoCard = document.createElement('div');
-    videoCard.className = 'video-card';
-
-    // Thumbnail container
-    const thumbDiv = document.createElement('div');
-    thumbDiv.className = 'video-thumb';
-    thumbDiv.dataset.videoSrc = video.src;
-
-    // The generated thumbnail image (hidden until loaded)
-    const thumbnailImg = document.createElement('img');
-    thumbnailImg.className = 'generated-thumb';
-    thumbnailImg.alt = video.title;
-
-    // Fallback placeholder (play icon background)
-    const fallbackDiv = document.createElement('div');
-    fallbackDiv.className = 'video-thumb-fallback';
-    fallbackDiv.innerHTML = '<i class="fas fa-play"></i>';
-
-    // Play icon overlay (always visible)
-    const playIconDiv = document.createElement('div');
-    playIconDiv.className = 'play-icon';
-    playIconDiv.innerHTML = '<i class="fas fa-play"></i>';
-
-    // Assemble the thumbnail container
-    thumbDiv.appendChild(thumbnailImg);
-    thumbDiv.appendChild(fallbackDiv);
-    thumbDiv.appendChild(playIconDiv);
-
-    // Video info
-    const videoInfo = document.createElement('div');
-    videoInfo.className = 'video-info';
-    videoInfo.innerHTML = `<h3>${video.title}</h3><p>Click to play</p>`;
-
-    videoCard.appendChild(thumbDiv);
-    videoCard.appendChild(videoInfo);
-
-    // ----- Generate the real thumbnail -----
-    generateThumbnail(video.src, 1)
-      .then(dataUrl => {
-        thumbnailImg.src = dataUrl;
-        // When the image has fully loaded, show it and hide the fallback
-        thumbnailImg.onload = () => {
-          thumbnailImg.style.display = 'block';
-          fallbackDiv.style.display = 'none';
-        };
-        // In case the image loads instantly from cache
-        if (thumbnailImg.complete) {
-          thumbnailImg.style.display = 'block';
-          fallbackDiv.style.display = 'none';
-        }
-      })
-      .catch(() => {
-        // If generation fails, keep the fallback visible (do nothing)
-        console.warn('Could not generate thumbnail for ' + video.src);
-      });
-
-    // Click handler → open video modal and auto‑play
-    videoCard.addEventListener('click', () => {
-      const modal = document.getElementById('videoModal');
-      const modalVideo = document.getElementById('modalVideo');
-      modalVideo.src = video.src;
-      // Use the generated thumbnail as poster for the modal if available
-      if (thumbnailImg.src && thumbnailImg.src.startsWith('data:')) {
-        modalVideo.poster = thumbnailImg.src;
+    function renderNextPhotos() {
+      const end = Math.min(photosIndex + photosPerPage, photos.length);
+      for (let i = photosIndex; i < end; i++) {
+        const photo = photos[i];
+        const col = document.createElement('div');
+        col.className = 'gallery-item';
+        col.innerHTML = `
+            <img src="${photo.src}" alt="${photo.caption}" loading="lazy">
+            <div class="overlay-caption">${photo.caption}</div>
+          `;
+        col.addEventListener('click', () => {
+          const lightbox = document.getElementById('lightbox');
+          const lightboxImg = document.getElementById('lightboxImg');
+          lightboxImg.src = photo.src;
+          lightbox.classList.add('active');
+        });
+        photoGrid.appendChild(col);
       }
-      modal.classList.add('active');
-      modalVideo.load();
-      modalVideo.play();
+      photosIndex = end;
+      if (photosIndex >= photos.length) {
+        loadMorePhotosBtn.style.display = 'none'; // Hide button when all photos are loaded
+      }
+    }
+
+    renderNextPhotos(); // Initial load
+    loadMorePhotosBtn.addEventListener('click', renderNextPhotos);
+
+    // Render Video Gallery with auto-generated thumbnails (Paginated)
+    const videoGrid = document.getElementById('videoGrid');
+    let videosIndex = 0;
+    const videosPerPage = 6; // Load 6 videos at a time to prevent mobile lag
+    const loadMoreVideosBtn = document.getElementById('loadMoreVideos');
+
+    function renderNextVideos() {
+      const end = Math.min(videosIndex + videosPerPage, videos.length);
+      for (let i = videosIndex; i < end; i++) {
+        const video = videos[i];
+        const videoCard = document.createElement('div');
+        videoCard.className = 'video-card';
+
+        // Thumbnail container
+        const thumbDiv = document.createElement('div');
+        thumbDiv.className = 'video-thumb';
+        thumbDiv.dataset.videoSrc = video.src;
+
+        // The generated thumbnail image (hidden until loaded)
+        const thumbnailImg = document.createElement('img');
+        thumbnailImg.className = 'generated-thumb';
+        thumbnailImg.alt = video.title;
+
+        // Fallback placeholder (play icon background)
+        const fallbackDiv = document.createElement('div');
+        fallbackDiv.className = 'video-thumb-fallback';
+        fallbackDiv.innerHTML = '<i class="fas fa-play"></i>';
+
+        // Play icon overlay (always visible)
+        const playIconDiv = document.createElement('div');
+        playIconDiv.className = 'play-icon';
+        playIconDiv.innerHTML = '<i class="fas fa-play"></i>';
+
+        // Assemble the thumbnail container
+        thumbDiv.appendChild(thumbnailImg);
+        thumbDiv.appendChild(fallbackDiv);
+        thumbDiv.appendChild(playIconDiv);
+
+        // Video info
+        const videoInfo = document.createElement('div');
+        videoInfo.className = 'video-info';
+        videoInfo.innerHTML = `<h3>${video.title}</h3><p>Click to play</p>`;
+
+        videoCard.appendChild(thumbDiv);
+        videoCard.appendChild(videoInfo);
+
+        // ----- Generate the real thumbnail -----
+        generateThumbnail(video.src, 1)
+          .then(dataUrl => {
+            thumbnailImg.src = dataUrl;
+            // When the image has fully loaded, show it and hide the fallback
+            thumbnailImg.onload = () => {
+              thumbnailImg.style.display = 'block';
+              fallbackDiv.style.display = 'none';
+            };
+            // In case the image loads instantly from cache
+            if (thumbnailImg.complete) {
+              thumbnailImg.style.display = 'block';
+              fallbackDiv.style.display = 'none';
+            }
+          })
+          .catch(() => {
+            // If generation fails, keep the fallback visible (do nothing)
+            console.warn('Could not generate thumbnail for ' + video.src);
+          });
+
+        // Click handler -> open video modal and auto-play
+        videoCard.addEventListener('click', () => {
+          const modal = document.getElementById('videoModal');
+          const modalVideo = document.getElementById('modalVideo');
+          modalVideo.src = video.src;
+          // Use the generated thumbnail as poster for the modal if available
+          if (thumbnailImg.src && thumbnailImg.src.startsWith('data:')) {
+            modalVideo.poster = thumbnailImg.src;
+          }
+          modal.classList.add('active');
+          modalVideo.load();
+          modalVideo.play();
+        });
+
+        videoGrid.appendChild(videoCard);
+      }
+      videosIndex = end;
+      if (videosIndex >= videos.length) {
+        loadMoreVideosBtn.style.display = 'none'; // Hide button when all videos are loaded
+      }
+    }
+
+    renderNextVideos(); // Initial load
+    loadMoreVideosBtn.addEventListener('click', renderNextVideos);
+
+    /**
+     * Extracts a frame from a video at a given time (in seconds)
+     * and returns a data URL (JPEG, 80% quality).
+     * @param {string} videoSrc - URL of the video file (must be same-origin)
+     * @param {number} seekTime  - Time in seconds to capture (default 1)
+     * @returns {Promise<string>} Data URL of the captured frame
+     */
+    function generateThumbnail(videoSrc, seekTime = 1) {
+      return new Promise((resolve, reject) => {
+        const video = document.createElement('video');
+        video.crossOrigin = 'anonymous';  // harmless, helps if CORS needed later
+        video.preload = 'metadata';
+        video.muted = true;
+        video.src = videoSrc;
+
+        // Safety timeout - reject if loading takes too long
+        const timeout = setTimeout(() => {
+          reject(new Error('Thumbnail generation timed out'));
+          video.src = '';
+          video.load();
+        }, 10000); // 10 seconds
+
+        video.addEventListener('loadeddata', () => {
+          const targetTime = (video.duration && video.duration > seekTime) ? seekTime : 0;
+          video.currentTime = targetTime;
+        });
+
+        video.addEventListener('seeked', () => {
+          clearTimeout(timeout);
+          const canvas = document.createElement('canvas');
+          canvas.width = video.videoWidth;
+          canvas.height = video.videoHeight;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+          const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
+          // Clean up
+          video.src = '';
+          video.load();
+          resolve(dataUrl);
+        });
+
+        video.addEventListener('error', (e) => {
+          clearTimeout(timeout);
+          reject(e);
+        });
+
+        // Start loading
+        video.load();
+      });
+    }
+
+    // Lightbox close (photo)
+    const lightbox = document.getElementById('lightbox');
+    const closeBtn = document.querySelector('.close-lightbox');
+    closeBtn.addEventListener('click', () => lightbox.classList.remove('active'));
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) lightbox.classList.remove('active');
     });
 
-    videoGrid.appendChild(videoCard);
-  });
+    // Video modal close (stop playback and clear source)
+    const videoModal = document.getElementById('videoModal');
+    const closeVideoBtn = document.querySelector('.close-video');
+    const modalVideo = document.getElementById('modalVideo');
 
-  /**
-   * Extracts a frame from a video at a given time (in seconds)
-   * and returns a data URL (JPEG, 80% quality).
-   * @param {string} videoSrc - URL of the video file (must be same‑origin)
-   * @param {number} seekTime  - Time in seconds to capture (default 1)
-   * @returns {Promise<string>} Data URL of the captured frame
-   */
-  function generateThumbnail(videoSrc, seekTime = 1) {
-    return new Promise((resolve, reject) => {
-      const video = document.createElement('video');
-      video.crossOrigin = 'anonymous';  // harmless, helps if CORS needed later
-      video.preload = 'metadata';
-      video.muted = true;
-      video.src = videoSrc;
-
-      // Safety timeout - reject if loading takes too long
-      const timeout = setTimeout(() => {
-        reject(new Error('Thumbnail generation timed out'));
-        video.src = '';
-        video.load();
-      }, 10000); // 10 seconds
-
-      video.addEventListener('loadeddata', () => {
-        const targetTime = (video.duration && video.duration > seekTime) ? seekTime : 0;
-        video.currentTime = targetTime;
-      });
-
-      video.addEventListener('seeked', () => {
-        clearTimeout(timeout);
-        const canvas = document.createElement('canvas');
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-        const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
-        // Clean up
-        video.src = '';
-        video.load();
-        resolve(dataUrl);
-      });
-
-      video.addEventListener('error', (e) => {
-        clearTimeout(timeout);
-        reject(e);
-      });
-
-      // Start loading
-      video.load();
-    });
-  }
-
-  // Lightbox close (photo)
-  const lightbox = document.getElementById('lightbox');
-  const closeBtn = document.querySelector('.close-lightbox');
-  closeBtn.addEventListener('click', () => lightbox.classList.remove('active'));
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) lightbox.classList.remove('active');
-  });
-
-  // Video modal close (stop playback and clear source)
-  const videoModal = document.getElementById('videoModal');
-  const closeVideoBtn = document.querySelector('.close-video');
-  const modalVideo = document.getElementById('modalVideo');
-
-  closeVideoBtn.addEventListener('click', () => {
-    modalVideo.pause();
-    modalVideo.src = '';
-    videoModal.classList.remove('active');
-  });
-  videoModal.addEventListener('click', (e) => {
-    if (e.target === videoModal) {
+    closeVideoBtn.addEventListener('click', () => {
       modalVideo.pause();
       modalVideo.src = '';
       videoModal.classList.remove('active');
-    }
-  });
-</script>
+    });
+    videoModal.addEventListener('click', (e) => {
+      if (e.target === videoModal) {
+        modalVideo.pause();
+        modalVideo.src = '';
+        videoModal.classList.remove('active');
+      }
+    });
+  </script>
 </body>
+
 </html>

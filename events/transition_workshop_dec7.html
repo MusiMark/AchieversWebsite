@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>O-Level to A-Level Workshop - Achievers Uganda</title>
+    <title>O-Level to A-Level Workshop - Achievers Mindset Uganda</title>
     <!-- Stylesheets -->
     <link rel="stylesheet" href="../style.css" />
 
     <!-- Website Icon -->
     <link rel="icon" href="../images/achiever_logo2.svg" type="image/svg+xml" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    
     <style>
         :root {
             --navy: #0A1128;
@@ -22,17 +27,20 @@
             --radius: 20px;
             --text-muted: #4a4a5a;
         }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Outfit', sans-serif;
             background: var(--cream);
             color: var(--navy);
             line-height: 1.6;
         }
+
         h1,
         h2,
         h3,
@@ -41,9 +49,11 @@
             font-weight: 600;
             letter-spacing: -0.01em;
         }
+
         section {
             padding: 0;
         }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -64,6 +74,7 @@
             overflow: hidden;
             display: flex;
         }
+
         .hero-image {
             width: 50%;
             height: 100%;
@@ -72,12 +83,14 @@
             z-index: 1;
             clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
         }
+
         .hero-image::after {
             content: '';
             position: absolute;
             inset: 0;
             background: linear-gradient(45deg, rgba(249, 168, 38, 0.4), rgba(255, 94, 94, 0.3));
         }
+
         .hero-text {
             width: 50%;
             background: var(--navy);
@@ -89,6 +102,7 @@
             position: relative;
             z-index: 0;
         }
+
         .hero-text h1 {
             font-size: 2.8rem;
             font-weight: 700;
@@ -96,9 +110,11 @@
             margin-bottom: 16px;
             letter-spacing: -0.02em;
         }
+
         .hero-text h1 span {
             color: var(--gold);
         }
+
         .hero-text p {
             font-size: 1.1rem;
             font-weight: 400;
@@ -110,15 +126,18 @@
                 flex-direction: column;
                 height: auto;
             }
+
             .hero-image {
                 width: 100%;
                 height: 250px;
                 clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
             }
+
             .hero-text {
                 width: 100%;
                 padding: 40px 24px;
             }
+
             .hero-text h1 {
                 font-size: 2rem;
             }
@@ -131,6 +150,7 @@
             gap: 32px;
             padding: 50px 0;
         }
+
         @media (max-width: 900px) {
             .layout {
                 grid-template-columns: 1fr;
@@ -146,9 +166,11 @@
             margin-bottom: 24px;
             transition: 0.2s;
         }
+
         .card:hover {
             transform: translateY(-3px);
         }
+
         .card h3 {
             font-weight: 600;
             font-size: 1.4rem;
@@ -156,6 +178,7 @@
             color: var(--navy);
             letter-spacing: -0.01em;
         }
+
         .card p {
             font-weight: 400;
             color: var(--text-muted);
@@ -171,6 +194,7 @@
             list-style: none;
             margin-top: 18px;
         }
+
         .gain-grid li {
             display: flex;
             align-items: center;
@@ -180,6 +204,7 @@
             padding: 6px 0;
             color: var(--text-muted);
         }
+
         .gain-grid i {
             color: var(--coral);
             font-size: 0.9rem;
@@ -195,9 +220,11 @@
             border-bottom: 1px dashed #e8e8ec;
             align-items: baseline;
         }
+
         .timeline-item:last-child {
             border-bottom: none;
         }
+
         .timeline-time {
             font-weight: 600;
             color: var(--coral);
@@ -205,6 +232,7 @@
             flex-shrink: 0;
             font-size: 0.95rem;
         }
+
         .timeline-item .timeline-desc {
             font-weight: 400;
             color: var(--text-muted);
@@ -219,6 +247,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
             border-top: 4px solid var(--gold);
         }
+
         .side-card h4 {
             font-weight: 600;
             font-size: 1.2rem;
@@ -226,6 +255,7 @@
             color: var(--navy);
             letter-spacing: -0.01em;
         }
+
         .side-card .detail-row {
             display: flex;
             align-items: flex-start;
@@ -236,6 +266,7 @@
             font-size: 0.95rem;
             line-height: 1.5;
         }
+
         .side-card .detail-row i {
             width: 20px;
             color: var(--gold);
@@ -244,17 +275,20 @@
             flex-shrink: 0;
             text-align: center;
         }
+
         .side-card .detail-row .label {
             font-weight: 500;
             color: var(--navy);
             flex-shrink: 0;
         }
+
         .side-card .detail-row .value {
             font-weight: 400;
             word-wrap: break-word;
             word-break: break-word;
             hyphens: auto;
         }
+
         /* long location fix */
         .side-card .detail-row .value.location {
             font-size: 0.85rem;
@@ -286,6 +320,7 @@
             border-top: 4px solid var(--coral);
             margin-top: 16px;
         }
+
         .sidebar-box h3 {
             font-weight: 600;
             font-size: 1.2rem;
@@ -293,6 +328,7 @@
             color: var(--navy);
             letter-spacing: -0.01em;
         }
+
         .sidebar-box .sub-text {
             color: #555;
             margin-bottom: 16px;
@@ -300,19 +336,23 @@
             font-weight: 400;
             line-height: 1.5;
         }
+
         .inquiry-item {
             padding: 12px 0;
             border-bottom: 1px solid #f0f0f0;
         }
+
         .inquiry-item:last-child {
             border-bottom: none;
         }
+
         .inquiry-item .inq-name {
             font-weight: 600;
             color: var(--navy);
             font-size: 0.95rem;
             margin-bottom: 4px;
         }
+
         .inquiry-item .inq-details {
             font-weight: 400;
             font-size: 0.9rem;
@@ -322,12 +362,14 @@
             align-items: center;
             gap: 4px 8px;
         }
+
         /* each contact pair (icon + link) stays together */
         .inquiry-item .contact-pair {
             display: inline-flex;
             align-items: center;
             gap: 5px;
         }
+
         .inquiry-item .contact-pair i {
             font-size: 0.85rem;
             width: 16px;
@@ -335,15 +377,18 @@
             flex-shrink: 0;
             color: var(--coral);
         }
+
         .inquiry-item .contact-pair a {
             color: var(--coral);
             text-decoration: none;
             font-weight: 500;
             white-space: nowrap;
         }
+
         .inquiry-item .contact-pair a:hover {
             text-decoration: underline;
         }
+
         .inquiry-item .sep {
             color: #ccc;
             flex-shrink: 0;
@@ -353,11 +398,13 @@
         .fade-up {
             animation: fadeUp 0.6s ease forwards;
         }
+
         @keyframes fadeUp {
             0% {
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             100% {
                 opacity: 1;
                 transform: translateY(0);
@@ -369,50 +416,61 @@
             .gain-grid {
                 grid-template-columns: 1fr;
             }
+
             .card {
                 padding: 20px;
             }
+
             .side-card {
                 padding: 18px 20px;
             }
+
             .sidebar-box {
                 padding: 18px 20px;
             }
+
             .hero-text h1 {
                 font-size: 1.6rem;
             }
+
             .timeline-item {
                 flex-wrap: wrap;
                 gap: 4px;
             }
+
             .timeline-time {
                 width: 100%;
             }
+
             .inquiry-item .contact-pair a {
                 white-space: normal;
                 word-break: break-all;
             }
+
             .inquiry-item .inq-details {
                 gap: 4px 6px;
             }
         }
+
         @media (max-width: 400px) {
             .inquiry-item .contact-pair {
                 flex-wrap: wrap;
                 gap: 2px;
             }
+
             .inquiry-item .contact-pair i {
                 width: 14px;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container nav-container">
             <div>
-                <img src="../images/achiever_logo.svg" alt="Achievers Uganda Logo" style="width: 80px;" />
+                <img src="../images/achiever_logo.svg" alt="Achievers Mindset Uganda Logo" style="width: 80px;" />
             </div>
             <ul class="nav-links">
                 <li><a href="../">Home</a></li>
@@ -503,11 +561,13 @@
                 </div>
                 <div class="detail-row">
                     <i class="fas fa-map-marker-alt"></i>
-                    <span><span class="label">Venue:</span> <span class="value location">Makerere University, Faculty of Food Science &amp; Technology</span></span>
+                    <span><span class="label">Venue:</span> <span class="value location">Makerere University, Faculty of
+                            Food Science &amp; Technology</span></span>
                 </div>
                 <div class="detail-row">
                     <i class="fas fa-tag"></i>
-                    <span><span class="label">Fee:</span> <span class="value">UGX 120,000 / learner (both days)</span></span>
+                    <span><span class="label">Fee:</span> <span class="value">UGX 120,000 / learner (both
+                            days)</span></span>
                 </div>
                 <a href="#" class="btn btn-primary">Register Now</a>
                 <a href="../events/" class="btn btn-outline">&larr; All Events</a>
@@ -516,7 +576,8 @@
             <!-- Registration & Inquiries -->
             <div class="sidebar-box fade-up">
                 <h3>Registration &amp; Inquiries</h3>
-                <p class="sub-text">Secure your child's spot today to get lessons of what is not taught in class! Spaces are limited.</p>
+                <p class="sub-text">Secure your child's spot today to get lessons of what is not taught in class! Spaces
+                    are limited.</p>
 
                 <div class="inquiry-item">
                     <div class="inq-name">Ms. Hellen Mugumya Twinamasiko</div>
@@ -571,7 +632,8 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <img src="../images/achiever_logo.svg" alt="Achievers Uganda Logo" style="width: 260px; margin-bottom: 16px;" />
+                    <img src="../images/achiever_logo.svg" alt="Achievers Mindset Uganda Logo"
+                        style="width: 260px; margin-bottom: 16px;" />
                 </div>
                 <div class="footer-col">
                     <h4>Quick Links</h4>
@@ -585,9 +647,12 @@
                 </div>
                 <div class="footer-col">
                     <h4>Contact</h4>
-                    <a href="#" data-contact-link="phone"><i class="fas fa-phone-alt"></i> <span data-contact-text="phone"></span></a>
-                    <a href="#" data-contact-link="email"><i class="fas fa-envelope"></i> <span data-contact-text="email"></span></a>
-                    <a href="#" data-contact-link="maps"><i class="fas fa-map-marker-alt"></i> <span data-contact-text="location"></span></a>
+                    <a href="#" data-contact-link="phone"><i class="fas fa-phone-alt"></i> <span
+                            data-contact-text="phone"></span></a>
+                    <a href="#" data-contact-link="email"><i class="fas fa-envelope"></i> <span
+                            data-contact-text="email"></span></a>
+                    <a href="#" data-contact-link="maps"><i class="fas fa-map-marker-alt"></i> <span
+                            data-contact-text="location"></span></a>
                 </div>
                 <div class="footer-col">
                     <h4>Follow Us</h4>
@@ -600,7 +665,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2026 Achievers Uganda</p>
+                <p>&copy; 2026 Achievers Mindset Uganda</p>
             </div>
         </div>
     </footer>
@@ -608,4 +673,5 @@
     <script src="../shared-data.js"></script>
     <script src="../script.js"></script>
 </body>
+
 </html>

@@ -1,3 +1,8 @@
+.page-header {
+    background:
+        linear-gradient(135deg, rgba(200, 20, 40, 0.5), rgba(160, 10, 26, 0.8)), url('../images/acheiver_img9.jpg') center/cover no-repeat;
+}
+
 .blog-page .page-header {
     margin-bottom: 0;
 }

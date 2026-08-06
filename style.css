@@ -1,5 +1,5 @@
 /* ===== Global / Shared Foundations ===== */
-:root{
+:root {
     color-scheme: only light;
 }
 
@@ -23,7 +23,15 @@ body {
     font-size: clamp(1rem, calc(0.95rem + 0.23vw), 1.125rem);
 }
 
-h1, h2, h3, h4, .logo, .nav-links a, .btn, .card-title, .section-title {
+h1,
+h2,
+h3,
+h4,
+.logo,
+.nav-links a,
+.btn,
+.card-title,
+.section-title {
     font-family: 'Poppins', sans-serif;
 }
 
@@ -42,6 +50,7 @@ h2 {
     margin: 0 auto;
     padding: 0 24px;
 }
+
 .container-programs {
     max-width: 1100px;
     margin: 0 auto;
@@ -113,6 +122,7 @@ h2 {
     background-color: #25D366;
     color: #FFFFFF;
 }
+
 .btn-whatsapp:hover {
     background-color: #1da15a;
 }
@@ -120,7 +130,7 @@ h2 {
 /* Navbar */
 .navbar {
     background: var(--cream);
-    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -268,7 +278,7 @@ h2 {
 }
 
 .nav-links a.active::after {
-    content: '';   
+    content: '';
     display: block;
     width: 100%;
     height: 3px;
@@ -347,7 +357,7 @@ footer {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 32px;
 }
 
@@ -388,11 +398,11 @@ footer {
     transform: translateY(-6px) scale(1.1);
 }
 
-.copyright{
-    text-align:center; 
-    border-top:1px solid #444; 
-    padding-top:30px; 
-    margin-top:30px;
+.copyright {
+    text-align: center;
+    border-top: 1px solid #444;
+    padding-top: 30px;
+    margin-top: 30px;
 }
 
 /* ===== Page-Specific: Home ===== */
@@ -428,7 +438,7 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(0,0,0,0.65), rgba(0,0,0,0.5));
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.5));
     z-index: 3;
 }
 
@@ -442,7 +452,7 @@ footer {
     z-index: 4;
     width: 85%;
     max-width: 800px;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .slide-content h2 {
@@ -461,7 +471,7 @@ footer {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     color: #FFFFFF;
     border: none;
     width: 48px;
@@ -499,7 +509,7 @@ footer {
 .dot {
     width: 12px;
     height: 12px;
-    background: rgba(255,255,255,0.5);
+    background: rgba(255, 255, 255, 0.5);
     border-radius: 50%;
     cursor: pointer;
     transition: 0.2s;
@@ -519,7 +529,7 @@ footer {
 }
 
 .who-v1__visual {
-    background: var(--soft-red);
+    background: url('images/acheiver_img8.jpg') center/cover no-repeat;
     border-radius: 24px;
     padding: 48px 36px;
     text-align: center;
@@ -528,10 +538,11 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: var(--soft-red);
 }
 
 .who-v1__visual .big-icon {
-    font-size: 6rem;
+    font-size: 1.5rem;
     color: var(--red);
     opacity: 0.7;
 }
@@ -545,6 +556,11 @@ footer {
     top: -20px;
     right: -20px;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: var(--red);
 }
 
 .who-v1__content p {
@@ -634,7 +650,7 @@ footer {
     grid-template-columns: 140px 1fr auto;
     gap: 20px;
     align-items: center;
-    background: var(--white);
+    background: var(--cream);
     border-radius: 10px;
     padding: 24px 28px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
@@ -643,8 +659,8 @@ footer {
 }
 
 .home-event-card:hover {
-    border-left-color: var(--red);
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(200, 12, 31, 0.12);
 }
 
 .home-event-card .event-date-block {
@@ -687,10 +703,12 @@ footer {
     padding: 60px 0;
     margin-bottom: 40px;
 }
+
 .page-header h1 {
     font-size: clamp(2rem, calc(1.35rem + 2.3vw), 3.2rem);
     margin-bottom: 12px;
 }
+
 .page-header p {
     font-size: clamp(1rem, calc(0.92rem + 0.45vw), 1.2rem);
     max-width: 700px;
@@ -723,10 +741,21 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .slide-content h2 { font-size: 2rem; }
-    .section-title { font-size: 1.8rem; }
-    .nav-container { gap: 8px; }
-    .hero-slider { height: 70vh; }
+    .slide-content h2 {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .nav-container {
+        gap: 8px;
+    }
+
+    .hero-slider {
+        height: 70vh;
+    }
 
     .home-event-card {
         grid-template-columns: 100px 1fr;

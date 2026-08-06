@@ -63,7 +63,7 @@ function initMobileNavigation() {
         drawerMenu.className = 'drawer-menu';
         drawerMenu.innerHTML = `
             <div class="drawer-header">
-                <div class="drawer-brand">Achievers Uganda</div>
+                <div class="drawer-brand">Achievers Mindset Uganda</div>
                 <button type="button" class="drawer-close" id="drawerCloseBtn" aria-label="Close navigation menu">
                     <i class="fas fa-times" aria-hidden="true"></i>
                 </button>

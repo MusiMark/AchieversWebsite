@@ -1,373 +1,344 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="color-scheme" content="light">
-  <meta name="supported-color-schemes" content="light">
-  <title>Events</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="color-scheme" content="light">
+    <meta name="supported-color-schemes" content="light">
+    <title>Events</title>
 
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="../style.css">
-  <link rel="stylesheet" href="events.css">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="events.css">
 
-  <!-- Website Icon -->
-  <link rel="icon" href="../images/achiever_logo2.svg" type="image/svg+xml">
+    <!-- Website Icon -->
+    <link rel="icon" href="../images/achiever_logo2.svg" type="image/svg+xml">
 
-  <!-- Google Fonts & Font Awesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <script src="https://kit.fontawesome.com/04925a1789.js" crossorigin="anonymous"></script>
+    <!-- Google Fonts & Font Awesome -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://kit.fontawesome.com/04925a1789.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
 
-<!-- Navigation -->
-<nav class="navbar">
-  <div class="container nav-container">
-    <div>
-      <img src="../images/achiever_logo.svg" alt="Achievers Uganda Logo" style="width: 80px;">
-    </div>
-    <ul class="nav-links">
-      <li><a href="../">Home</a></li>
-      <li><a href="../aboutus/">About</a></li>
-      <!-- <li><a href="../programs/">Programs</a></li> -->
-      <li><a href="../events/" class="active">Events</a></li>
-      <li><a href="../blog/">Blog</a></li>
-      <li><a href="../gallery/">Gallery</a></li>
-      <li><a href="../contactus/" class="nav-btn">Contact Us</a></li>
-    </ul>
-  </div>
-</nav>
-
-<!-- Page Header -->
-<div class="page-header">
-  <div class="container">
-    <h1>Events & Calendar</h1>
-    <p>Stay updated with our workshops, summits, and youth empowerment sessions. Mark your calendar and join us.</p>
-  </div>
-</div>
-
-<!-- Events + Calendar -->
-<section style="padding-top: 40px;">
-  <div class="container">
-    <div class="events-layout">
-      <div class="calendar-container">
-        <div class="calendar-header">
-          <h3 id="monthYear">April 2026</h3>
-          <div class="calendar-nav">
-            <button id="prevMonth" aria-label="Previous month"><i class="fas fa-chevron-left"></i></button>
-            <button id="nextMonth" aria-label="Next month"><i class="fas fa-chevron-right"></i></button>
-          </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div>
+                <img src="../images/achiever_logo.svg" alt="Achievers Mindset Uganda Logo" style="width: 80px;">
+            </div>
+            <ul class="nav-links">
+                <li><a href="../">Home</a></li>
+                <li><a href="../aboutus/">About</a></li>
+                <!-- <li><a href="../programs/">Programs</a></li> -->
+                <li><a href="../events/" class="active">Events</a></li>
+                <li><a href="../blog/">Blog</a></li>
+                <li><a href="../gallery/">Gallery</a></li>
+                <li><a href="../contactus/" class="nav-btn">Contact Us</a></li>
+            </ul>
         </div>
-        <div class="weekdays">
-          <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Events & Calendar</h1>
+            <p>Stay updated with our workshops, summits, and youth empowerment sessions. Mark your calendar and join us.
+            </p>
         </div>
-        <div id="calendarDays" class="calendar-days"></div>
-        <p style="margin-top: 20px; font-size: 0.85rem; color: var(--stone);">
-          <i class="fas fa-circle" style="color: var(--soft-red); font-size: 0.7rem;"></i> Days with events
-        </p>
-      </div>
+    </div>
 
-      <div class="events-list-container">
-        <h3><i class="fas fa-calendar-alt"></i> Upcoming Events</h3>
-        <div id="eventsList"></div>
-        <div style="margin-top: 24px; text-align: center;">
-          <!-- Only one main contact button remains -->
-          <a href="#" data-contact-link="whatsapp" class="btn btn-primary" target="_blank">
-            <i class="fab fa-whatsapp"></i> Contact for Details
-          </a>
+    <!-- Calendar + Upcoming/All Events -->
+    <section style="padding-top: 20px; padding-bottom: 40px;">
+        <div class="container">
+            <div class="v1-layout">
+
+                <!-- Calendar -->
+                <aside class="v1-calendar">
+                    <div class="v1-cal-head">
+                        <h3 id="monthYear">April 2026</h3>
+                        <div class="v1-cal-nav">
+                            <button id="prevMonth" aria-label="Previous month"><i
+                                    class="fas fa-chevron-left"></i></button>
+                            <button id="nextMonth" aria-label="Next month"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="v1-weekdays">
+                        <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                    </div>
+                    <div id="calendarDays" class="v1-days"></div>
+                    <div class="v1-legend">
+                        <span><i class="fas fa-circle" style="color: var(--red);"></i> Today</span>
+                        <span><i class="fas fa-circle" style="color: var(--yellow);"></i> Event day</span>
+                    </div>
+                </aside>
+
+                <!-- Events list with view toggle -->
+                <div>
+                    <div class="view-toggle" role="tablist">
+                        <button class="active" data-view="upcoming">Upcoming</button>
+                        <button data-view="all">All Events</button>
+                    </div>
+                    <div id="eventsList"></div>
+
+                    <div class="cta-band">
+                        <h3>Don't miss out</h3>
+                        <p>Reach out on WhatsApp for registration details and special offers.</p>
+                        <a href="#" data-contact-link="whatsapp" class="btn btn-primary" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contact for Details
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Past Events -->
-<section class="past-highlights">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Past Events Highlights</h2>
-      <p>Relive the energy and impact of our recent gatherings.</p>
-    </div>
-    <div class="past-highlights-grid">
-      <div class="highlight-card">
-        <i class="fas fa-chalkboard-user"></i>
-        <h3>Mindset Bootcamp</h3>
-        <p>Feb 2026 | 120+ participants</p>
-      </div>
-      <div class="highlight-card">
-        <i class="fas fa-handshake"></i>
-        <h3>Youth Leadership Summit</h3>
-        <p>Jan 2026 | 85 schools represented</p>
-      </div>
-      <div class="highlight-card">
-        <i class="fas fa-users"></i>
-        <h3>Parenting Webinar</h3>
-        <p>Dec 2025 | 300+ parents</p>
-      </div>
-    </div>
-  </div>
-</section>
+    <!-- Past Events Highlights -->
+    <section class="past-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Past Events Highlights</h2>
+                <p>Relive the energy and impact of our recent gatherings — swipe through the moments.</p>
+            </div>
 
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <img src="../images/achiever_logo.svg" alt="Achievers Uganda Logo" style="width: 260px; margin-bottom: 16px;">
-      </div>
-      <div class="footer-col">
-        <h4>Quick Links</h4>
-        <a href="../">Home</a>
-        <a href="../aboutus/">About Us</a>
-        <!-- <a href="../programs/">Programs</a> -->
-        <a href="../events/">Events</a>
-        <a href="../blog/">Blog</a>
-        <a href="../gallery/">Gallery</a>
-        <a href="../contactus/">Contact</a>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <a href="#" data-contact-link="phone"><i class="fas fa-phone-alt"></i> <span data-contact-text="phone"></span></a>
-        <a href="#" data-contact-link="email"><i class="fas fa-envelope"></i> <span data-contact-text="email"></span></a>
-        <a href="#" data-contact-link="maps"><i class="fas fa-map-marker-alt"></i> <span data-contact-text="location"></span></a>
-      </div>
-      <div class="footer-col">
-        <h4>Follow Us</h4>
-        <div class="social-icons">
-          <i class="fab fa-facebook"></i>
-          <i class="fab fa-instagram"></i>
-          <i class="fab fa-twitter"></i>
-          <i class="fab fa-linkedin"></i>
+            <div class="carousel">
+                <div class="ccard">
+                    <img src="../images/acheiver_img3.jpg"
+                        alt="Mindset Bootcamp participants raising their hands in a classroom" loading="lazy">
+                    <span class="count">120+ participants</span>
+                    <div class="overlay-events">
+                        <h3>Mindset Bootcamp</h3>
+                        <p class="meta">Jul 2026 · Rakia</p>
+                    </div>
+                    <!-- </div>
+
+                <div class="ccard">
+                    <img src="../images/past-summit.jpg" alt="Young speaker addressing the Youth Leadership Summit" loading="lazy">
+                    <span class="count">85 schools</span>
+                    <div class="overlay-events">
+                        <h3>Youth Leadership Summit</h3>
+                        <p class="meta">Jan 2026 · Entebbe</p>
+                    </div>
+                </div>
+
+                <div class="ccard">
+                    <img src="../images/past-webinar.jpg" alt="Parents engaged in discussion at the Parenting Webinar" loading="lazy">
+                    <span class="count">300+ parents</span>
+                    <div class="overlay-events">
+                        <h3>Parenting Webinar</h3>
+                        <p class="meta">Dec 2025 · Community Hall</p>
+                    </div>
+                </div>
+
+                <div class="ccard">
+                    <img src="../images/past-gala.jpg" alt="Graduates celebrating with certificates and flowers at the Graduation Gala" loading="lazy">
+                    <span class="count">50 graduates</span>
+                    <div class="overlay-events">
+                        <h3>Graduation Gala</h3>
+                        <p class="meta">Nov 2025 · Kampala</p>
+                    </div>
+                </div> -->
+                </div>
+            </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="../images/achiever_logo.svg" alt="Achievers Mindset Uganda Logo"
+                        style="width: 260px; margin-bottom: 16px;">
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="../">Home</a>
+                    <a href="../aboutus/">About Us</a>
+                    <!-- <a href="../programs/">Programs</a> -->
+                    <a href="../events/">Events</a>
+                    <a href="../blog/">Blog</a>
+                    <a href="../gallery/">Gallery</a>
+                    <a href="../contactus/">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <a href="#" data-contact-link="phone"><i class="fas fa-phone-alt"></i> <span
+                            data-contact-text="phone"></span></a>
+                    <a href="#" data-contact-link="email"><i class="fas fa-envelope"></i> <span
+                            data-contact-text="email"></span></a>
+                    <a href="#" data-contact-link="maps"><i class="fas fa-map-marker-alt"></i> <span
+                            data-contact-text="location"></span></a>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <i class="fab fa-facebook"></i>
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Achievers Mindset Uganda</p>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="copyright">
-      <p>&copy; 2026 Achievers Uganda</p>
-    </div>
-  </div>
-</footer>
+    </footer>
 
-<script src="../shared-data.js"></script>
+    <script src="../shared-data.js"></script>
 
-<script>
-  // Fetch events from external JSON
-  fetch('events.json')
-    .then(response => response.json())
-    .then(events => {
-      window.eventsData = events; // store for later use
-      renderCalendar();
-      showUpcomingEvents();
-    })
-    .catch(error => {
-      console.error('Failed to load events:', error);
-      document.getElementById('eventsList').innerHTML = '<p>Unable to load events. Please try again later.</p>';
-    });
+    <script>
+        // Fetch events from external JSON
+        fetch('events.json')
+            .then(response => response.json())
+            .then(events => {
+                window.eventsData = events;
+                renderCalendar();
+                showUpcomingEvents();
+            })
+            .catch(error => {
+                console.error('Failed to load events:', error);
+                document.getElementById('eventsList').innerHTML =
+                    '<p style="padding: 30px 0; color: var(--stone);">Unable to load events. Please try again later.</p>';
+            });
 
-  function getEventsForDate(dateStr) {
-    if (!window.eventsData) return [];
-    return window.eventsData.filter(eventItem => eventItem.date === dateStr);
-  }
+        let currentDate = new Date();
+        currentDate.setHours(0, 0, 0, 0);
 
-  let currentDate = new Date();
-  currentDate.setHours(0, 0, 0, 0);
+        // View toggle: Upcoming / All Events
+        document.querySelectorAll('.view-toggle button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.view-toggle button').forEach(b => b.classList.remove(
+                    'active'));
+                btn.classList.add('active');
+                if (btn.dataset.view === 'upcoming') {
+                    showUpcomingEvents();
+                } else {
+                    showAllEvents();
+                }
+            });
+        });
 
-  function renderCalendar() {
-    if (!window.eventsData) return;
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth();
-    const firstDayOfMonth = new Date(year, month, 1);
-    const startWeekday = firstDayOfMonth.getDay();
-    const startOffset = startWeekday === 0 ? 6 : startWeekday - 1;
+        function renderCalendar() {
+            if (!window.eventsData) return;
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            const startWeekday = new Date(year, month, 1).getDay();
+            const startOffset = startWeekday === 0 ? 6 : startWeekday - 1;
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const calendarDaysDiv = document.getElementById('calendarDays');
+            calendarDaysDiv.innerHTML = '';
 
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    const calendarDaysDiv = document.getElementById('calendarDays');
-    calendarDaysDiv.innerHTML = '';
+            // Empty cells before the first day
+            for (let i = startOffset - 1; i >= 0; i--) {
+                const emptyDiv = document.createElement('div');
+                emptyDiv.className = 'v1-day empty';
+                calendarDaysDiv.appendChild(emptyDiv);
+            }
 
-    const prevMonthDays = new Date(year, month, 0).getDate();
-    for (let i = startOffset - 1; i >= 0; i--) {
-      const dayNum = prevMonthDays - i;
-      const emptyDiv = document.createElement('div');
-      emptyDiv.className = 'calendar-day empty';
-      emptyDiv.textContent = dayNum;
-      calendarDaysDiv.appendChild(emptyDiv);
-    }
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
 
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dateStr =
+                    `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const hasEvent = window.eventsData.some(e => e.date === dateStr);
+                const dayDiv = document.createElement('div');
+                dayDiv.className = 'v1-day';
+                dayDiv.tabIndex = 0;
+                if (hasEvent) dayDiv.classList.add('has-event');
+                if (today.getFullYear() === year && today.getMonth() === month && today.getDate() === day)
+                    dayDiv.classList.add('today');
+                dayDiv.textContent = day;
+                dayDiv.addEventListener('click', () => showEventsForDate(dateStr));
+                dayDiv.addEventListener('keydown', e => {
+                    if (e.key === 'Enter') showEventsForDate(dateStr);
+                });
+                calendarDaysDiv.appendChild(dayDiv);
+            }
 
-    for (let day = 1; day <= daysInMonth; day++) {
-      const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-      const hasEvent = getEventsForDate(dateStr).length > 0;
-      const dayDiv = document.createElement('div');
-      dayDiv.className = 'calendar-day';
+            // Fill remaining cells to complete 6 rows (42 cells)
+            const remaining = 42 - calendarDaysDiv.children.length;
+            for (let i = 1; i <= remaining; i++) {
+                const emptyDiv = document.createElement('div');
+                emptyDiv.className = 'v1-day empty';
+                calendarDaysDiv.appendChild(emptyDiv);
+            }
 
-      if (hasEvent) {
-        dayDiv.classList.add('has-event');
-      }
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
+                'October', 'November', 'December'
+            ];
+            document.getElementById('monthYear').textContent = `${monthNames[month]} ${year}`;
+        }
 
-      if (
-        today.getFullYear() === year &&
-        today.getMonth() === month &&
-        today.getDate() === day
-      ) {
-        dayDiv.classList.add('today');
-      }
+        function renderList(events) {
+            const box = document.getElementById('eventsList');
+            if (!events.length) {
+                box.innerHTML =
+                    '<p style="padding: 30px 0; color: var(--stone);">No events found for this view.</p>';
+                return;
+            }
+            let html = '';
+            let lastMonth = '';
+            events.forEach(e => {
+                const d = new Date(e.date);
+                const monthLabel = d.toLocaleString('default', { month: 'long', year: 'numeric' });
+                if (monthLabel !== lastMonth) {
+                    html += `<div class="month-divider">${monthLabel}</div>`;
+                    lastMonth = monthLabel;
+                }
+                const readMore = e.detailsUrl ?
+                    `<a href="${e.detailsUrl}" class="link">View details <i class="fas fa-arrow-right"></i></a>` :
+                    '';
+                html += `
+                <div class="event-tile">
+                  <div class="event-day">
+                    <span class="d">${d.getDate()}</span>
+                    <span class="m">${d.toLocaleString('default', { month: 'short' })}</span>
+                  </div>
+                  <div class="event-info">
+                    <span class="event-cat">${e.category || 'Event'}</span>
+                    <h4>${e.name}</h4>
+                    <div class="meta"><i class="fas fa-map-marker-alt"></i>${e.location || 'TBA'}</div>
+                    <p class="desc">${e.description || ''}</p>
+                    ${readMore}
+                  </div>
+                </div>`;
+            });
+            box.innerHTML = html;
+        }
 
-      dayDiv.textContent = day;
-      dayDiv.addEventListener('click', () => {
-        showEventsForDate(dateStr);
-      });
-      calendarDaysDiv.appendChild(dayDiv);
-    }
+        function showUpcomingEvents() {
+            if (!window.eventsData) return;
+            const todayStr = new Date().toISOString().slice(0, 10);
+            renderList(window.eventsData.filter(e => e.date >= todayStr).sort((a, b) => a.date.localeCompare(b.date)));
+        }
 
-    const totalCells = calendarDaysDiv.children.length;
-    const remainingCells = 42 - totalCells;
-    for (let i = 1; i <= remainingCells; i++) {
-      const emptyDiv = document.createElement('div');
-      emptyDiv.className = 'calendar-day empty';
-      emptyDiv.textContent = i;
-      calendarDaysDiv.appendChild(emptyDiv);
-    }
+        function showAllEvents() {
+            if (!window.eventsData) return;
+            renderList(window.eventsData.slice().sort((a, b) => a.date.localeCompare(b.date)));
+        }
 
-    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    document.getElementById('monthYear').textContent = `${monthNames[month]} ${year}`;
-  }
+        function showEventsForDate(dateStr) {
+            if (!window.eventsData) return;
+            renderList(window.eventsData.filter(e => e.date === dateStr));
+        }
 
-  function showEventsForDate(dateStr) {
-    if (!window.eventsData) return;
-    const eventsContainer = document.getElementById('eventsList');
-    const filteredEvents = window.eventsData.filter(eventItem => eventItem.date === dateStr);
+        document.getElementById('prevMonth').addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar();
+        });
+        document.getElementById('nextMonth').addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar();
+        });
+    </script>
 
-    if (filteredEvents.length === 0) {
-      eventsContainer.innerHTML = '<div class="event-item"><h4>No events scheduled on this day</h4><p>Check other dates or contact us for updates.</p></div>';
-      return;
-    }
-
-    const html = filteredEvents.map(eventItem => {
-      const dateObj = new Date(eventItem.date);
-      const day = dateObj.getDate();
-      const month = dateObj.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
-
-      // Build optional "Read More" link only if detailsUrl exists
-      const readMore = eventItem.detailsUrl
-        ? `<span class="event-link">View Details<i class="fas fa-arrow-right"></i></span>`
-        : '';
-
-      const cardContent = `
-      <div class="event-item">
-          <div class="event-date">
-              <span class="day">${day}</span>
-              <span class="month">${month}</span>
-          </div>
-
-          <div class="event-content">
-              <h3>${eventItem.name}</h3>
-
-              <p class="event-meta">
-                  <i class="fas fa-map-marker-alt"></i>
-                  ${eventItem.location}
-              </p>
-
-              <!-- <p class="event-meta">
-                  <i class="far fa-calendar-alt"></i>
-                  9:00 AM - 5:00 PM
-              </p> -->
-
-              <p class="event-description">
-                  ${eventItem.description}
-              </p>
-
-              ${readMore}
-          </div>
-      </div>
-      `
-
-      return eventItem.detailsUrl
-      ? `<a href="${eventItem.detailsUrl}" class="event-card-link">
-        ${cardContent}
-        </a>`
-      : cardContent;
-    }).join('');
-
-    eventsContainer.innerHTML = html;
-  }
-
-  function showUpcomingEvents() {
-    if (!window.eventsData) return;
-    const eventsContainer = document.getElementById('eventsList');
-    const todayStr = new Date().toISOString().slice(0, 10);
-    const upcomingEvents = window.eventsData
-      .filter(eventItem => eventItem.date >= todayStr)
-      .sort((a, b) => a.date.localeCompare(b.date));
-
-    if (upcomingEvents.length === 0) {
-      eventsContainer.innerHTML = '<div class="event-item"><h4>No upcoming events yet</h4><p>Please check again soon.</p></div>';
-      return;
-    }
-
-    const html = upcomingEvents.map(eventItem => {
-      const dateObj = new Date(eventItem.date);
-      const day = dateObj.getDate();
-      const month = dateObj.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
-
-      // Build optional "Read More" link only if detailsUrl exists
-      const readMore = eventItem.detailsUrl
-        ? `<span class="event-link">View Details<i class="fas fa-arrow-right"></i></span>`
-        : '';
-
-      const cardContent = `
-      <div class="event-item">
-          <div class="event-date">
-              <span class="day">${day}</span>
-              <span class="month">${month}</span>
-          </div>
-
-          <div class="event-content">
-              <h3>${eventItem.name}</h3>
-
-              <p class="event-meta">
-                  <i class="fas fa-map-marker-alt"></i>
-                  ${eventItem.location}
-              </p>
-
-              <!-- <p class="event-meta">
-                  <i class="far fa-calendar-alt"></i>
-                  9:00 AM - 5:00 PM
-              </p> -->
-
-              <p class="event-description">
-                  ${eventItem.description}
-              </p>
-
-              ${readMore}
-          </div>
-      </div>
-      `
-
-      return eventItem.detailsUrl
-      ? `<a href="${eventItem.detailsUrl}" class="event-card-link">
-        ${cardContent}
-        </a>`
-      : cardContent;
-    }).join('');
-
-    eventsContainer.innerHTML = html;
-  }
-
-  document.getElementById('prevMonth').addEventListener('click', () => {
-    currentDate.setMonth(currentDate.getMonth() - 1);
-    renderCalendar();
-    showUpcomingEvents();
-  });
-
-  document.getElementById('nextMonth').addEventListener('click', () => {
-    currentDate.setMonth(currentDate.getMonth() + 1);
-    renderCalendar();
-    showUpcomingEvents();
-  });
-</script>
-
-<script src="../script.js"></script>
+    <script src="../script.js"></script>
 
 </body>
+
 </html>
