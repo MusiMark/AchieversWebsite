@@ -576,13 +576,18 @@ footer {
 
 /* Why Choose Us grid */
 .why-v1 {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
     counter-reset: why-counter;
+    max-width: 1200px; 
+    margin: 0 auto;
 }
 
 .why-card-v1 {
+    flex: 0 1 calc(25% - 15px); 
+    box-sizing: border-box;
     background: #FFFFFF;
     border-radius: 16px;
     padding: 36px 24px 28px;
@@ -735,14 +740,18 @@ footer {
         gap: 40px;
     }
 
-    .why-v1 {
-        grid-template-columns: repeat(2, 1fr);
+    .why-card-v1 {
+        flex: 0 1 calc(50% - 10px); 
     }
 }
 
 @media (max-width: 768px) {
     .slide-content h2 {
         font-size: 2rem;
+    }
+
+    .slider-control {
+        display: none;
     }
 
     .section-title {
@@ -757,11 +766,6 @@ footer {
         height: 70vh;
     }
 
-    .home-event-card {
-        grid-template-columns: 100px 1fr;
-        gap: 16px;
-    }
-
     .home-event-card .event-date-block .date-day {
         font-size: 1.8rem;
     }
@@ -769,7 +773,10 @@ footer {
 
 @media (max-width: 640px) {
     .why-v1 {
-        grid-template-columns: 1fr;
+        gap: 16px; 
+    }
+    .why-card-v1 {
+        flex: 0 1 100%; 
     }
 
     .home-event-card {
